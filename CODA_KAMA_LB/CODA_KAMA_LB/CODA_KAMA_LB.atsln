@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "CODA_KAMA_LB", "CODA_KAMA_LB\CODA_KAMA_LB.cproj", "{77756815-76E1-48A1-8EC0-979321C6B113}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77756815-76E1-48A1-8EC0-979321C6B113}.Debug|AVR.ActiveCfg = Debug|AVR
+		{77756815-76E1-48A1-8EC0-979321C6B113}.Debug|AVR.Build.0 = Debug|AVR
+		{77756815-76E1-48A1-8EC0-979321C6B113}.Release|AVR.ActiveCfg = Release|AVR
+		{77756815-76E1-48A1-8EC0-979321C6B113}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
