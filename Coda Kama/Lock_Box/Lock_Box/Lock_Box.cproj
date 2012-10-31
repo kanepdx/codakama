@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>6.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8</ToolchainName>
-    <ProjectGuid>{77756815-76e1-48a1-8ec0-979321c6b113}</ProjectGuid>
+    <ProjectGuid>{ad57d435-b2f8-4a2c-8af0-44694c68ab1e}</ProjectGuid>
     <avrdevice>ATmega48A</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>CODA_KAMA_LB</AssemblyName>
-    <Name>CODA_KAMA_LB</Name>
-    <RootNamespace>CODA_KAMA_LB</RootNamespace>
+    <AssemblyName>Lock_Box</AssemblyName>
+    <Name>Lock_Box</Name>
+    <RootNamespace>Lock_Box</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -65,7 +65,7 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CODA_KAMA_LB.c">
+    <Compile Include="Lock_Box.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

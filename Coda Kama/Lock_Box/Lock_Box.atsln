@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Atmel Studio Solution File, Format Version 11.00
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "CODA_KAMA_LB", "CODA_KAMA_LB\CODA_KAMA_LB.cproj", "{77756815-76E1-48A1-8EC0-979321C6B113}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Lock_Box", "Lock_Box\Lock_Box.cproj", "{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|AVR = Release|AVR
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77756815-76E1-48A1-8EC0-979321C6B113}.Debug|AVR.ActiveCfg = Debug|AVR
-		{77756815-76E1-48A1-8EC0-979321C6B113}.Debug|AVR.Build.0 = Debug|AVR
-		{77756815-76E1-48A1-8EC0-979321C6B113}.Release|AVR.ActiveCfg = Release|AVR
-		{77756815-76E1-48A1-8EC0-979321C6B113}.Release|AVR.Build.0 = Release|AVR
+		{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}.Debug|AVR.Build.0 = Debug|AVR
+		{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}.Release|AVR.ActiveCfg = Release|AVR
+		{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
