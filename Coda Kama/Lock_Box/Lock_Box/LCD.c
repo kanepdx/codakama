@@ -1,38 +1,14 @@
 /*
- * LCD.h
+ * LCD.c
  *
  *  Author: Coda Kama, Matt Grimm
  *
- * Primary LCD.h function calls 
-	*
-	* void initializeLCD(void)
-			* Initializes the LCD into 4-bit mode
-			* Takes no input arguments or output 
-			* Turning on the cursor and blinks the cursor
-			* Sets the cursor to home (1x1)
-	* void clearLCD (void)
-			* Clears the LCD screen
-			* Takes no input arguments or output 
-			* Clears screen and sets the cursor to home
-	* void writeLCDcharacter(int character)
-			* Writes a specified character to the current cursor position
-			* Take in a character and has no output 
-			* The function typecasts the character, obviously by using int character
-				*example - A = writeLCDcharacter(A)
-				*example - 1 = writeLCDcharacter(0x30 +1)
-	* void cursorPosition(int line)
-			* Places the cursor to the 1st position of the specified line
-			* Takes in integer line number has not output
-	* void writeLCDline(char line_data[16], int line)
-			* Writes and Displays 16 characters in an array on a specified line
-			* Inputs are the 16 element array and the LCD line (row)
-			* The data array needs to be of type char
-				*example - array = ['A','B','C'. . .];  
- */ 
+ * LCD.c - LCD functions  
+ *
+ */
 
+#include "LCD.h"
 
-
-#define F_CPU 1000000			// 8Mhz/8 = 1Mhz = System clock
 #define R_W PB0					// Read/Write (LCD) connected to PB0 (MC)
 #define RS PC5					// Register Select (LCD) connected to PC5 (MC)
 #define E PC4					// Enable (LCD) connected to PC5 (MC)
@@ -41,8 +17,6 @@
 #define LCD_PORT_2 PORTB		// Using Port B (MC) for the LCD
 #define LCD_DDR_2 DDRB			// With Port B (MC) being assigned direction register assignment
 
-#include <avr/io.h>
-#include <util/delay.h>
 
 // Sets up LCD and initializes it in 4 bit mode
 void initializeLCD(void){
@@ -72,7 +46,6 @@ void initializeLCD(void){
 	writeLCDdata(0x28); /* Setting Function Set (4 bit, Dual Line, 5x8 dots */
 	writeLCDdata(0x0F); /* Setting Display (Display ON, Cursor Blinking, Cursor Position ON */
 	writeLCDdata(0x06); /*  Setting Entry Mode (Increment after every read write op.*/
-	
 }
 
 // Clears the LCD and places cursor at home (1x1)
@@ -95,7 +68,7 @@ void writeLCDcharacter(int character){
 
 // Places the cursor to the home of the specified line
 void cursorPosition(int line){
-	int i =1;
+	int i = 1;
 	
 	LCD_DDR_1 = 0x3F;				// Making LCD PORTC pins outputs
 	LCD_PORT_1 &= ~(1 << RS);		// Clearing RS to send command
@@ -109,12 +82,12 @@ void cursorPosition(int line){
 		writeLCDdata(0x2);			// Sending the cursor home
 		for(i=1;i<16+25;i++){		// Loop cursor move to the right instruction
 		writeLCDdata(0x14);
+		}
 	}
-}
-else
-writeLCDdata(0x2);			// Sending cursor home
+	else
+	writeLCDdata(0x2);			// Sending cursor home
 
-writeLCDdata(0x0F);				// Turning on the cursor ON
+	writeLCDdata(0x0F);				// Turning on the cursor ON
 }
 
 // Writes an array of 16 characters to the specified line
@@ -145,7 +118,6 @@ void writeLCDdata(int data_byte){
 	_delay_ms(1);								// Delaying to ensure instruction is executed
 	LCD_PORT_1 &= ~(lowernibble);				// Clearing lower nibble
 }
-
 
 
 
