@@ -1,5 +1,5 @@
 /*
-	THIS CODE IS NOT FINISHED YET!!
+	this shit is working, kinda (best so far)
 */
 #include "keypad.h"
 
@@ -19,7 +19,7 @@
 #define ROW3 PINB2										// row 3 of keypad mapped to pin
 #define ROW4 PINB7										// row 4 of keypad mapped to pin
 #define STAR 10 										// '*'' key mapped to a decimal value
-#define POUND 11										// '#' key mapped to a decimal value
+#define POUND 12										// '#' key mapped to a decimal value
 #define KEY_QUEUE_SIZE 8								// size of key queue
 #define INPUT_SIZE 8
 
@@ -49,103 +49,66 @@ void getKeyPress(void){
 		key = keyMap(row,col);							// will hold the key value to be added to queue
 		pushKey(key); 									// push key onto queue		
 	}
-	else {
+	else if(button_state == 1){
 		button_state = 0;								// button was previously pressed and is now unpressed
 	}
 }
 
 int getRow(void){										// determine which row on the keypad caused the interrupts.
 	int r;												// temporary placeholder for the row 
-	for(int i=0; i < NUM_ROWS; i++){
-		if((PINB & (1 << rows[i])) == 0){				// a logic low indicates that a key was pressed in that row.
-			r = i;									
-		}
-	}
+	
+		 if(!(PINB &(1 << ROW1))) r = ROW1;				// a logic low indicates that a key was pressed in that row.
+	else if(!(PINB &(1 << ROW2))) r = ROW2;
+	else if(!(PINB &(1 << ROW3))) r = ROW3;
+	else if(!(PINB &(1 << ROW4))) r = ROW4;
+	
 	return r;
 }
 
 int getCol(int r) {										// strobe outputs to determine column
 	int c;
-	
+		
 	PORTB |= (1 << COL1);								// set first column high
 	_delay_us(100);										// wait for debouncing filter
-	if((PINB & (1 << rows[r])) == 1) {					// if the row went high
+	if((PINB & (1 << r))) {								// if the row went high
 		c = 1;											// then the key is in the first column
 	}
 	PORTB &= ~(1 << COL1);								// set first column back to low
+	_delay_us(100);	
 	
 	PORTB |= (1 << COL2);								// set second column high
 	_delay_us(100);										// wait for debouncing filter
-	if((PINB & (1 << rows[r])) == 1) {					// if the row went high
+	if((PINB & (1 << r))) {								// if the row went high
 		c = 2;											// then the key is in the second column
 	}
 	PORTB &= ~(1 << COL2);								// set the second column back to low
+	_delay_us(100);	
 	
 	PORTB |= (1 << COL3);								// set third column high
 	_delay_us(100);										// wait for debouncing filter
-	if((PINB & (1 << rows[r])) == 1) {					// if the row went high
+	if((PINB & (1 << r))) {								// if the row went high
 		c = 3;											// then the key is in the third column
 	}
 	PORTB &= ~(1 << COL3);								// set the third column back to low
+	_delay_us(100);
 	
 	return c;
 }
 
-int keyMap(int r,int c) { 										// maps (row,column) pairs to an integer value corresponding to a key
+int keyMap(int r,int c) { 								// maps (row,column) pairs to an integer value corresponding to a key
 	int k;
-	r++;														// adjust row value to account for 0 index
-	switch(r){
-		case 1:		switch(c){
-						case 1:		k = 1;
-						break;
-						case 2:		k = 2;
-						break;
-						case 3:		k = 3;
-						break;
-						default:	k = POUND;
-						break;
-					}
-					break;
-		
-		case 2:		switch(c){
-						case 1:		k = 4;
-						break;
-						case 2:		k = 5;
-						break;
-						case 3:		k = 6;
-						break;
-						default:	k = POUND;
-						break;
-					}
-					break;
-		
-		case 3:		switch(c){
-						case 1:		k = 7;
-						break;
-						case 2:		k = 8;
-						break;
-						case 3:		k = 9;
-						break;
-						default:	k = POUND;
-						break;
-					}
-					break;
-		
-		case 4:		switch(c){
-						case 1:		k = STAR;
-						break;
-						case 2:		k = 0;
-						break;
-						case 3:		k = POUND;
-						break;
-						default:	k = POUND;
-						break;
-					}
-					break;
-		
-		default:	k = POUND;
-		break;
-	}
+		 if((r == ROW1) && (c == 1)) k = 1;
+	else if((r == ROW1) && (c == 2)) k = 2;
+	else if((r == ROW1) && (c == 3)) k = 3;
+	else if((r == ROW2) && (c == 1)) k = 4;
+	else if((r == ROW2) && (c == 2)) k = 5;
+	else if((r == ROW2) && (c == 3)) k = 6;
+	else if((r == ROW3) && (c == 1)) k = 7;
+	else if((r == ROW3) && (c == 2)) k = 8;
+	else if((r == ROW3) && (c == 3)) k = 9;
+	else if((r == ROW4) && (c == 1)) k = STAR;
+	else if((r == ROW4) && (c == 2)) k = 11;
+	else if((r == ROW4) && (c == 3)) k = POUND;
 	return k;
 }
 
