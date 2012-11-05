@@ -3,27 +3,27 @@ LCD_Test.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000030  00800100  00000322  00000396  2**0
+  0 .data         00000030  00800100  000002b0  00000324  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000322  00000000  00000000  00000074  2**1
+  1 .text         000002b0  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .stab         000006cc  00000000  00000000  000003c8  2**2
+  2 .stab         000006cc  00000000  00000000  00000354  2**2
                   CONTENTS, READONLY, DEBUGGING
-  3 .stabstr      00000085  00000000  00000000  00000a94  2**0
+  3 .stabstr      00000085  00000000  00000000  00000a20  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_aranges 00000080  00000000  00000000  00000b20  2**3
+  4 .debug_aranges 00000080  00000000  00000000  00000aa8  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000818  00000000  00000000  00000ba0  2**0
+  5 .debug_info   00000648  00000000  00000000  00000b28  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000001bb  00000000  00000000  000013b8  2**0
+  6 .debug_abbrev 000001c1  00000000  00000000  00001170  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000427  00000000  00000000  00001573  2**0
+  7 .debug_line   000003d5  00000000  00000000  00001331  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000ec  00000000  00000000  0000199c  2**2
+  8 .debug_frame  000000fc  00000000  00000000  00001708  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000001a3  00000000  00000000  00001a88  2**0
+  9 .debug_str    000001b9  00000000  00000000  00001804  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000249  00000000  00000000  00001c2b  2**0
+ 10 .debug_loc    0000026d  00000000  00000000  000019bd  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -68,8 +68,8 @@ Disassembly of section .text:
   40:	11 e0       	ldi	r17, 0x01	; 1
   42:	a0 e0       	ldi	r26, 0x00	; 0
   44:	b1 e0       	ldi	r27, 0x01	; 1
-  46:	e2 e2       	ldi	r30, 0x22	; 34
-  48:	f3 e0       	ldi	r31, 0x03	; 3
+  46:	e0 eb       	ldi	r30, 0xB0	; 176
+  48:	f2 e0       	ldi	r31, 0x02	; 2
   4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
   4c:	05 90       	lpm	r0, Z+
   4e:	0d 92       	st	X+, r0
@@ -90,8 +90,8 @@ Disassembly of section .text:
   60:	a0 33       	cpi	r26, 0x30	; 48
   62:	b1 07       	cpc	r27, r17
   64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
-  66:	b6 d0       	rcall	.+364    	; 0x1d4 <main>
-  68:	5a c1       	rjmp	.+692    	; 0x31e <_exit>
+  66:	be d0       	rcall	.+380    	; 0x1e4 <main>
+  68:	21 c1       	rjmp	.+578    	; 0x2ac <_exit>
 
 0000006a <__bad_interrupt>:
   6a:	ca cf       	rjmp	.-108    	; 0x0 <__vectors>
@@ -187,7 +187,7 @@ void writeLCDdata(int data_byte){
   dc:	08 95       	ret
 
 000000de <cursorPosition>:
-	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB1 to be low for write operation
+	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB0 to be low for write operation
 	writeLCDdata(character);		// Sending the character on the data lines
 }
 
@@ -205,7 +205,7 @@ void cursorPosition(int line){
   e8:	45 98       	cbi	0x08, 5	; 8
 	LCD_DDR_2 |= (1 << R_W);		// Making pin PB1 an output
   ea:	20 9a       	sbi	0x04, 0	; 4
-	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB1 to be low for write operation
+	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB0 to be low for write operation
   ec:	28 98       	cbi	0x05, 0	; 5
 	
 	writeLCDdata(0x0C);				// Turning the cursor OFF
@@ -267,9 +267,9 @@ void writeLCDcharacter(int character){
  124:	27 b9       	out	0x07, r18	; 7
 	LCD_PORT_1 |= (1 << RS);		// Setting RS to send data
  126:	45 9a       	sbi	0x08, 5	; 8
-	LCD_DDR_2 |= (1 << R_W);		// Making pin PB1 an output
+	LCD_DDR_2 |= (1 << R_W);		// Making pin PB0 an output
  128:	20 9a       	sbi	0x04, 0	; 4
-	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB1 to be low for write operation
+	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB0 to be low for write operation
  12a:	28 98       	cbi	0x05, 0	; 5
 	writeLCDdata(character);		// Sending the character on the data lines
  12c:	a8 df       	rcall	.-176    	; 0x7e <writeLCDdata>
@@ -333,9 +333,9 @@ void clearLCD (void){
  166:	87 b9       	out	0x07, r24	; 7
 	LCD_PORT_1 &= ~(1 << RS);		// Clearing RS to send command
  168:	45 98       	cbi	0x08, 5	; 8
-	LCD_DDR_2 |= (1 << R_W);		// Making pin PB1 an output
+	LCD_DDR_2 |= (1 << R_W);		// Making pin PB0 an output
  16a:	20 9a       	sbi	0x04, 0	; 4
-	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB1 to be low for write operation
+	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB0 to be low for write operation
  16c:	28 98       	cbi	0x05, 0	; 5
 	writeLCDdata(0x01);				// Writing clear instruction
  16e:	81 e0       	ldi	r24, 0x01	; 1
@@ -434,223 +434,188 @@ void initializeLCD(void){
  1d0:	cf 91       	pop	r28
  1d2:	08 95       	ret
 
-000001d4 <main>:
+000001d4 <BacklightLCD>:
+	LCD_PORT_1 &= ~(lowernibble);				// Clearing lower nibble
+}
+
+// Turns the LCD back light on or off
+void BacklightLCD (int on1_off0){
+	LCD_DDR_2 |= (1 << BL);		// Making pin PB1 an output
+ 1d4:	21 9a       	sbi	0x04, 1	; 4
+	if (on1_off0 == 1)
+ 1d6:	81 30       	cpi	r24, 0x01	; 1
+ 1d8:	91 05       	cpc	r25, r1
+ 1da:	11 f4       	brne	.+4      	; 0x1e0 <BacklightLCD+0xc>
+		LCD_PORT_2 &= ~(1 << BL);		// Masking or clearing pin PB1 sinking current turning on Back light
+ 1dc:	29 98       	cbi	0x05, 1	; 5
+ 1de:	08 95       	ret
+	else
+		LCD_PORT_2 |= (1 << BL);		// Setting PB1 allowing no current flow to turn bakc light off
+ 1e0:	29 9a       	sbi	0x05, 1	; 5
+ 1e2:	08 95       	ret
+
+000001e4 <main>:
 #include <util/delay.h>			// Delay library
 #include "LCD.h"				// LCD.h library - Prototypes only
 #include "LCD.c"				// LCD.c function library - Functions only
 
 
 int main(void){
- 1d4:	0f 93       	push	r16
- 1d6:	1f 93       	push	r17
- 1d8:	cf 93       	push	r28
- 1da:	df 93       	push	r29
- 1dc:	cd b7       	in	r28, 0x3d	; 61
- 1de:	de b7       	in	r29, 0x3e	; 62
- 1e0:	e0 97       	sbiw	r28, 0x30	; 48
- 1e2:	0f b6       	in	r0, 0x3f	; 63
- 1e4:	f8 94       	cli
- 1e6:	de bf       	out	0x3e, r29	; 62
- 1e8:	0f be       	out	0x3f, r0	; 63
- 1ea:	cd bf       	out	0x3d, r28	; 61
+ 1e4:	0f 93       	push	r16
+ 1e6:	1f 93       	push	r17
+ 1e8:	cf 93       	push	r28
+ 1ea:	df 93       	push	r29
+ 1ec:	cd b7       	in	r28, 0x3d	; 61
+ 1ee:	de b7       	in	r29, 0x3e	; 62
+ 1f0:	e0 97       	sbiw	r28, 0x30	; 48
+ 1f2:	0f b6       	in	r0, 0x3f	; 63
+ 1f4:	f8 94       	cli
+ 1f6:	de bf       	out	0x3e, r29	; 62
+ 1f8:	0f be       	out	0x3f, r0	; 63
+ 1fa:	cd bf       	out	0x3d, r28	; 61
 	/* Defining counter variables*/
 	int w = 0;
 	int i = 0;
 	
 	/* Defining 16 element arrays to Display */
 	char line1[16] = {'C','O','D','A',' ','K','A','M','A',' ',' ',' ',' ',' ',' ',' '};
- 1ec:	de 01       	movw	r26, r28
- 1ee:	11 96       	adiw	r26, 0x01	; 1
- 1f0:	e0 e0       	ldi	r30, 0x00	; 0
- 1f2:	f1 e0       	ldi	r31, 0x01	; 1
- 1f4:	80 e1       	ldi	r24, 0x10	; 16
- 1f6:	01 90       	ld	r0, Z+
- 1f8:	0d 92       	st	X+, r0
- 1fa:	81 50       	subi	r24, 0x01	; 1
- 1fc:	e1 f7       	brne	.-8      	; 0x1f6 <main+0x22>
+ 1fc:	de 01       	movw	r26, r28
+ 1fe:	11 96       	adiw	r26, 0x01	; 1
+ 200:	e0 e0       	ldi	r30, 0x00	; 0
+ 202:	f1 e0       	ldi	r31, 0x01	; 1
+ 204:	80 e1       	ldi	r24, 0x10	; 16
+ 206:	01 90       	ld	r0, Z+
+ 208:	0d 92       	st	X+, r0
+ 20a:	81 50       	subi	r24, 0x01	; 1
+ 20c:	e1 f7       	brne	.-8      	; 0x206 <main+0x22>
 	char line2[16] = {'R','O','C','K','S','!','!','!',' ',' ',' ',' ',' ',' ',' ',' ',' '};
- 1fe:	de 01       	movw	r26, r28
- 200:	51 96       	adiw	r26, 0x11	; 17
- 202:	e0 e1       	ldi	r30, 0x10	; 16
- 204:	f1 e0       	ldi	r31, 0x01	; 1
- 206:	80 e1       	ldi	r24, 0x10	; 16
- 208:	01 90       	ld	r0, Z+
- 20a:	0d 92       	st	X+, r0
- 20c:	81 50       	subi	r24, 0x01	; 1
- 20e:	e1 f7       	brne	.-8      	; 0x208 <main+0x34>
+ 20e:	de 01       	movw	r26, r28
+ 210:	51 96       	adiw	r26, 0x11	; 17
+ 212:	e0 e1       	ldi	r30, 0x10	; 16
+ 214:	f1 e0       	ldi	r31, 0x01	; 1
+ 216:	80 e1       	ldi	r24, 0x10	; 16
+ 218:	01 90       	ld	r0, Z+
+ 21a:	0d 92       	st	X+, r0
+ 21c:	81 50       	subi	r24, 0x01	; 1
+ 21e:	e1 f7       	brne	.-8      	; 0x218 <main+0x34>
 	char line1a[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
- 210:	de 01       	movw	r26, r28
- 212:	91 96       	adiw	r26, 0x21	; 33
- 214:	e0 e2       	ldi	r30, 0x20	; 32
- 216:	f1 e0       	ldi	r31, 0x01	; 1
- 218:	80 e1       	ldi	r24, 0x10	; 16
- 21a:	01 90       	ld	r0, Z+
- 21c:	0d 92       	st	X+, r0
- 21e:	81 50       	subi	r24, 0x01	; 1
- 220:	e1 f7       	brne	.-8      	; 0x21a <main+0x46>
+ 220:	de 01       	movw	r26, r28
+ 222:	91 96       	adiw	r26, 0x21	; 33
+ 224:	e0 e2       	ldi	r30, 0x20	; 32
+ 226:	f1 e0       	ldi	r31, 0x01	; 1
+ 228:	80 e1       	ldi	r24, 0x10	; 16
+ 22a:	01 90       	ld	r0, Z+
+ 22c:	0d 92       	st	X+, r0
+ 22e:	81 50       	subi	r24, 0x01	; 1
+ 230:	e1 f7       	brne	.-8      	; 0x22a <main+0x46>
 				
 	initializeLCD();				// Initializing LCD in 4-bit mode
- 222:	a9 df       	rcall	.-174    	; 0x176 <initializeLCD>
+ 232:	a1 df       	rcall	.-190    	; 0x176 <initializeLCD>
 	
 	clearLCD();						// Clearing the LCD
- 224:	9f df       	rcall	.-194    	; 0x164 <clearLCD>
- 226:	8f e9       	ldi	r24, 0x9F	; 159
- 228:	96 e8       	ldi	r25, 0x86	; 134
- 22a:	a1 e0       	ldi	r26, 0x01	; 1
- 22c:	81 50       	subi	r24, 0x01	; 1
- 22e:	90 40       	sbci	r25, 0x00	; 0
- 230:	a0 40       	sbci	r26, 0x00	; 0
- 232:	e1 f7       	brne	.-8      	; 0x22c <main+0x58>
- 234:	00 c0       	rjmp	.+0      	; 0x236 <main+0x62>
- 236:	00 00       	nop
-	_delay_ms(500);				
+ 234:	97 df       	rcall	.-210    	; 0x164 <clearLCD>
+	
+	BacklightLCD(1);				// Turning on the LCD back light
+ 236:	81 e0       	ldi	r24, 0x01	; 1
+ 238:	90 e0       	ldi	r25, 0x00	; 0
+ 23a:	cc df       	rcall	.-104    	; 0x1d4 <BacklightLCD>
+	w=3;	
+	//_delay_ms(500);				
 	writeLCDline(line1, 1);			// Writing array line1 to LCD in the 1st row
- 238:	ce 01       	movw	r24, r28
- 23a:	01 96       	adiw	r24, 0x01	; 1
- 23c:	61 e0       	ldi	r22, 0x01	; 1
- 23e:	70 e0       	ldi	r23, 0x00	; 0
- 240:	77 df       	rcall	.-274    	; 0x130 <writeLCDline>
- 242:	8f e9       	ldi	r24, 0x9F	; 159
- 244:	96 e8       	ldi	r25, 0x86	; 134
- 246:	a1 e0       	ldi	r26, 0x01	; 1
- 248:	81 50       	subi	r24, 0x01	; 1
- 24a:	90 40       	sbci	r25, 0x00	; 0
- 24c:	a0 40       	sbci	r26, 0x00	; 0
- 24e:	e1 f7       	brne	.-8      	; 0x248 <main+0x74>
- 250:	00 c0       	rjmp	.+0      	; 0x252 <main+0x7e>
- 252:	00 00       	nop
-	_delay_ms(500);
+ 23c:	ce 01       	movw	r24, r28
+ 23e:	01 96       	adiw	r24, 0x01	; 1
+ 240:	61 e0       	ldi	r22, 0x01	; 1
+ 242:	70 e0       	ldi	r23, 0x00	; 0
+ 244:	75 df       	rcall	.-278    	; 0x130 <writeLCDline>
+	//_delay_ms(500);
 	writeLCDline(line2, 2);			// Writing array line2 to LCD in the 2nd row
- 254:	ce 01       	movw	r24, r28
- 256:	41 96       	adiw	r24, 0x11	; 17
- 258:	62 e0       	ldi	r22, 0x02	; 2
- 25a:	70 e0       	ldi	r23, 0x00	; 0
- 25c:	69 df       	rcall	.-302    	; 0x130 <writeLCDline>
- 25e:	8f e3       	ldi	r24, 0x3F	; 63
- 260:	92 e4       	ldi	r25, 0x42	; 66
- 262:	af e0       	ldi	r26, 0x0F	; 15
- 264:	81 50       	subi	r24, 0x01	; 1
- 266:	90 40       	sbci	r25, 0x00	; 0
- 268:	a0 40       	sbci	r26, 0x00	; 0
- 26a:	e1 f7       	brne	.-8      	; 0x264 <main+0x90>
- 26c:	00 c0       	rjmp	.+0      	; 0x26e <main+0x9a>
- 26e:	00 00       	nop
-	_delay_ms(5000);
+ 246:	ce 01       	movw	r24, r28
+ 248:	41 96       	adiw	r24, 0x11	; 17
+ 24a:	62 e0       	ldi	r22, 0x02	; 2
+ 24c:	70 e0       	ldi	r23, 0x00	; 0
+ 24e:	70 df       	rcall	.-288    	; 0x130 <writeLCDline>
+	//_delay_ms(5000);
 	
 	clearLCD();						// Clearing the LCD
- 270:	79 df       	rcall	.-270    	; 0x164 <clearLCD>
+ 250:	89 df       	rcall	.-238    	; 0x164 <clearLCD>
 	writeLCDline(line1a,1);			// Writing array line1a to LCD in the 1st row
- 272:	ce 01       	movw	r24, r28
- 274:	81 96       	adiw	r24, 0x21	; 33
- 276:	61 e0       	ldi	r22, 0x01	; 1
- 278:	70 e0       	ldi	r23, 0x00	; 0
- 27a:	5a df       	rcall	.-332    	; 0x130 <writeLCDline>
+ 252:	ce 01       	movw	r24, r28
+ 254:	81 96       	adiw	r24, 0x21	; 33
+ 256:	61 e0       	ldi	r22, 0x01	; 1
+ 258:	70 e0       	ldi	r23, 0x00	; 0
+ 25a:	6a df       	rcall	.-300    	; 0x130 <writeLCDline>
 	cursorPosition(2);				// Placing the cursor to the first position of the 2nd row
- 27c:	82 e0       	ldi	r24, 0x02	; 2
- 27e:	90 e0       	ldi	r25, 0x00	; 0
- 280:	2e df       	rcall	.-420    	; 0xde <cursorPosition>
- 282:	8f e3       	ldi	r24, 0x3F	; 63
- 284:	9d e0       	ldi	r25, 0x0D	; 13
- 286:	a3 e0       	ldi	r26, 0x03	; 3
- 288:	81 50       	subi	r24, 0x01	; 1
- 28a:	90 40       	sbci	r25, 0x00	; 0
- 28c:	a0 40       	sbci	r26, 0x00	; 0
- 28e:	e1 f7       	brne	.-8      	; 0x288 <main+0xb4>
- 290:	00 c0       	rjmp	.+0      	; 0x292 <main+0xbe>
- 292:	00 00       	nop
- 294:	00 e3       	ldi	r16, 0x30	; 48
- 296:	10 e0       	ldi	r17, 0x00	; 0
-	_delay_ms(1000);
+ 25c:	82 e0       	ldi	r24, 0x02	; 2
+ 25e:	90 e0       	ldi	r25, 0x00	; 0
+ 260:	3e df       	rcall	.-388    	; 0xde <cursorPosition>
+ 262:	00 e3       	ldi	r16, 0x30	; 48
+ 264:	10 e0       	ldi	r17, 0x00	; 0
+	//_delay_ms(1000);
 	
 	for(w=0;w<10;w++){				// Looping through integers to display
 		writeLCDcharacter(w+0x30);	// Writing specified integer to display in HEX
- 298:	c8 01       	movw	r24, r16
- 29a:	43 df       	rcall	.-378    	; 0x122 <writeLCDcharacter>
- 29c:	8f e3       	ldi	r24, 0x3F	; 63
- 29e:	9d e0       	ldi	r25, 0x0D	; 13
- 2a0:	a3 e0       	ldi	r26, 0x03	; 3
- 2a2:	81 50       	subi	r24, 0x01	; 1
- 2a4:	90 40       	sbci	r25, 0x00	; 0
- 2a6:	a0 40       	sbci	r26, 0x00	; 0
- 2a8:	e1 f7       	brne	.-8      	; 0x2a2 <main+0xce>
- 2aa:	00 c0       	rjmp	.+0      	; 0x2ac <main+0xd8>
- 2ac:	00 00       	nop
- 2ae:	0f 5f       	subi	r16, 0xFF	; 255
- 2b0:	1f 4f       	sbci	r17, 0xFF	; 255
+ 266:	c8 01       	movw	r24, r16
+ 268:	5c df       	rcall	.-328    	; 0x122 <writeLCDcharacter>
+ 26a:	0f 5f       	subi	r16, 0xFF	; 255
+ 26c:	1f 4f       	sbci	r17, 0xFF	; 255
 	clearLCD();						// Clearing the LCD
 	writeLCDline(line1a,1);			// Writing array line1a to LCD in the 1st row
 	cursorPosition(2);				// Placing the cursor to the first position of the 2nd row
-	_delay_ms(1000);
+	//_delay_ms(1000);
 	
 	for(w=0;w<10;w++){				// Looping through integers to display
- 2b2:	0a 33       	cpi	r16, 0x3A	; 58
- 2b4:	11 05       	cpc	r17, r1
- 2b6:	81 f7       	brne	.-32     	; 0x298 <main+0xc4>
- 2b8:	8f e3       	ldi	r24, 0x3F	; 63
- 2ba:	92 e4       	ldi	r25, 0x42	; 66
- 2bc:	af e0       	ldi	r26, 0x0F	; 15
- 2be:	81 50       	subi	r24, 0x01	; 1
- 2c0:	90 40       	sbci	r25, 0x00	; 0
- 2c2:	a0 40       	sbci	r26, 0x00	; 0
- 2c4:	e1 f7       	brne	.-8      	; 0x2be <main+0xea>
- 2c6:	00 c0       	rjmp	.+0      	; 0x2c8 <main+0xf4>
- 2c8:	00 00       	nop
+ 26e:	0a 33       	cpi	r16, 0x3A	; 58
+ 270:	11 05       	cpc	r17, r1
+ 272:	c9 f7       	brne	.-14     	; 0x266 <main+0x82>
 		writeLCDcharacter(w+0x30);	// Writing specified integer to display in HEX
-		_delay_ms(1000);
+		//_delay_ms(1000);
 	}
 	
-	_delay_ms(5000);
+	//_delay_ms(5000);
 	clearLCD();						// Clearing the LCD
- 2ca:	4c df       	rcall	.-360    	; 0x164 <clearLCD>
- 2cc:	8f e9       	ldi	r24, 0x9F	; 159
- 2ce:	96 e8       	ldi	r25, 0x86	; 134
- 2d0:	a1 e0       	ldi	r26, 0x01	; 1
- 2d2:	81 50       	subi	r24, 0x01	; 1
- 2d4:	90 40       	sbci	r25, 0x00	; 0
- 2d6:	a0 40       	sbci	r26, 0x00	; 0
- 2d8:	e1 f7       	brne	.-8      	; 0x2d2 <main+0xfe>
- 2da:	00 c0       	rjmp	.+0      	; 0x2dc <main+0x108>
- 2dc:	00 00       	nop
-	_delay_ms(500);
+ 274:	77 df       	rcall	.-274    	; 0x164 <clearLCD>
+	//_delay_ms(500);
 	writeLCDline(line1, 1);			// Writing array line1 to LCD in the 1st row
- 2de:	ce 01       	movw	r24, r28
- 2e0:	01 96       	adiw	r24, 0x01	; 1
- 2e2:	61 e0       	ldi	r22, 0x01	; 1
- 2e4:	70 e0       	ldi	r23, 0x00	; 0
- 2e6:	24 df       	rcall	.-440    	; 0x130 <writeLCDline>
- 2e8:	8f e9       	ldi	r24, 0x9F	; 159
- 2ea:	96 e8       	ldi	r25, 0x86	; 134
- 2ec:	a1 e0       	ldi	r26, 0x01	; 1
- 2ee:	81 50       	subi	r24, 0x01	; 1
- 2f0:	90 40       	sbci	r25, 0x00	; 0
- 2f2:	a0 40       	sbci	r26, 0x00	; 0
- 2f4:	e1 f7       	brne	.-8      	; 0x2ee <main+0x11a>
- 2f6:	00 c0       	rjmp	.+0      	; 0x2f8 <main+0x124>
- 2f8:	00 00       	nop
-	_delay_ms(500);
+ 276:	ce 01       	movw	r24, r28
+ 278:	01 96       	adiw	r24, 0x01	; 1
+ 27a:	61 e0       	ldi	r22, 0x01	; 1
+ 27c:	70 e0       	ldi	r23, 0x00	; 0
+ 27e:	58 df       	rcall	.-336    	; 0x130 <writeLCDline>
+	//_delay_ms(500);
 	writeLCDline(line2, 2);			// Writing array line2 to LCD in the 2nd row
- 2fa:	ce 01       	movw	r24, r28
- 2fc:	41 96       	adiw	r24, 0x11	; 17
- 2fe:	62 e0       	ldi	r22, 0x02	; 2
- 300:	70 e0       	ldi	r23, 0x00	; 0
- 302:	16 df       	rcall	.-468    	; 0x130 <writeLCDline>
+ 280:	ce 01       	movw	r24, r28
+ 282:	41 96       	adiw	r24, 0x11	; 17
+ 284:	62 e0       	ldi	r22, 0x02	; 2
+ 286:	70 e0       	ldi	r23, 0x00	; 0
+ 288:	53 df       	rcall	.-346    	; 0x130 <writeLCDline>
+	//_delay_ms(1000);
 	
- 304:	80 e0       	ldi	r24, 0x00	; 0
- 306:	90 e0       	ldi	r25, 0x00	; 0
- 308:	e0 96       	adiw	r28, 0x30	; 48
- 30a:	0f b6       	in	r0, 0x3f	; 63
- 30c:	f8 94       	cli
- 30e:	de bf       	out	0x3e, r29	; 62
- 310:	0f be       	out	0x3f, r0	; 63
- 312:	cd bf       	out	0x3d, r28	; 61
- 314:	df 91       	pop	r29
- 316:	cf 91       	pop	r28
- 318:	1f 91       	pop	r17
- 31a:	0f 91       	pop	r16
- 31c:	08 95       	ret
 
-0000031e <_exit>:
- 31e:	f8 94       	cli
 
-00000320 <__stop_program>:
- 320:	ff cf       	rjmp	.-2      	; 0x320 <__stop_program>
+	clearLCD();
+ 28a:	6c df       	rcall	.-296    	; 0x164 <clearLCD>
+	BacklightLCD(0);	
+ 28c:	80 e0       	ldi	r24, 0x00	; 0
+ 28e:	90 e0       	ldi	r25, 0x00	; 0
+ 290:	a1 df       	rcall	.-190    	; 0x1d4 <BacklightLCD>
+	w=5;
+	
+ 292:	80 e0       	ldi	r24, 0x00	; 0
+ 294:	90 e0       	ldi	r25, 0x00	; 0
+ 296:	e0 96       	adiw	r28, 0x30	; 48
+ 298:	0f b6       	in	r0, 0x3f	; 63
+ 29a:	f8 94       	cli
+ 29c:	de bf       	out	0x3e, r29	; 62
+ 29e:	0f be       	out	0x3f, r0	; 63
+ 2a0:	cd bf       	out	0x3d, r28	; 61
+ 2a2:	df 91       	pop	r29
+ 2a4:	cf 91       	pop	r28
+ 2a6:	1f 91       	pop	r17
+ 2a8:	0f 91       	pop	r16
+ 2aa:	08 95       	ret
+
+000002ac <_exit>:
+ 2ac:	f8 94       	cli
+
+000002ae <__stop_program>:
+ 2ae:	ff cf       	rjmp	.-2      	; 0x2ae <__stop_program>

@@ -27,6 +27,9 @@ int main(void){
 	initializeLCD();				// Initializing LCD in 4-bit mode
 	
 	clearLCD();						// Clearing the LCD
+	
+	BacklightLCD(1);				// Turning on the LCD back light
+	w=3;	
 	_delay_ms(500);				
 	writeLCDline(line1, 1);			// Writing array line1 to LCD in the 1st row
 	_delay_ms(500);
@@ -49,5 +52,9 @@ int main(void){
 	writeLCDline(line1, 1);			// Writing array line1 to LCD in the 1st row
 	_delay_ms(500);
 	writeLCDline(line2, 2);			// Writing array line2 to LCD in the 2nd row
-	
+	_delay_ms(1000);
+
+	clearLCD();
+	BacklightLCD(0);		
+
 }
