@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "keypad functions", "keypad functions\keypad functions.cproj", "{A8A3B464-1529-4334-A6F4-894267600516}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "testing keypad functions", "testing keypad functions\testing keypad functions.cproj", "{DA9494D4-38CB-4AA8-87F5-BF0A5B5BD258}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "testing on micro", "testing on micro\testing on micro.cproj", "{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8A3B464-1529-4334-A6F4-894267600516}.Debug|AVR.ActiveCfg = Debug|AVR
+		{A8A3B464-1529-4334-A6F4-894267600516}.Debug|AVR.Build.0 = Debug|AVR
+		{A8A3B464-1529-4334-A6F4-894267600516}.Release|AVR.ActiveCfg = Release|AVR
+		{A8A3B464-1529-4334-A6F4-894267600516}.Release|AVR.Build.0 = Release|AVR
+		{DA9494D4-38CB-4AA8-87F5-BF0A5B5BD258}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DA9494D4-38CB-4AA8-87F5-BF0A5B5BD258}.Debug|AVR.Build.0 = Debug|AVR
+		{DA9494D4-38CB-4AA8-87F5-BF0A5B5BD258}.Release|AVR.ActiveCfg = Release|AVR
+		{DA9494D4-38CB-4AA8-87F5-BF0A5B5BD258}.Release|AVR.Build.0 = Release|AVR
+		{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}.Debug|AVR.ActiveCfg = Debug|AVR
+		{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}.Debug|AVR.Build.0 = Debug|AVR
+		{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}.Release|AVR.ActiveCfg = Release|AVR
+		{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

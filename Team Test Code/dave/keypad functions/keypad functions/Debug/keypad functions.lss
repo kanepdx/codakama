@@ -1,0 +1,778 @@
+
+keypad functions.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000020  00800100  0000039c  00000430  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000039c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000036  00800120  00800120  00000450  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000450  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  00000b1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000080  00000000  00000000  00000ba8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000673  00000000  00000000  00000c28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000017e  00000000  00000000  0000129b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000034a  00000000  00000000  00001419  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000f8  00000000  00000000  00001764  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000164  00000000  00000000  0000185c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000464  00000000  00000000  000019c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000018  00000000  00000000  00001e24  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	19 c0       	rjmp	.+50     	; 0x34 <__ctors_end>
+   2:	33 c0       	rjmp	.+102    	; 0x6a <__bad_interrupt>
+   4:	32 c0       	rjmp	.+100    	; 0x6a <__bad_interrupt>
+   6:	56 c1       	rjmp	.+684    	; 0x2b4 <__vector_3>
+   8:	30 c0       	rjmp	.+96     	; 0x6a <__bad_interrupt>
+   a:	2f c0       	rjmp	.+94     	; 0x6a <__bad_interrupt>
+   c:	2e c0       	rjmp	.+92     	; 0x6a <__bad_interrupt>
+   e:	2d c0       	rjmp	.+90     	; 0x6a <__bad_interrupt>
+  10:	2c c0       	rjmp	.+88     	; 0x6a <__bad_interrupt>
+  12:	2b c0       	rjmp	.+86     	; 0x6a <__bad_interrupt>
+  14:	2a c0       	rjmp	.+84     	; 0x6a <__bad_interrupt>
+  16:	29 c0       	rjmp	.+82     	; 0x6a <__bad_interrupt>
+  18:	28 c0       	rjmp	.+80     	; 0x6a <__bad_interrupt>
+  1a:	27 c0       	rjmp	.+78     	; 0x6a <__bad_interrupt>
+  1c:	26 c0       	rjmp	.+76     	; 0x6a <__bad_interrupt>
+  1e:	25 c0       	rjmp	.+74     	; 0x6a <__bad_interrupt>
+  20:	24 c0       	rjmp	.+72     	; 0x6a <__bad_interrupt>
+  22:	23 c0       	rjmp	.+70     	; 0x6a <__bad_interrupt>
+  24:	22 c0       	rjmp	.+68     	; 0x6a <__bad_interrupt>
+  26:	21 c0       	rjmp	.+66     	; 0x6a <__bad_interrupt>
+  28:	20 c0       	rjmp	.+64     	; 0x6a <__bad_interrupt>
+  2a:	1f c0       	rjmp	.+62     	; 0x6a <__bad_interrupt>
+  2c:	1e c0       	rjmp	.+60     	; 0x6a <__bad_interrupt>
+  2e:	1d c0       	rjmp	.+58     	; 0x6a <__bad_interrupt>
+  30:	1c c0       	rjmp	.+56     	; 0x6a <__bad_interrupt>
+  32:	1b c0       	rjmp	.+54     	; 0x6a <__bad_interrupt>
+
+00000034 <__ctors_end>:
+  34:	11 24       	eor	r1, r1
+  36:	1f be       	out	0x3f, r1	; 63
+  38:	cf ef       	ldi	r28, 0xFF	; 255
+  3a:	d2 e0       	ldi	r29, 0x02	; 2
+  3c:	de bf       	out	0x3e, r29	; 62
+  3e:	cd bf       	out	0x3d, r28	; 61
+
+00000040 <__do_copy_data>:
+  40:	11 e0       	ldi	r17, 0x01	; 1
+  42:	a0 e0       	ldi	r26, 0x00	; 0
+  44:	b1 e0       	ldi	r27, 0x01	; 1
+  46:	ec e9       	ldi	r30, 0x9C	; 156
+  48:	f3 e0       	ldi	r31, 0x03	; 3
+  4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
+  4c:	05 90       	lpm	r0, Z+
+  4e:	0d 92       	st	X+, r0
+  50:	a0 32       	cpi	r26, 0x20	; 32
+  52:	b1 07       	cpc	r27, r17
+  54:	d9 f7       	brne	.-10     	; 0x4c <__do_copy_data+0xc>
+
+00000056 <__do_clear_bss>:
+  56:	11 e0       	ldi	r17, 0x01	; 1
+  58:	a0 e2       	ldi	r26, 0x20	; 32
+  5a:	b1 e0       	ldi	r27, 0x01	; 1
+  5c:	01 c0       	rjmp	.+2      	; 0x60 <.do_clear_bss_start>
+
+0000005e <.do_clear_bss_loop>:
+  5e:	1d 92       	st	X+, r1
+
+00000060 <.do_clear_bss_start>:
+  60:	a6 35       	cpi	r26, 0x56	; 86
+  62:	b1 07       	cpc	r27, r17
+  64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
+  66:	4b d1       	rcall	.+662    	; 0x2fe <main>
+  68:	97 c1       	rjmp	.+814    	; 0x398 <_exit>
+
+0000006a <__bad_interrupt>:
+  6a:	ca cf       	rjmp	.-108    	; 0x0 <__vectors>
+
+0000006c <getRow>:
+}
+
+int getRow(void){										// determine which row on the keypad caused the interrupts.
+	int r;												// temporary placeholder for the row 
+	for(int i=0; i < NUM_ROWS; i++){
+		if((PINB & (1 << rows[i])) == 0){				// a logic low indicates that a key was pressed in that row.
+  6c:	e0 e0       	ldi	r30, 0x00	; 0
+  6e:	f1 e0       	ldi	r31, 0x01	; 1
+	}
+}
+
+int getRow(void){										// determine which row on the keypad caused the interrupts.
+	int r;												// temporary placeholder for the row 
+	for(int i=0; i < NUM_ROWS; i++){
+  70:	20 e0       	ldi	r18, 0x00	; 0
+  72:	30 e0       	ldi	r19, 0x00	; 0
+		if((PINB & (1 << rows[i])) == 0){				// a logic low indicates that a key was pressed in that row.
+  74:	63 b1       	in	r22, 0x03	; 3
+  76:	40 81       	ld	r20, Z
+  78:	32 96       	adiw	r30, 0x02	; 2
+  7a:	70 e0       	ldi	r23, 0x00	; 0
+  7c:	db 01       	movw	r26, r22
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <getRow+0x18>
+  80:	b5 95       	asr	r27
+  82:	a7 95       	ror	r26
+  84:	4a 95       	dec	r20
+  86:	e2 f7       	brpl	.-8      	; 0x80 <getRow+0x14>
+  88:	a0 fd       	sbrc	r26, 0
+  8a:	02 c0       	rjmp	.+4      	; 0x90 <getRow+0x24>
+  8c:	82 2f       	mov	r24, r18
+  8e:	93 2f       	mov	r25, r19
+	}
+}
+
+int getRow(void){										// determine which row on the keypad caused the interrupts.
+	int r;												// temporary placeholder for the row 
+	for(int i=0; i < NUM_ROWS; i++){
+  90:	2f 5f       	subi	r18, 0xFF	; 255
+  92:	3f 4f       	sbci	r19, 0xFF	; 255
+  94:	24 30       	cpi	r18, 0x04	; 4
+  96:	31 05       	cpc	r19, r1
+  98:	69 f7       	brne	.-38     	; 0x74 <getRow+0x8>
+		if((PINB & (1 << rows[i])) == 0){				// a logic low indicates that a key was pressed in that row.
+			r = i;									
+		}
+	}
+	return r;
+}
+  9a:	08 95       	ret
+
+0000009c <getCol>:
+
+int getCol(int r) {										// strobe outputs to determine column
+	int c;
+	
+	PORTB |= (1 << COL1);								// set first column high
+  9c:	2b 9a       	sbi	0x05, 3	; 5
+	if((PINB & (1 << rows[r])) == 1) {					// if the row went high
+  9e:	23 b1       	in	r18, 0x03	; 3
+		c = 1;											// then the key is in the first column
+	}
+	PORTB &= ~(1 << COL1);								// set first column back to low
+  a0:	2b 98       	cbi	0x05, 3	; 5
+	
+	PORTB |= (1 << COL2);								// set second column high
+  a2:	2c 9a       	sbi	0x05, 4	; 5
+	if((PINB & (1 << rows[r])) == 1) {					// if the row went high
+  a4:	43 b1       	in	r20, 0x03	; 3
+  a6:	fc 01       	movw	r30, r24
+  a8:	ee 0f       	add	r30, r30
+  aa:	ff 1f       	adc	r31, r31
+  ac:	e0 50       	subi	r30, 0x00	; 0
+  ae:	ff 4f       	sbci	r31, 0xFF	; 255
+  b0:	21 e0       	ldi	r18, 0x01	; 1
+  b2:	30 e0       	ldi	r19, 0x00	; 0
+  b4:	00 80       	ld	r0, Z
+  b6:	02 c0       	rjmp	.+4      	; 0xbc <getCol+0x20>
+  b8:	22 0f       	add	r18, r18
+  ba:	33 1f       	adc	r19, r19
+  bc:	0a 94       	dec	r0
+  be:	e2 f7       	brpl	.-8      	; 0xb8 <getCol+0x1c>
+  c0:	50 e0       	ldi	r21, 0x00	; 0
+  c2:	24 23       	and	r18, r20
+  c4:	35 23       	and	r19, r21
+  c6:	21 30       	cpi	r18, 0x01	; 1
+  c8:	31 05       	cpc	r19, r1
+  ca:	19 f0       	breq	.+6      	; 0xd2 <getCol+0x36>
+  cc:	21 e0       	ldi	r18, 0x01	; 1
+  ce:	30 e0       	ldi	r19, 0x00	; 0
+  d0:	02 c0       	rjmp	.+4      	; 0xd6 <getCol+0x3a>
+		c = 2;											// then the key is in the second column
+  d2:	22 e0       	ldi	r18, 0x02	; 2
+  d4:	30 e0       	ldi	r19, 0x00	; 0
+	}
+	PORTB &= ~(1 << COL2);								// set the second column back to low
+  d6:	2c 98       	cbi	0x05, 4	; 5
+	
+	PORTB |= (1 << COL3);								// set third column high
+  d8:	2d 9a       	sbi	0x05, 5	; 5
+	if((PINB & (1 << rows[r])) == 1) {					// if the row went high
+  da:	43 b1       	in	r20, 0x03	; 3
+  dc:	fc 01       	movw	r30, r24
+  de:	ee 0f       	add	r30, r30
+  e0:	ff 1f       	adc	r31, r31
+  e2:	e0 50       	subi	r30, 0x00	; 0
+  e4:	ff 4f       	sbci	r31, 0xFF	; 255
+  e6:	81 e0       	ldi	r24, 0x01	; 1
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+  ea:	00 80       	ld	r0, Z
+  ec:	02 c0       	rjmp	.+4      	; 0xf2 <getCol+0x56>
+  ee:	88 0f       	add	r24, r24
+  f0:	99 1f       	adc	r25, r25
+  f2:	0a 94       	dec	r0
+  f4:	e2 f7       	brpl	.-8      	; 0xee <getCol+0x52>
+  f6:	50 e0       	ldi	r21, 0x00	; 0
+  f8:	84 23       	and	r24, r20
+  fa:	95 23       	and	r25, r21
+  fc:	81 30       	cpi	r24, 0x01	; 1
+  fe:	91 05       	cpc	r25, r1
+ 100:	11 f4       	brne	.+4      	; 0x106 <getCol+0x6a>
+		c = 3;											// then the key is in the third column
+ 102:	23 e0       	ldi	r18, 0x03	; 3
+ 104:	30 e0       	ldi	r19, 0x00	; 0
+	}
+	PORTB &= ~(1 << COL3);								// set the third column back to low
+ 106:	2d 98       	cbi	0x05, 5	; 5
+	
+	return c;
+}
+ 108:	82 2f       	mov	r24, r18
+ 10a:	93 2f       	mov	r25, r19
+ 10c:	08 95       	ret
+
+0000010e <keyMap>:
+
+int keyMap(int r,int c) { 										// maps (row,column) pairs to an integer value corresponding to a key
+	int k;
+	switch(r){
+ 10e:	82 30       	cpi	r24, 0x02	; 2
+ 110:	91 05       	cpc	r25, r1
+ 112:	19 f1       	breq	.+70     	; 0x15a <keyMap+0x4c>
+ 114:	83 30       	cpi	r24, 0x03	; 3
+ 116:	91 05       	cpc	r25, r1
+ 118:	2c f4       	brge	.+10     	; 0x124 <keyMap+0x16>
+ 11a:	81 30       	cpi	r24, 0x01	; 1
+ 11c:	91 05       	cpc	r25, r1
+ 11e:	09 f0       	breq	.+2      	; 0x122 <keyMap+0x14>
+ 120:	52 c0       	rjmp	.+164    	; 0x1c6 <keyMap+0xb8>
+ 122:	08 c0       	rjmp	.+16     	; 0x134 <keyMap+0x26>
+ 124:	83 30       	cpi	r24, 0x03	; 3
+ 126:	91 05       	cpc	r25, r1
+ 128:	51 f1       	breq	.+84     	; 0x17e <keyMap+0x70>
+ 12a:	84 30       	cpi	r24, 0x04	; 4
+ 12c:	91 05       	cpc	r25, r1
+ 12e:	09 f0       	breq	.+2      	; 0x132 <keyMap+0x24>
+ 130:	4a c0       	rjmp	.+148    	; 0x1c6 <keyMap+0xb8>
+ 132:	37 c0       	rjmp	.+110    	; 0x1a2 <keyMap+0x94>
+		case 1:		switch(c){
+ 134:	62 30       	cpi	r22, 0x02	; 2
+ 136:	71 05       	cpc	r23, r1
+ 138:	09 f4       	brne	.+2      	; 0x13c <keyMap+0x2e>
+ 13a:	48 c0       	rjmp	.+144    	; 0x1cc <keyMap+0xbe>
+ 13c:	63 30       	cpi	r22, 0x03	; 3
+ 13e:	71 05       	cpc	r23, r1
+ 140:	31 f0       	breq	.+12     	; 0x14e <keyMap+0x40>
+ 142:	61 30       	cpi	r22, 0x01	; 1
+ 144:	71 05       	cpc	r23, r1
+ 146:	31 f4       	brne	.+12     	; 0x154 <keyMap+0x46>
+						case 1:		k = 1;
+ 148:	81 e0       	ldi	r24, 0x01	; 1
+ 14a:	90 e0       	ldi	r25, 0x00	; 0
+ 14c:	08 95       	ret
+						break;
+						case 2:		k = 2;
+						break;
+						case 3:		k = 3;
+ 14e:	83 e0       	ldi	r24, 0x03	; 3
+ 150:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 152:	08 95       	ret
+						default:	k = POUND;
+ 154:	8b e0       	ldi	r24, 0x0B	; 11
+ 156:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 158:	08 95       	ret
+					}
+					break;
+		
+		case 2:		switch(c){
+ 15a:	62 30       	cpi	r22, 0x02	; 2
+ 15c:	71 05       	cpc	r23, r1
+ 15e:	c9 f1       	breq	.+114    	; 0x1d2 <keyMap+0xc4>
+ 160:	63 30       	cpi	r22, 0x03	; 3
+ 162:	71 05       	cpc	r23, r1
+ 164:	31 f0       	breq	.+12     	; 0x172 <keyMap+0x64>
+ 166:	61 30       	cpi	r22, 0x01	; 1
+ 168:	71 05       	cpc	r23, r1
+ 16a:	31 f4       	brne	.+12     	; 0x178 <keyMap+0x6a>
+						case 1:		k = 4;
+ 16c:	84 e0       	ldi	r24, 0x04	; 4
+ 16e:	90 e0       	ldi	r25, 0x00	; 0
+ 170:	08 95       	ret
+						break;
+						case 2:		k = 5;
+						break;
+						case 3:		k = 6;
+ 172:	86 e0       	ldi	r24, 0x06	; 6
+ 174:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 176:	08 95       	ret
+						default:	k = POUND;
+ 178:	8b e0       	ldi	r24, 0x0B	; 11
+ 17a:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 17c:	08 95       	ret
+					}
+					break;
+		
+		case 3:		switch(c){
+ 17e:	62 30       	cpi	r22, 0x02	; 2
+ 180:	71 05       	cpc	r23, r1
+ 182:	51 f1       	breq	.+84     	; 0x1d8 <keyMap+0xca>
+ 184:	63 30       	cpi	r22, 0x03	; 3
+ 186:	71 05       	cpc	r23, r1
+ 188:	31 f0       	breq	.+12     	; 0x196 <keyMap+0x88>
+ 18a:	61 30       	cpi	r22, 0x01	; 1
+ 18c:	71 05       	cpc	r23, r1
+ 18e:	31 f4       	brne	.+12     	; 0x19c <keyMap+0x8e>
+						case 1:		k = 7;
+ 190:	87 e0       	ldi	r24, 0x07	; 7
+ 192:	90 e0       	ldi	r25, 0x00	; 0
+ 194:	08 95       	ret
+						break;
+						case 2:		k = 8;
+						break;
+						case 3:		k = 9;
+ 196:	89 e0       	ldi	r24, 0x09	; 9
+ 198:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 19a:	08 95       	ret
+						default:	k = POUND;
+ 19c:	8b e0       	ldi	r24, 0x0B	; 11
+ 19e:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 1a0:	08 95       	ret
+					}
+					break;
+		
+		case 4:		switch(c){
+ 1a2:	62 30       	cpi	r22, 0x02	; 2
+ 1a4:	71 05       	cpc	r23, r1
+ 1a6:	d9 f0       	breq	.+54     	; 0x1de <keyMap+0xd0>
+ 1a8:	63 30       	cpi	r22, 0x03	; 3
+ 1aa:	71 05       	cpc	r23, r1
+ 1ac:	31 f0       	breq	.+12     	; 0x1ba <keyMap+0xac>
+ 1ae:	61 30       	cpi	r22, 0x01	; 1
+ 1b0:	71 05       	cpc	r23, r1
+ 1b2:	31 f4       	brne	.+12     	; 0x1c0 <keyMap+0xb2>
+						case 1:		k = STAR;
+ 1b4:	8a e0       	ldi	r24, 0x0A	; 10
+ 1b6:	90 e0       	ldi	r25, 0x00	; 0
+ 1b8:	08 95       	ret
+						break;
+						case 2:		k = 0;
+						break;
+						case 3:		k = POUND;
+ 1ba:	8b e0       	ldi	r24, 0x0B	; 11
+ 1bc:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 1be:	08 95       	ret
+						default:	k = POUND;
+ 1c0:	8b e0       	ldi	r24, 0x0B	; 11
+ 1c2:	90 e0       	ldi	r25, 0x00	; 0
+						break;
+ 1c4:	08 95       	ret
+					}
+					break;
+		
+		default:	k = POUND;
+ 1c6:	8b e0       	ldi	r24, 0x0B	; 11
+ 1c8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ca:	08 95       	ret
+	int k;
+	switch(r){
+		case 1:		switch(c){
+						case 1:		k = 1;
+						break;
+						case 2:		k = 2;
+ 1cc:	82 e0       	ldi	r24, 0x02	; 2
+ 1ce:	90 e0       	ldi	r25, 0x00	; 0
+ 1d0:	08 95       	ret
+					break;
+		
+		case 2:		switch(c){
+						case 1:		k = 4;
+						break;
+						case 2:		k = 5;
+ 1d2:	85 e0       	ldi	r24, 0x05	; 5
+ 1d4:	90 e0       	ldi	r25, 0x00	; 0
+ 1d6:	08 95       	ret
+					break;
+		
+		case 3:		switch(c){
+						case 1:		k = 7;
+						break;
+						case 2:		k = 8;
+ 1d8:	88 e0       	ldi	r24, 0x08	; 8
+ 1da:	90 e0       	ldi	r25, 0x00	; 0
+ 1dc:	08 95       	ret
+					break;
+		
+		case 4:		switch(c){
+						case 1:		k = STAR;
+						break;
+						case 2:		k = 0;
+ 1de:	80 e0       	ldi	r24, 0x00	; 0
+ 1e0:	90 e0       	ldi	r25, 0x00	; 0
+		
+		default:	k = POUND;
+		break;
+	}
+	return k;
+}
+ 1e2:	08 95       	ret
+
+000001e4 <popKey>:
+
+int popKey(void){ 											// pop first element and shift queue;
+	int k = key_queue[0];
+ 1e4:	46 e2       	ldi	r20, 0x26	; 38
+ 1e6:	51 e0       	ldi	r21, 0x01	; 1
+ 1e8:	80 91 26 01 	lds	r24, 0x0126
+ 1ec:	90 91 27 01 	lds	r25, 0x0127
+ 1f0:	fa 01       	movw	r30, r20
+		break;
+	}
+	return k;
+}
+
+int popKey(void){ 											// pop first element and shift queue;
+ 1f2:	42 5f       	subi	r20, 0xF2	; 242
+ 1f4:	5f 4f       	sbci	r21, 0xFF	; 255
+	int k = key_queue[0];
+	for(int i = 0; i < KEY_QUEUE_SIZE - 1; i++){
+		key_queue[i] = key_queue[i+1];
+ 1f6:	22 81       	ldd	r18, Z+2	; 0x02
+ 1f8:	33 81       	ldd	r19, Z+3	; 0x03
+ 1fa:	21 93       	st	Z+, r18
+ 1fc:	31 93       	st	Z+, r19
+	return k;
+}
+
+int popKey(void){ 											// pop first element and shift queue;
+	int k = key_queue[0];
+	for(int i = 0; i < KEY_QUEUE_SIZE - 1; i++){
+ 1fe:	e4 17       	cp	r30, r20
+ 200:	f5 07       	cpc	r31, r21
+ 202:	c9 f7       	brne	.-14     	; 0x1f6 <popKey+0x12>
+		key_queue[i] = key_queue[i+1];
+	}	
+	return k;
+}
+ 204:	08 95       	ret
+
+00000206 <pushKey>:
+
+void pushKey(int k){ 										// shift queue and update first element
+ 206:	ac 01       	movw	r20, r24
+ 208:	e4 e3       	ldi	r30, 0x34	; 52
+ 20a:	f1 e0       	ldi	r31, 0x01	; 1
+ 20c:	cf 01       	movw	r24, r30
+ 20e:	0e 97       	sbiw	r24, 0x0e	; 14
+	for(int i = KEY_QUEUE_SIZE - 1; i > 0; i--){
+		key_queue[i] = key_queue[i-1];
+ 210:	32 91       	ld	r19, -Z
+ 212:	22 91       	ld	r18, -Z
+ 214:	33 83       	std	Z+3, r19	; 0x03
+ 216:	22 83       	std	Z+2, r18	; 0x02
+	}	
+	return k;
+}
+
+void pushKey(int k){ 										// shift queue and update first element
+	for(int i = KEY_QUEUE_SIZE - 1; i > 0; i--){
+ 218:	e8 17       	cp	r30, r24
+ 21a:	f9 07       	cpc	r31, r25
+ 21c:	c9 f7       	brne	.-14     	; 0x210 <pushKey+0xa>
+		key_queue[i] = key_queue[i-1];
+	}
+	key_queue[0] = k;		
+ 21e:	50 93 27 01 	sts	0x0127, r21
+ 222:	40 93 26 01 	sts	0x0126, r20
+}
+ 226:	08 95       	ret
+
+00000228 <getKeyPress>:
+// for convenience
+int columns[] = {COL1, COL2, COL3};						// an array of columns. for use in loops.
+int rows[] = {ROW1, ROW2, ROW3, ROW4};					// an array of the rows. for use in loops.
+
+// adds the most recent key press to the key_queue
+void getKeyPress(void){		
+ 228:	cf 93       	push	r28
+ 22a:	df 93       	push	r29
+	int row;
+	int col;
+	int key;							
+	if(button_state == 0){
+ 22c:	80 91 22 01 	lds	r24, 0x0122
+ 230:	90 91 23 01 	lds	r25, 0x0123
+ 234:	00 97       	sbiw	r24, 0x00	; 0
+ 236:	71 f4       	brne	.+28     	; 0x254 <getKeyPress+0x2c>
+		button_state = 1; 								// button was previously unpressed and is now pressed
+ 238:	81 e0       	ldi	r24, 0x01	; 1
+ 23a:	90 e0       	ldi	r25, 0x00	; 0
+ 23c:	90 93 23 01 	sts	0x0123, r25
+ 240:	80 93 22 01 	sts	0x0122, r24
+		row = getRow();									// get the row of current key being pressed
+ 244:	13 df       	rcall	.-474    	; 0x6c <getRow>
+ 246:	ec 01       	movw	r28, r24
+		col = getCol(row); 								// get the col of current key being pressed		
+ 248:	29 df       	rcall	.-430    	; 0x9c <getCol>
+ 24a:	bc 01       	movw	r22, r24
+		key = keyMap(row,col);							// will hold the key value to be added to queue
+ 24c:	ce 01       	movw	r24, r28
+ 24e:	5f df       	rcall	.-322    	; 0x10e <keyMap>
+		pushKey(key); 									// push key onto queue		
+ 250:	da df       	rcall	.-76     	; 0x206 <pushKey>
+ 252:	04 c0       	rjmp	.+8      	; 0x25c <getKeyPress+0x34>
+	}
+	else {
+		button_state = 0;								// button was previously pressed and is now unpressed
+ 254:	10 92 23 01 	sts	0x0123, r1
+ 258:	10 92 22 01 	sts	0x0122, r1
+	}
+}
+ 25c:	df 91       	pop	r29
+ 25e:	cf 91       	pop	r28
+ 260:	08 95       	ret
+
+00000262 <clearInput>:
+	}
+	key_queue[0] = k;		
+}
+
+void clearInput(void){ 										// clears submit_input, code_input, and input_index
+	input_index = 0;
+ 262:	10 92 21 01 	sts	0x0121, r1
+ 266:	10 92 20 01 	sts	0x0120, r1
+	for(int i = 0; i < INPUT_SIZE; i++){
+		code_input[i] = 0;
+ 26a:	10 92 37 01 	sts	0x0137, r1
+ 26e:	10 92 36 01 	sts	0x0136, r1
+ 272:	10 92 39 01 	sts	0x0139, r1
+ 276:	10 92 38 01 	sts	0x0138, r1
+ 27a:	10 92 3b 01 	sts	0x013B, r1
+ 27e:	10 92 3a 01 	sts	0x013A, r1
+ 282:	10 92 3d 01 	sts	0x013D, r1
+ 286:	10 92 3c 01 	sts	0x013C, r1
+ 28a:	10 92 3f 01 	sts	0x013F, r1
+ 28e:	10 92 3e 01 	sts	0x013E, r1
+ 292:	10 92 41 01 	sts	0x0141, r1
+ 296:	10 92 40 01 	sts	0x0140, r1
+ 29a:	10 92 43 01 	sts	0x0143, r1
+ 29e:	10 92 42 01 	sts	0x0142, r1
+ 2a2:	10 92 45 01 	sts	0x0145, r1
+ 2a6:	10 92 44 01 	sts	0x0144, r1
+ 2aa:	10 92 47 01 	sts	0x0147, r1
+ 2ae:	10 92 46 01 	sts	0x0146, r1
+		submit_input[0] = 0;
+	}
+}
+ 2b2:	08 95       	ret
+
+000002b4 <__vector_3>:
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+#include "keypad.c"
+
+ISR(PCINT0_vect){									// port B PCI routine
+ 2b4:	1f 92       	push	r1
+ 2b6:	0f 92       	push	r0
+ 2b8:	0f b6       	in	r0, 0x3f	; 63
+ 2ba:	0f 92       	push	r0
+ 2bc:	11 24       	eor	r1, r1
+ 2be:	2f 93       	push	r18
+ 2c0:	3f 93       	push	r19
+ 2c2:	4f 93       	push	r20
+ 2c4:	5f 93       	push	r21
+ 2c6:	6f 93       	push	r22
+ 2c8:	7f 93       	push	r23
+ 2ca:	8f 93       	push	r24
+ 2cc:	9f 93       	push	r25
+ 2ce:	af 93       	push	r26
+ 2d0:	bf 93       	push	r27
+ 2d2:	ef 93       	push	r30
+ 2d4:	ff 93       	push	r31
+	cli();												// disable interrupts
+ 2d6:	f8 94       	cli
+	getKeyPress();								// clear bit 0 of PORTB
+ 2d8:	a7 df       	rcall	.-178    	; 0x228 <getKeyPress>
+	sei();												// re-enable interrupts
+ 2da:	78 94       	sei
+}
+ 2dc:	ff 91       	pop	r31
+ 2de:	ef 91       	pop	r30
+ 2e0:	bf 91       	pop	r27
+ 2e2:	af 91       	pop	r26
+ 2e4:	9f 91       	pop	r25
+ 2e6:	8f 91       	pop	r24
+ 2e8:	7f 91       	pop	r23
+ 2ea:	6f 91       	pop	r22
+ 2ec:	5f 91       	pop	r21
+ 2ee:	4f 91       	pop	r20
+ 2f0:	3f 91       	pop	r19
+ 2f2:	2f 91       	pop	r18
+ 2f4:	0f 90       	pop	r0
+ 2f6:	0f be       	out	0x3f, r0	; 63
+ 2f8:	0f 90       	pop	r0
+ 2fa:	1f 90       	pop	r1
+ 2fc:	18 95       	reti
+
+000002fe <main>:
+
+int main(){
+	cli();
+ 2fe:	f8 94       	cli
+		
+		Changing a row to low will simulate a keypress on row 2.
+		
+		In this program we will simulate a user pressing the '5' key (row 2, column 2).
+	*/
+	DDRB |= 0xFF;										// set all pins as outputs								
+ 300:	84 b1       	in	r24, 0x04	; 4
+ 302:	8f ef       	ldi	r24, 0xFF	; 255
+ 304:	84 b9       	out	0x04, r24	; 4
+ 306:	e8 e0       	ldi	r30, 0x08	; 8
+ 308:	f1 e0       	ldi	r31, 0x01	; 1
+	cli();												// disable interrupts
+	getKeyPress();								// clear bit 0 of PORTB
+	sei();												// re-enable interrupts
+}
+
+int main(){
+ 30a:	9f 01       	movw	r18, r30
+ 30c:	2a 5f       	subi	r18, 0xFA	; 250
+ 30e:	3f 4f       	sbci	r19, 0xFF	; 255
+		
+		In this program we will simulate a user pressing the '5' key (row 2, column 2).
+	*/
+	DDRB |= 0xFF;										// set all pins as outputs								
+	for(int i = 0; i < NUM_COLS; i++){					// set columns low
+		PORTB &= ~(1 << columns[i]);
+ 310:	41 e0       	ldi	r20, 0x01	; 1
+ 312:	50 e0       	ldi	r21, 0x00	; 0
+ 314:	65 b1       	in	r22, 0x05	; 5
+ 316:	80 81       	ld	r24, Z
+ 318:	32 96       	adiw	r30, 0x02	; 2
+ 31a:	da 01       	movw	r26, r20
+ 31c:	02 c0       	rjmp	.+4      	; 0x322 <__stack+0x23>
+ 31e:	aa 0f       	add	r26, r26
+ 320:	bb 1f       	adc	r27, r27
+ 322:	8a 95       	dec	r24
+ 324:	e2 f7       	brpl	.-8      	; 0x31e <__stack+0x1f>
+ 326:	cd 01       	movw	r24, r26
+ 328:	80 95       	com	r24
+ 32a:	86 23       	and	r24, r22
+ 32c:	85 b9       	out	0x05, r24	; 5
+		Changing a row to low will simulate a keypress on row 2.
+		
+		In this program we will simulate a user pressing the '5' key (row 2, column 2).
+	*/
+	DDRB |= 0xFF;										// set all pins as outputs								
+	for(int i = 0; i < NUM_COLS; i++){					// set columns low
+ 32e:	e2 17       	cp	r30, r18
+ 330:	f3 07       	cpc	r31, r19
+ 332:	81 f7       	brne	.-32     	; 0x314 <__stack+0x15>
+ 334:	e0 e0       	ldi	r30, 0x00	; 0
+ 336:	f1 e0       	ldi	r31, 0x01	; 1
+	cli();												// disable interrupts
+	getKeyPress();								// clear bit 0 of PORTB
+	sei();												// re-enable interrupts
+}
+
+int main(){
+ 338:	9f 01       	movw	r18, r30
+ 33a:	28 5f       	subi	r18, 0xF8	; 248
+ 33c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 33e:	df 01       	movw	r26, r30
+	DDRB |= 0xFF;										// set all pins as outputs								
+	for(int i = 0; i < NUM_COLS; i++){					// set columns low
+		PORTB &= ~(1 << columns[i]);
+	}												
+	for(int i = 0; i < NUM_ROWS; i++){					// set rows high
+		PORTB |= (1 << rows[i]);
+ 340:	41 e0       	ldi	r20, 0x01	; 1
+ 342:	50 e0       	ldi	r21, 0x00	; 0
+ 344:	65 b1       	in	r22, 0x05	; 5
+ 346:	8c 91       	ld	r24, X
+ 348:	12 96       	adiw	r26, 0x02	; 2
+ 34a:	ea 01       	movw	r28, r20
+ 34c:	02 c0       	rjmp	.+4      	; 0x352 <__stack+0x53>
+ 34e:	cc 0f       	add	r28, r28
+ 350:	dd 1f       	adc	r29, r29
+ 352:	8a 95       	dec	r24
+ 354:	e2 f7       	brpl	.-8      	; 0x34e <__stack+0x4f>
+ 356:	ce 01       	movw	r24, r28
+ 358:	86 2b       	or	r24, r22
+ 35a:	85 b9       	out	0x05, r24	; 5
+	*/
+	DDRB |= 0xFF;										// set all pins as outputs								
+	for(int i = 0; i < NUM_COLS; i++){					// set columns low
+		PORTB &= ~(1 << columns[i]);
+	}												
+	for(int i = 0; i < NUM_ROWS; i++){					// set rows high
+ 35c:	a2 17       	cp	r26, r18
+ 35e:	b3 07       	cpc	r27, r19
+ 360:	89 f7       	brne	.-30     	; 0x344 <__stack+0x45>
+		PORTB |= (1 << rows[i]);
+	}
+	
+	
+	// initialize interrupts
+	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
+ 362:	a8 e6       	ldi	r26, 0x68	; 104
+ 364:	b0 e0       	ldi	r27, 0x00	; 0
+ 366:	8c 91       	ld	r24, X
+ 368:	81 60       	ori	r24, 0x01	; 1
+ 36a:	8c 93       	st	X, r24
+	for(int i = 0; i < NUM_ROWS; i++){
+		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
+ 36c:	ab e6       	ldi	r26, 0x6B	; 107
+ 36e:	b0 e0       	ldi	r27, 0x00	; 0
+ 370:	41 e0       	ldi	r20, 0x01	; 1
+ 372:	50 e0       	ldi	r21, 0x00	; 0
+ 374:	6c 91       	ld	r22, X
+ 376:	80 81       	ld	r24, Z
+ 378:	32 96       	adiw	r30, 0x02	; 2
+ 37a:	ea 01       	movw	r28, r20
+ 37c:	02 c0       	rjmp	.+4      	; 0x382 <__stack+0x83>
+ 37e:	cc 0f       	add	r28, r28
+ 380:	dd 1f       	adc	r29, r29
+ 382:	8a 95       	dec	r24
+ 384:	e2 f7       	brpl	.-8      	; 0x37e <__stack+0x7f>
+ 386:	ce 01       	movw	r24, r28
+ 388:	86 2b       	or	r24, r22
+ 38a:	8c 93       	st	X, r24
+	}
+	
+	
+	// initialize interrupts
+	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
+	for(int i = 0; i < NUM_ROWS; i++){
+ 38c:	2e 17       	cp	r18, r30
+ 38e:	3f 07       	cpc	r19, r31
+ 390:	89 f7       	brne	.-30     	; 0x374 <__stack+0x75>
+		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
+	}
+	sei();												// enable interrupts
+ 392:	78 94       	sei
+	while(1){										// primary loop
+		/*
+			In order to simulate a user pressing the '5' key we need to pull the row 2 pin low.
+			This will trigger the ISR. 
+		*/
+		PORTB &= ~(1 << ROW2); 
+ 394:	29 98       	cbi	0x05, 1	; 5
+ 396:	fe cf       	rjmp	.-4      	; 0x394 <__stack+0x95>
+
+00000398 <_exit>:
+ 398:	f8 94       	cli
+
+0000039a <__stop_program>:
+ 39a:	ff cf       	rjmp	.-2      	; 0x39a <__stop_program>
