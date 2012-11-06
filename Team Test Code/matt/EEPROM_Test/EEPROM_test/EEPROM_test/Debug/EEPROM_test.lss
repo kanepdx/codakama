@@ -1,0 +1,339 @@
+
+EEPROM_test.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000010  00800100  00000176  000001ea  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000176  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .stab         00000840  00000000  00000000  000001fc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      0000014b  00000000  00000000  00000a3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000080  00000000  00000000  00000b88  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000473  00000000  00000000  00000c08  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000010a  00000000  00000000  0000107b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002d5  00000000  00000000  00001185  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000084  00000000  00000000  0000145c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000012a  00000000  00000000  000014e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001d3  00000000  00000000  0000160a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	19 c0       	rjmp	.+50     	; 0x34 <__ctors_end>
+   2:	33 c0       	rjmp	.+102    	; 0x6a <__bad_interrupt>
+   4:	32 c0       	rjmp	.+100    	; 0x6a <__bad_interrupt>
+   6:	31 c0       	rjmp	.+98     	; 0x6a <__bad_interrupt>
+   8:	30 c0       	rjmp	.+96     	; 0x6a <__bad_interrupt>
+   a:	2f c0       	rjmp	.+94     	; 0x6a <__bad_interrupt>
+   c:	2e c0       	rjmp	.+92     	; 0x6a <__bad_interrupt>
+   e:	2d c0       	rjmp	.+90     	; 0x6a <__bad_interrupt>
+  10:	2c c0       	rjmp	.+88     	; 0x6a <__bad_interrupt>
+  12:	2b c0       	rjmp	.+86     	; 0x6a <__bad_interrupt>
+  14:	2a c0       	rjmp	.+84     	; 0x6a <__bad_interrupt>
+  16:	29 c0       	rjmp	.+82     	; 0x6a <__bad_interrupt>
+  18:	28 c0       	rjmp	.+80     	; 0x6a <__bad_interrupt>
+  1a:	27 c0       	rjmp	.+78     	; 0x6a <__bad_interrupt>
+  1c:	26 c0       	rjmp	.+76     	; 0x6a <__bad_interrupt>
+  1e:	25 c0       	rjmp	.+74     	; 0x6a <__bad_interrupt>
+  20:	24 c0       	rjmp	.+72     	; 0x6a <__bad_interrupt>
+  22:	23 c0       	rjmp	.+70     	; 0x6a <__bad_interrupt>
+  24:	22 c0       	rjmp	.+68     	; 0x6a <__bad_interrupt>
+  26:	21 c0       	rjmp	.+66     	; 0x6a <__bad_interrupt>
+  28:	20 c0       	rjmp	.+64     	; 0x6a <__bad_interrupt>
+  2a:	1f c0       	rjmp	.+62     	; 0x6a <__bad_interrupt>
+  2c:	1e c0       	rjmp	.+60     	; 0x6a <__bad_interrupt>
+  2e:	1d c0       	rjmp	.+58     	; 0x6a <__bad_interrupt>
+  30:	1c c0       	rjmp	.+56     	; 0x6a <__bad_interrupt>
+  32:	1b c0       	rjmp	.+54     	; 0x6a <__bad_interrupt>
+
+00000034 <__ctors_end>:
+  34:	11 24       	eor	r1, r1
+  36:	1f be       	out	0x3f, r1	; 63
+  38:	cf ef       	ldi	r28, 0xFF	; 255
+  3a:	d2 e0       	ldi	r29, 0x02	; 2
+  3c:	de bf       	out	0x3e, r29	; 62
+  3e:	cd bf       	out	0x3d, r28	; 61
+
+00000040 <__do_copy_data>:
+  40:	11 e0       	ldi	r17, 0x01	; 1
+  42:	a0 e0       	ldi	r26, 0x00	; 0
+  44:	b1 e0       	ldi	r27, 0x01	; 1
+  46:	e6 e7       	ldi	r30, 0x76	; 118
+  48:	f1 e0       	ldi	r31, 0x01	; 1
+  4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
+  4c:	05 90       	lpm	r0, Z+
+  4e:	0d 92       	st	X+, r0
+  50:	a0 31       	cpi	r26, 0x10	; 16
+  52:	b1 07       	cpc	r27, r17
+  54:	d9 f7       	brne	.-10     	; 0x4c <__do_copy_data+0xc>
+
+00000056 <__do_clear_bss>:
+  56:	11 e0       	ldi	r17, 0x01	; 1
+  58:	a0 e1       	ldi	r26, 0x10	; 16
+  5a:	b1 e0       	ldi	r27, 0x01	; 1
+  5c:	01 c0       	rjmp	.+2      	; 0x60 <.do_clear_bss_start>
+
+0000005e <.do_clear_bss_loop>:
+  5e:	1d 92       	st	X+, r1
+
+00000060 <.do_clear_bss_start>:
+  60:	a0 31       	cpi	r26, 0x10	; 16
+  62:	b1 07       	cpc	r27, r17
+  64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
+  66:	30 d0       	rcall	.+96     	; 0xc8 <main>
+  68:	84 c0       	rjmp	.+264    	; 0x172 <_exit>
+
+0000006a <__bad_interrupt>:
+  6a:	ca cf       	rjmp	.-108    	; 0x0 <__vectors>
+
+0000006c <writeTOeeprom>:
+#define EEPROM_DATA_ADDRESS 0x01		// Starting address of saved data
+
+typedef unsigned short int unit8_t;			// making uni8_t mean unsigned short int
+
+// Writes an 8 element array pass code to EEPROM
+void writeTOeeprom(int short code_to_save[8]){
+  6c:	0f 93       	push	r16
+  6e:	1f 93       	push	r17
+  70:	cf 93       	push	r28
+  72:	df 93       	push	r29
+	int add_count;														// variable declaration to loop through eeprom addresses
+	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+  74:	08 2f       	mov	r16, r24
+  76:	19 2f       	mov	r17, r25
+  78:	c1 e0       	ldi	r28, 0x01	; 1
+  7a:	d0 e0       	ldi	r29, 0x00	; 0
+	
+	for(int add_count = 0; add_count <8; add_count++){					// looping through code to save array
+	eeprom_write_byte(temp_ee_address, code_to_save[add_count]);		// writing byte to specified address
+  7c:	f8 01       	movw	r30, r16
+  7e:	60 81       	ld	r22, Z
+  80:	0e 5f       	subi	r16, 0xFE	; 254
+  82:	1f 4f       	sbci	r17, 0xFF	; 255
+  84:	ce 01       	movw	r24, r28
+  86:	67 d0       	rcall	.+206    	; 0x156 <__eewr_byte_m48a>
+	temp_ee_address++;												// incrementing address counter
+  88:	21 96       	adiw	r28, 0x01	; 1
+// Writes an 8 element array pass code to EEPROM
+void writeTOeeprom(int short code_to_save[8]){
+	int add_count;														// variable declaration to loop through eeprom addresses
+	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+	
+	for(int add_count = 0; add_count <8; add_count++){					// looping through code to save array
+  8a:	c9 30       	cpi	r28, 0x09	; 9
+  8c:	d1 05       	cpc	r29, r1
+  8e:	b1 f7       	brne	.-20     	; 0x7c <writeTOeeprom+0x10>
+	eeprom_write_byte(temp_ee_address, code_to_save[add_count]);		// writing byte to specified address
+	temp_ee_address++;												// incrementing address counter
+	}
+}
+  90:	df 91       	pop	r29
+  92:	cf 91       	pop	r28
+  94:	1f 91       	pop	r17
+  96:	0f 91       	pop	r16
+  98:	08 95       	ret
+
+0000009a <readFROMeeprom>:
+
+// Reads the contents of EEPROM and store them in an 8 element array
+void readFROMeeprom(int short *saved_code[8]){
+  9a:	0f 93       	push	r16
+  9c:	1f 93       	push	r17
+  9e:	cf 93       	push	r28
+  a0:	df 93       	push	r29
+	int add_count;														// variable declaration to loop through eeprom and elements of array
+	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+  a2:	c8 2f       	mov	r28, r24
+  a4:	d9 2f       	mov	r29, r25
+  a6:	01 e0       	ldi	r16, 0x01	; 1
+  a8:	10 e0       	ldi	r17, 0x00	; 0
+	
+	for(int add_count = 0; add_count <  8; add_count++){				// looping through code to save array
+		saved_code[add_count] = eeprom_read_byte(temp_ee_address);		// writing byte to specified address
+  aa:	c8 01       	movw	r24, r16
+  ac:	4c d0       	rcall	.+152    	; 0x146 <__eerd_byte_m48a>
+  ae:	88 83       	st	Y, r24
+  b0:	19 82       	std	Y+1, r1	; 0x01
+  b2:	22 96       	adiw	r28, 0x02	; 2
+		temp_ee_address++;												// incrementing address counter		
+  b4:	0f 5f       	subi	r16, 0xFF	; 255
+  b6:	1f 4f       	sbci	r17, 0xFF	; 255
+// Reads the contents of EEPROM and store them in an 8 element array
+void readFROMeeprom(int short *saved_code[8]){
+	int add_count;														// variable declaration to loop through eeprom and elements of array
+	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+	
+	for(int add_count = 0; add_count <  8; add_count++){				// looping through code to save array
+  b8:	09 30       	cpi	r16, 0x09	; 9
+  ba:	11 05       	cpc	r17, r1
+  bc:	b1 f7       	brne	.-20     	; 0xaa <readFROMeeprom+0x10>
+		saved_code[add_count] = eeprom_read_byte(temp_ee_address);		// writing byte to specified address
+		temp_ee_address++;												// incrementing address counter		
+	}
+  be:	df 91       	pop	r29
+  c0:	cf 91       	pop	r28
+  c2:	1f 91       	pop	r17
+  c4:	0f 91       	pop	r16
+  c6:	08 95       	ret
+
+000000c8 <main>:
+
+#define EEPROM_FLAG_ADDRESS 0x00		// Address of "has been programmed" flag
+
+
+int main(void)
+{
+  c8:	0f 93       	push	r16
+  ca:	1f 93       	push	r17
+  cc:	cf 93       	push	r28
+  ce:	df 93       	push	r29
+  d0:	cd b7       	in	r28, 0x3d	; 61
+  d2:	de b7       	in	r29, 0x3e	; 62
+  d4:	a0 97       	sbiw	r28, 0x20	; 32
+  d6:	0f b6       	in	r0, 0x3f	; 63
+  d8:	f8 94       	cli
+  da:	de bf       	out	0x3e, r29	; 62
+  dc:	0f be       	out	0x3f, r0	; 63
+  de:	cd bf       	out	0x3d, r28	; 61
+	int count;															// Temp counter variable to loop through array to test arrays on pins
+	int short code_to_save[8] = {'0','1','2','3','4','5','6','7','8'};	// Array with lock code
+  e0:	de 01       	movw	r26, r28
+  e2:	11 96       	adiw	r26, 0x01	; 1
+  e4:	e0 e0       	ldi	r30, 0x00	; 0
+  e6:	f1 e0       	ldi	r31, 0x01	; 1
+  e8:	80 e1       	ldi	r24, 0x10	; 16
+  ea:	01 90       	ld	r0, Z+
+  ec:	0d 92       	st	X+, r0
+  ee:	81 50       	subi	r24, 0x01	; 1
+  f0:	e1 f7       	brne	.-8      	; 0xea <main+0x22>
+	int short saved_code[8];											// declaring an array to hold the saved read code
+	unit8_t temp_ee_address;											// declaring variable to hold initial eeprom code address
+	
+	DDRC = 0xFF;														// Making all of Port C outputs for testing purposes
+  f2:	8f ef       	ldi	r24, 0xFF	; 255
+  f4:	87 b9       	out	0x07, r24	; 7
+	DDRB = 0xFF;														// Making all of Port C outputs for testing purposes
+  f6:	84 b9       	out	0x04, r24	; 4
+	
+	writeTOeeprom(code_to_save);										// Writing the array of saved code to eeprom	
+  f8:	ce 01       	movw	r24, r28
+  fa:	01 96       	adiw	r24, 0x01	; 1
+  fc:	b7 df       	rcall	.-146    	; 0x6c <writeTOeeprom>
+	
+	temp_ee_address = EEPROM_DATA_ADDRESS;
+  fe:	01 e0       	ldi	r16, 0x01	; 1
+ 100:	10 e0       	ldi	r17, 0x00	; 0
+	
+	for(int count = 0; count < 8; count++){								// Looping through eeprom and displaying content on PORTC for testing
+		PORTC = eeprom_read_byte(temp_ee_address);
+ 102:	c8 01       	movw	r24, r16
+ 104:	20 d0       	rcall	.+64     	; 0x146 <__eerd_byte_m48a>
+ 106:	88 b9       	out	0x08, r24	; 8
+		temp_ee_address++;
+ 108:	0f 5f       	subi	r16, 0xFF	; 255
+ 10a:	1f 4f       	sbci	r17, 0xFF	; 255
+	
+	writeTOeeprom(code_to_save);										// Writing the array of saved code to eeprom	
+	
+	temp_ee_address = EEPROM_DATA_ADDRESS;
+	
+	for(int count = 0; count < 8; count++){								// Looping through eeprom and displaying content on PORTC for testing
+ 10c:	09 30       	cpi	r16, 0x09	; 9
+ 10e:	11 05       	cpc	r17, r1
+ 110:	c1 f7       	brne	.-16     	; 0x102 <main+0x3a>
+		PORTC = eeprom_read_byte(temp_ee_address);
+		temp_ee_address++;
+	}
+	
+	readFROMeeprom(saved_code);											// Reading the contents of eeprom and storing the content in an array
+ 112:	ce 01       	movw	r24, r28
+ 114:	41 96       	adiw	r24, 0x11	; 17
+ 116:	c1 df       	rcall	.-126    	; 0x9a <readFROMeeprom>
+ 118:	fe 01       	movw	r30, r28
+ 11a:	71 96       	adiw	r30, 0x11	; 17
+#include "EEPROM_RW.c"
+
+#define EEPROM_FLAG_ADDRESS 0x00		// Address of "has been programmed" flag
+
+
+int main(void)
+ 11c:	ce 01       	movw	r24, r28
+ 11e:	81 96       	adiw	r24, 0x21	; 33
+	}
+	
+	readFROMeeprom(saved_code);											// Reading the contents of eeprom and storing the content in an array
+	
+	for(int count = 0; count < 8; count++){								// Looping through array and display contents on PORTC for testing
+		PORTB = saved_code[count];	
+ 120:	20 81       	ld	r18, Z
+ 122:	32 96       	adiw	r30, 0x02	; 2
+ 124:	25 b9       	out	0x05, r18	; 5
+		temp_ee_address++;
+	}
+	
+	readFROMeeprom(saved_code);											// Reading the contents of eeprom and storing the content in an array
+	
+	for(int count = 0; count < 8; count++){								// Looping through array and display contents on PORTC for testing
+ 126:	e8 17       	cp	r30, r24
+ 128:	f9 07       	cpc	r31, r25
+ 12a:	d1 f7       	brne	.-12     	; 0x120 <main+0x58>
+		PORTB = saved_code[count];	
+	}
+
+ 12c:	80 e0       	ldi	r24, 0x00	; 0
+ 12e:	90 e0       	ldi	r25, 0x00	; 0
+ 130:	a0 96       	adiw	r28, 0x20	; 32
+ 132:	0f b6       	in	r0, 0x3f	; 63
+ 134:	f8 94       	cli
+ 136:	de bf       	out	0x3e, r29	; 62
+ 138:	0f be       	out	0x3f, r0	; 63
+ 13a:	cd bf       	out	0x3d, r28	; 61
+ 13c:	df 91       	pop	r29
+ 13e:	cf 91       	pop	r28
+ 140:	1f 91       	pop	r17
+ 142:	0f 91       	pop	r16
+ 144:	08 95       	ret
+
+00000146 <__eerd_byte_m48a>:
+ 146:	f9 99       	sbic	0x1f, 1	; 31
+ 148:	fe cf       	rjmp	.-4      	; 0x146 <__eerd_byte_m48a>
+ 14a:	12 bc       	out	0x22, r1	; 34
+ 14c:	81 bd       	out	0x21, r24	; 33
+ 14e:	f8 9a       	sbi	0x1f, 0	; 31
+ 150:	99 27       	eor	r25, r25
+ 152:	80 b5       	in	r24, 0x20	; 32
+ 154:	08 95       	ret
+
+00000156 <__eewr_byte_m48a>:
+ 156:	26 2f       	mov	r18, r22
+
+00000158 <__eewr_r18_m48a>:
+ 158:	f9 99       	sbic	0x1f, 1	; 31
+ 15a:	fe cf       	rjmp	.-4      	; 0x158 <__eewr_r18_m48a>
+ 15c:	1f ba       	out	0x1f, r1	; 31
+ 15e:	12 bc       	out	0x22, r1	; 34
+ 160:	81 bd       	out	0x21, r24	; 33
+ 162:	20 bd       	out	0x20, r18	; 32
+ 164:	0f b6       	in	r0, 0x3f	; 63
+ 166:	f8 94       	cli
+ 168:	fa 9a       	sbi	0x1f, 2	; 31
+ 16a:	f9 9a       	sbi	0x1f, 1	; 31
+ 16c:	0f be       	out	0x3f, r0	; 63
+ 16e:	01 96       	adiw	r24, 0x01	; 1
+ 170:	08 95       	ret
+
+00000172 <_exit>:
+ 172:	f8 94       	cli
+
+00000174 <__stop_program>:
+ 174:	ff cf       	rjmp	.-2      	; 0x174 <__stop_program>
