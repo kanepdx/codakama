@@ -5,14 +5,14 @@
  *  Author: djwurtz
  */ 
 
-void initRows(void);
-void initColumns(void);
+void initRows(int r[]);
+void initColumns(int c[]);
 void drawKey(void);
 void initDisplay(void);
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "keypad3.c"
+#include "keypad4.c"
 
 // globals for 4 LED display
 #define LED1 PORTD0
@@ -24,10 +24,14 @@ void initDisplay(void);
 // globals for 4 LED display
 int display[] = {LED1, LED2, LED3, LED4};
 
+
 ISR(PCINT0_vect){
 	cli();
-	getKeyPress();
-	if(button_state == 0){								// on key release
+	_delay_ms(5);
+	if(getButtonState()){								// on key down...
+		getKeyPress();
+	}	
+	if(!getButtonState()){								// on key release
 		drawKey();										// draw the key
 	}	
 	sei();
@@ -36,8 +40,10 @@ ISR(PCINT0_vect){
 int main(void)
 {			
 	// initialize IO
-	initColumns();										// set keypad columns as outputs
-	initRows();											// set keypad rows as inputs
+	int rows[] = {ROW1, ROW2, ROW3, ROW4};
+	int cols[] = {COL1, COL2, COL3};
+	initColumns(cols);									// set keypad columns as outputs
+	initRows(rows);										// set keypad rows as inputs
 	initDisplay();										// initialize a 4 LED display on port D
 	
 	// initialize interrupts
@@ -48,20 +54,20 @@ int main(void)
 	sei();	
     while(1)
     {
-        //TODO:: Please write your application code 
+        _delay_us(5); 
     }
 }
 
-void initRows(void){									// sets keypad rows as inputs
+void initRows(int r[]){									// sets keypad rows as inputs
 	for(int i = 0; i < NUM_ROWS; i++){
-		DDRB &= ~(1 << rows[i]);
+		DDRB &= ~(1 << r[i]);
 	}
 }
 
-void initColumns(void){									// sets keypad columns as outputs
+void initColumns(int c[]){								// sets keypad columns as outputs
 	for(int i = 0; i < NUM_COLS; i++){
-		PORTB &= ~(1 << columns[i]);					// columns to output low
-		DDRB |= (1 << columns[i]);						// set columns as outputs
+		PORTB &= ~(1 << c[i]);							// columns to output low
+		DDRB |= (1 << c[i]);							// set columns as outputs
 	}
 }
 
