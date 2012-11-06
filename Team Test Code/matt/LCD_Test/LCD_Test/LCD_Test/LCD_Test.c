@@ -17,19 +17,19 @@ int main(void){
 	
 	/* Defining counter variables*/
 	int w = 0;
-	int i = 0;
 	
 	/* Defining 16 element arrays to Display */
 	char line1[16] = {'C','O','D','A',' ','K','A','M','A',' ',' ',' ',' ',' ',' ',' '};
 	char line2[16] = {'R','O','C','K','S','!','!','!',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 	char line1a[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
+	char numbers[10] = {'0','1','2','3','4','5','6','7','8','9'};
 				
 	initializeLCD();				// Initializing LCD in 4-bit mode
 	
 	clearLCD();						// Clearing the LCD
 	
 	BacklightLCD(1);				// Turning on the LCD back light
-	w=3;	
+		
 	_delay_ms(500);				
 	writeLCDline(line1, 1);			// Writing array line1 to LCD in the 1st row
 	_delay_ms(500);
@@ -42,7 +42,7 @@ int main(void){
 	_delay_ms(1000);
 	
 	for(w=0;w<10;w++){				// Looping through integers to display
-		writeLCDcharacter(w+0x30);	// Writing specified integer to display in HEX
+		writeLCDcharacter(numbers[w]);	// Writing specified integer to display in HEX
 		_delay_ms(1000);
 	}
 	
