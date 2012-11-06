@@ -7,6 +7,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
+#define F_CPU 8000000UL
 
 // definitions to be moved later
 #define NUM_COLS 3										// number of columns on the keypad
@@ -20,48 +21,40 @@
 #define ROW4 PINB7										// row 4 of keypad mapped to pin
 #define STAR 10 										// '*'' key mapped to a decimal value
 #define POUND 12										// '#' key mapped to a decimal value
-#define KEY_QUEUE_SIZE 8								// size of key queue
+#define KEY_QUEUE_SIZE 9								// size of key queue
 #define INPUT_SIZE 8
 
 // globals to be moved later
-int locked = 1;											// will be updated by Colin's lock/unlock functions
-int button_state = 0;									// 0 = unpressed, 1 = pressed
+int lock_state = 1;										// will be updated by Colin's lock/unlock functions
 int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
-int key_value;											// holds current key value
-int correct_password[] = {1,2,3,4,0,0,0,0};				// holds a user specified password
-int input_index = 0;									// ????????????
-int code_input[INPUT_SIZE];								// ????????????
-int submit_input[INPUT_SIZE];							// ????????????
-
-// for convenience
-int columns[] = {COL1, COL2, COL3};						// an array of columns. for use in loops.
-int rows[] = {ROW1, ROW2, ROW3, ROW4};					// an array of the rows. for use in loops.
 
 // adds the most recent key press to the key_queue
 void getKeyPress(void){		
 	int row;
 	int col;
 	int key;							
-	if(button_state == 0){
-		button_state = 1; 								// button was previously unpressed and is now pressed
-		row = getRow();									// get the row of current key being pressed
-		col = getCol(row); 								// get the col of current key being pressed		
-		key = keyMap(row,col);							// will hold the key value to be added to queue
-		pushKey(key); 									// push key onto queue		
-	}
-	else if(button_state == 1){
-		button_state = 0;								// button was previously pressed and is now unpressed
-	}
+	row = getRow();									// get the row of current key being pressed
+	col = getCol(row); 								// get the col of current key being pressed		
+	key = keyMap(row,col);							// will hold the key value to be added to queue
+	pushKey(key); 									// push key onto queue		
+}
+
+int getButtonState(){									// check rows, if any are low then a key is being pressed
+	_delay_us(100);
+	int s = 0;
+	if(!(PINB &(1 << ROW1))) s = 1;
+	else if(!(PINB &(1 << ROW2))) s = 1;				
+	else if(!(PINB &(1 << ROW3))) s = 1;				
+	else if(!(PINB &(1 << ROW4))) s = 1;
+	return s;
 }
 
 int getRow(void){										// determine which row on the keypad caused the interrupts.
 	int r;												// temporary placeholder for the row 
-	
-		 if(!(PINB &(1 << ROW1))) r = ROW1;				// a logic low indicates that a key was pressed in that row.
-	else if(!(PINB &(1 << ROW2))) r = ROW2;
-	else if(!(PINB &(1 << ROW3))) r = ROW3;
-	else if(!(PINB &(1 << ROW4))) r = ROW4;
-	
+		 if(!(PINB &(1 << ROW1))) r = ROW1;				// if row 1 is low then the key press was in row 1
+	else if(!(PINB &(1 << ROW2))) r = ROW2;				// if row 2 is low then the key press was in row 2	
+	else if(!(PINB &(1 << ROW3))) r = ROW3;				// if row 3 is low then the key press was in row 3
+	else if(!(PINB &(1 << ROW4))) r = ROW4;				// if row 4 is low then the key press was in row 4
 	return r;
 }
 
@@ -69,34 +62,35 @@ int getCol(int r) {										// strobe outputs to determine column
 	int c;
 		
 	PORTB |= (1 << COL1);								// set first column high
-	_delay_us(100);										// wait for debouncing filter
+	_delay_us(30);										// wait for debouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
-		c = 1;											// then the key is in the first column
+		c = 1;											// then the key press was in the first column
 	}
 	PORTB &= ~(1 << COL1);								// set first column back to low
-	_delay_us(100);	
+	
 	
 	PORTB |= (1 << COL2);								// set second column high
-	_delay_us(100);										// wait for debouncing filter
+	_delay_us(30);										// wait for debouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
-		c = 2;											// then the key is in the second column
+		c = 2;											// then the key press was in the second column
 	}
 	PORTB &= ~(1 << COL2);								// set the second column back to low
-	_delay_us(100);	
+
 	
 	PORTB |= (1 << COL3);								// set third column high
-	_delay_us(100);										// wait for debouncing filter
+	_delay_us(30);										// wait for debouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
-		c = 3;											// then the key is in the third column
+		c = 3;											// then the key press was in the third column
 	}
 	PORTB &= ~(1 << COL3);								// set the third column back to low
-	_delay_us(100);
+
 	
 	return c;
 }
 
-int keyMap(int r,int c) { 								// maps (row,column) pairs to an integer value corresponding to a key
+int keyMap(int r,int c) { 										// maps (row,column) pairs to an integer value corresponding to a key
 	int k;
+														// adjust row value to account for 0 index
 		 if((r == ROW1) && (c == 1)) k = 1;
 	else if((r == ROW1) && (c == 2)) k = 2;
 	else if((r == ROW1) && (c == 3)) k = 3;
@@ -127,10 +121,8 @@ void pushKey(int k){ 										// shift queue and update first element
 	key_queue[0] = k;		
 }
 
-void clearInput(void){ 										// clears submit_input, code_input, and input_index
-	input_index = 0;
-	for(int i = 0; i < INPUT_SIZE; i++){
-		code_input[i] = 0;
-		submit_input[0] = 0;
+void clearKeyQueue(void){ 										// clears submit_input, code_input, and input_index
+	for(int i = 0; i < KEY_QUEUE_SIZE; i++){
+		key_queue[i] = 0;
 	}
 }
