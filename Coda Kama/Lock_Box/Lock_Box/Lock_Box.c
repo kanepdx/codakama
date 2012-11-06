@@ -10,6 +10,7 @@
 #include <avr/io.h>				// AVR I/O library
 #include <util/delay.h>			// Delay library
 #include <avr/interrupt.h>		// Interrupt library
+#include <avr/eeprom.h>			// EEPROM library
 
 #include "LCD.h"				// LCD.h function library - Prototypes only
 #include "LCD.c"				// LCD.c function library - Functions only
