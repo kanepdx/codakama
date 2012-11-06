@@ -11,10 +11,6 @@
 			* Takes no input arguments and no output 
 			* Turning on the cursor and blinks the cursor
 			* Sets the cursor to home (1x1)
-	* void BacklightLCD (int on1_off0)
-			* Turns the lCD back light on and off
-			* Takes an integer input and has no outputs
-			* 1 turns the back light ON 0 turns it OFF
 	* void clearLCD (void)
 			* Clears the LCD screen
 			* Takes no input arguments and no output 
@@ -42,5 +38,4 @@ void cursorPosition(int line); // Places the cursor to the home of the specified
 void writeLCDline(char line_data[16], int line); // Writes an array of 16 characters to the specified line
 void pulseElatch(void); // Pulses Enable pin to latch in an instruction
 void writeLCDdata(int data_byte); // Writes nibbles on data lines
-void BacklightLCD (int on1_off0); // Turns the LCD back light on or off
 

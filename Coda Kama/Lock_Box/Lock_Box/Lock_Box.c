@@ -12,7 +12,10 @@
 
 #include "LCD.h"				// LCD.h function library - Prototypes only
 #include "LCD.c"				// LCD.c function library - Functions only
-
+#include "EEPROM_RW.h"			// EEPROM_RW.h - EEPROM read/write function prototypes
+#include "EEPROM_RW.c"			// EEPROM_RW.c - EEPROM read/write functions
+#include "keypad.h"				// keypad.h function library - Function prototypes
+#include "keypad.c"				// keypad.c function library - Functions only
 
 int main(void)
 {
