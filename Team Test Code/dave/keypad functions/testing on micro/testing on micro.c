@@ -26,15 +26,13 @@ int display[] = {LED1, LED2, LED3, LED4};
 
 
 ISR(PCINT0_vect){
-	cli();
-	_delay_ms(5);
+	_delay_ms(10);
 	if(getButtonState()){								// on key down...
 		getKeyPress();
 	}	
 	if(!getButtonState()){								// on key release
 		drawKey();										// draw the key
 	}	
-	sei();
 }
 
 int main(void)
@@ -155,7 +153,7 @@ void drawKey(void){
 
 void initDisplay(void){
 	for(int i = 0; i < NUM_LEDS; i++){
-		PORTD |= (1 << display[i]);						// set led outputs high (off)
+		PORTD &= ~(1 << display[i]);						// set led outputs high (off)
 		DDRD |= (1 << display[i]);						// set led pins as outputs
 	}
 }
