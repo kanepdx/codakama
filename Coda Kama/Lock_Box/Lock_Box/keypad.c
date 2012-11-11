@@ -22,11 +22,11 @@
 #define STAR 10 										// '*'' key mapped to a decimal value
 #define POUND 12										// '#' key mapped to a decimal value
 #define KEY_QUEUE_SIZE 9								// size of key queue
-#define INPUT_SIZE 8
 
 // globals to be moved later
 int lock_state = 1;										// will be updated by Colin's lock/unlock functions
 int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
+int current_key;
 
 // adds the most recent key press to the key_queue
 void getKeyPress(void){		
@@ -36,7 +36,8 @@ void getKeyPress(void){
 	row = getRow();									// get the row of current key being pressed
 	col = getCol(row); 								// get the col of current key being pressed		
 	key = keyMap(row,col);							// will hold the key value to be added to queue
-	pushKey(key); 									// push key onto queue		
+	//pushKey(key); 									// push key onto queue		
+	current_key = key;
 }
 
 int getButtonState(){									// check rows, if any are low then a key is being pressed
@@ -91,18 +92,18 @@ int getCol(int r) {										// strobe outputs to determine column
 int keyMap(int r,int c) { 										// maps (row,column) pairs to an integer value corresponding to a key
 	int k;
 														// adjust row value to account for 0 index
-		 if((r == ROW1) && (c == 1)) k = 1;
-	else if((r == ROW1) && (c == 2)) k = 2;
-	else if((r == ROW1) && (c == 3)) k = 3;
-	else if((r == ROW2) && (c == 1)) k = 4;
-	else if((r == ROW2) && (c == 2)) k = 5;
-	else if((r == ROW2) && (c == 3)) k = 6;
-	else if((r == ROW3) && (c == 1)) k = 7;
-	else if((r == ROW3) && (c == 2)) k = 8;
-	else if((r == ROW3) && (c == 3)) k = 9;
-	else if((r == ROW4) && (c == 1)) k = STAR;
-	else if((r == ROW4) && (c == 2)) k = 11;
-	else if((r == ROW4) && (c == 3)) k = POUND;
+		 if((r == ROW1) && (c == 1)) k = 0x31;
+	else if((r == ROW1) && (c == 2)) k = 0x32;
+	else if((r == ROW1) && (c == 3)) k = 0x33;
+	else if((r == ROW2) && (c == 1)) k = 0x34;
+	else if((r == ROW2) && (c == 2)) k = 0x35;
+	else if((r == ROW2) && (c == 3)) k = 0x36;
+	else if((r == ROW3) && (c == 1)) k = 0x37;
+	else if((r == ROW3) && (c == 2)) k = 0x38;
+	else if((r == ROW3) && (c == 3)) k = 0x39;
+	else if((r == ROW4) && (c == 1)) k = 0x2A;
+	else if((r == ROW4) && (c == 2)) k = 0x30;
+	else if((r == ROW4) && (c == 3)) k = 0x23;
 	return k;
 }
 
@@ -111,6 +112,7 @@ int popKey(void){ 											// pop first element and shift queue;
 	for(int i = 0; i < KEY_QUEUE_SIZE - 1; i++){
 		key_queue[i] = key_queue[i+1];
 	}	
+	key_queue[KEY_QUEUE_SIZE-1] = '\0';
 	return k;
 }
 
@@ -123,6 +125,7 @@ void pushKey(int k){ 										// shift queue and update first element
 
 void clearKeyQueue(void){ 										// clears submit_input, code_input, and input_index
 	for(int i = 0; i < KEY_QUEUE_SIZE; i++){
-		key_queue[i] = 0;
+		key_queue[i] = '\0';
 	}
+	
 }
