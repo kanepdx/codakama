@@ -10,7 +10,7 @@
  */ 
 
 #define MOTORPORT PORTD			// what port is FIN on? PD4
-					// what port is RIN on? PD3
+								// what port is RIN on? PD3
 #define FDBKPORT PINB			// what port is FDBK on? PB6
 #define FDBKPIN PB6
 

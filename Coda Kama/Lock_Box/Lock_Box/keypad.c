@@ -4,10 +4,12 @@
 #include "keypad.h"
 
 // includes to be removed later
+/*
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #define F_CPU 8000000UL
+*/
 
 // definitions to be moved later
 #define NUM_COLS 3										// number of columns on the keypad
@@ -71,7 +73,7 @@ int getCol(int r) {										// strobe outputs to determine column
 	
 	
 	PORTB |= (1 << COL2);								// set second column high
-	_delay_us(30);										// wait for debouncing filter
+	_delay_us(30);										// wait for denouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 2;											// then the key press was in the second column
 	}
@@ -79,7 +81,7 @@ int getCol(int r) {										// strobe outputs to determine column
 
 	
 	PORTB |= (1 << COL3);								// set third column high
-	_delay_us(30);										// wait for debouncing filter
+	_delay_us(30);										// wait for denouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 3;											// then the key press was in the third column
 	}
@@ -89,7 +91,7 @@ int getCol(int r) {										// strobe outputs to determine column
 	return c;
 }
 
-int keyMap(int r,int c) { 										// maps (row,column) pairs to an integer value corresponding to a key
+int keyMap(int r,int c) { 								// maps (row,column) pairs to an integer value corresponding to a key
 	int k;
 														// adjust row value to account for 0 index
 		 if((r == ROW1) && (c == 1)) k = 0x31;

@@ -9,6 +9,8 @@
 
 #include "EEPROM_RW.h"
 
+#define EEPROM_FLAG_ADDRESS 0x00		// Flag to indicate whether a new code exists
+
 #define EEPROM_DATA_ADDRESS 0x01		// Starting address of saved data
 
 typedef unsigned short int unit8_t;			// making uni8_t mean unsigned short int
