@@ -9,13 +9,14 @@
 
 #include "LCD.h"
 
-#define R_W PB0					// Read/Write (LCD) connected to PB0 (MC)
+#define BL PD1					// LCD back light LED Cathode- connected to PB1
+#define R_W PD0					// Read/Write (LCD) connected to PB0 (MC)
 #define RS PC5					// Register Select (LCD) connected to PC5 (MC)
 #define E PC4					// Enable (LCD) connected to PC5 (MC)
 #define LCD_PORT_1 PORTC		// Using Port C (MC) for the LCD
 #define LCD_DDR_1 DDRC			// With Port C (MC) being assigned direction register assignment
-#define LCD_PORT_2 PORTB		// Using Port B (MC) for the LCD
-#define LCD_DDR_2 DDRB			// With Port B (MC) being assigned direction register assignment
+#define LCD_PORT_2 PORTD		// Using Port B (MC) for the LCD
+#define LCD_DDR_2 DDRD			// With Port B (MC) being assigned direction register assignment
 
 
 // Sets up LCD and initializes it in 4 bit mode
@@ -52,8 +53,8 @@ void initializeLCD(void){
 void clearLCD (void){
 	LCD_DDR_1 = 0x3F;				// Making LCD PORTC pins outputs
 	LCD_PORT_1 &= ~(1 << RS);		// Clearing RS to send command
-	LCD_DDR_2 |= (1 << R_W);		// Making pin PB1 an output
-	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB1 to be low for write operation
+	LCD_DDR_2 |= (1 << R_W);		// Making pin PB0 an output
+	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB0 to be low for write operation
 	writeLCDdata(0x01);				// Writing clear instruction
 }
 
@@ -61,8 +62,8 @@ void clearLCD (void){
 void writeLCDcharacter(int character){
 	LCD_DDR_1 = 0x3F;				// Making LCD PORTC pins outputs
 	LCD_PORT_1 |= (1 << RS);		// Setting RS to send data
-	LCD_DDR_2 |= (1 << R_W);		// Making pin PB1 an output
-	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB1 to be low for write operation
+	LCD_DDR_2 |= (1 << R_W);		// Making pin PB0 an output
+	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB0 to be low for write operation
 	writeLCDdata(character);		// Sending the character on the data lines
 }
 
@@ -73,7 +74,7 @@ void cursorPosition(int line){
 	LCD_DDR_1 = 0x3F;				// Making LCD PORTC pins outputs
 	LCD_PORT_1 &= ~(1 << RS);		// Clearing RS to send command
 	LCD_DDR_2 |= (1 << R_W);		// Making pin PB1 an output
-	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB1 to be low for write operation
+	LCD_PORT_2 &= ~(1 << R_W);		// Masking or clearing pin PB0 to be low for write operation
 	
 	writeLCDdata(0x0C);				// Turning the cursor OFF
 	
@@ -119,6 +120,15 @@ void writeLCDdata(int data_byte){
 	LCD_PORT_1 &= ~(lowernibble);				// Clearing lower nibble
 }
 
+// Turns the LCD back light on or off
+void BacklightLCD (int on1_off0){
+	LCD_DDR_2 |= (1 << BL);		// Making pin PB1 an output
+	if (on1_off0 == 1)
+		LCD_PORT_2 &= ~(1 << BL);		// Masking or clearing pin PB1 sinking current turning on Back light
+	else
+		LCD_PORT_2 |= (1 << BL);		// Setting PB1 allowing no current flow to turn bakc light off
+	
+}
 
 
 
