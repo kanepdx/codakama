@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="logo01.svg"
+   inkscape:export-filename="/home/kane/Dropbox/shares/ece411/pcb/logo01.png"
+   inkscape:export-xdpi="269.87454"
+   inkscape:export-ydpi="269.87454">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.25"
+     inkscape:cx="-479.13276"
+     inkscape:cy="-309.14178"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1032"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <sodipodi:guide
+       orientation="1,0"
+       position="350,319.71328"
+       id="guide3606" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="273.75134,350"
+       id="guide3608" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Impact;-inkscape-font-specification:Impact Condensed"
+       x="285.57141"
+       y="352.36218"
+       id="text3653"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/kane/Dropbox/shares/ece411/pcb/logo01.png"
+       inkscape:export-xdpi="179.72496"
+       inkscape:export-ydpi="179.72496"><tspan
+         id="tspan3659"
+         y="442.36218"
+         x="285.57141"
+         sodipodi:role="line">L<tspan
+   style="text-align:center;text-anchor:middle;fill:none"
+   id="tspan3657">o</tspan>ck</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3635"
+       y="411.36218"
+       x="286.07141"
+       style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Impact;-inkscape-font-specification:Impact Condensed"
+       xml:space="preserve"
+       inkscape:export-filename="/home/kane/Dropbox/shares/ece411/pcb/logo01.png"
+       inkscape:export-xdpi="179.72496"
+       inkscape:export-ydpi="179.72496"><tspan
+         sodipodi:role="line"
+         x="286.07141"
+         y="411.36218"
+         id="tspan3647">Box</tspan></text>
+    <g
+       id="g3625"
+       transform="matrix(0.1956507,0,0,0.1956507,196.67953,198.38405)"
+       inkscape:export-filename="/home/kane/Dropbox/shares/ece411/pcb/logo01.png"
+       inkscape:export-xdpi="179.72496"
+       inkscape:export-ydpi="179.72496">
+      <path
+         sodipodi:type="arc"
+         style="fill:#000000;fill-opacity:1;stroke:none"
+         id="path3619"
+         sodipodi:cx="350"
+         sodipodi:cy="485.74567"
+         sodipodi:rx="52.932331"
+         sodipodi:ry="52.932331"
+         d="m 297.06767,485.74566 c 0,-29.23372 23.69861,-52.93233 52.93233,-52.93232 29.23372,0 52.93233,23.69861 52.93233,52.93233"
+         sodipodi:start="3.1415927"
+         sodipodi:end="6.2831853"
+         sodipodi:open="true"
+         transform="matrix(1.2165456,0,0,1.2051082,-76.190959,6.264167)" />
+      <path
+         transform="matrix(0.46789929,0,0,0.46350316,186.00225,366.53345)"
+         sodipodi:open="true"
+         sodipodi:end="6.2831853"
+         sodipodi:start="3.1415927"
+         d="m 297.06767,485.74566 c 0,-29.23372 23.69861,-52.93233 52.93233,-52.93232 29.23372,0 52.93233,23.69861 52.93233,52.93233"
+         sodipodi:ry="52.932331"
+         sodipodi:rx="52.932331"
+         sodipodi:cy="485.74567"
+         sodipodi:cx="350"
+         id="path3615"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         sodipodi:type="arc" />
+      <path
+         d="m 432.98327,702.7431 c 0,45.57096 -36.94256,82.51351 -82.51351,82.51351 -45.57096,0 -82.51351,-36.94255 -82.51351,-82.51351 0,-45.57095 36.94255,-82.51351 82.51351,-82.51351 45.57095,0 82.51351,36.94256 82.51351,82.51351 z"
+         sodipodi:ry="82.513512"
+         sodipodi:rx="82.513512"
+         sodipodi:cy="702.7431"
+         sodipodi:cx="350.46976"
+         id="path3613"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <path
+         transform="matrix(0.99956062,0,0,0.99956062,80.912625,199.74391)"
+         d="m 321.22852,502.8392 c 0,28.73143 -23.29143,52.02286 -52.02286,52.02286 -28.73143,0 -52.02286,-23.29143 -52.02286,-52.02286 0,-28.73143 23.29143,-52.02285 52.02286,-52.02285 28.73143,0 52.02286,23.29142 52.02286,52.02285 z"
+         sodipodi:ry="52.022858"
+         sodipodi:rx="52.022858"
+         sodipodi:cy="502.8392"
+         sodipodi:cx="269.20566"
+         id="path3598"
+         sodipodi:type="arc" />
+      <path
+         transform="matrix(0.96111598,0,0,0.96111598,91.262139,219.07539)"
+         style="fill:#ffffff;fill-opacity:1"
+         sodipodi:type="arc"
+         id="path2824"
+         sodipodi:cx="269.20566"
+         sodipodi:cy="502.8392"
+         sodipodi:rx="52.022858"
+         sodipodi:ry="52.022858"
+         d="m 321.22852,502.8392 c 0,28.73143 -23.29143,52.02286 -52.02286,52.02286 -28.73143,0 -52.02286,-23.29143 -52.02286,-52.02286 0,-28.73143 23.29143,-52.02285 52.02286,-52.02285 28.73143,0 52.02286,23.29142 52.02286,52.02285 z" />
+      <path
+         transform="matrix(0.28833479,0,0,0.28833479,272.37864,557.37615)"
+         d="m 321.22852,502.8392 c 0,28.73143 -23.29143,52.02286 -52.02286,52.02286 -28.73143,0 -52.02286,-23.29143 -52.02286,-52.02286 0,-28.73143 23.29143,-52.02285 52.02286,-52.02285 28.73143,0 52.02286,23.29142 52.02286,52.02285 z"
+         sodipodi:ry="52.022858"
+         sodipodi:rx="52.022858"
+         sodipodi:cy="502.8392"
+         sodipodi:cx="269.20566"
+         id="path3600"
+         sodipodi:type="arc" />
+      <rect
+         y="591.63727"
+         x="285.22751"
+         height="66.013214"
+         width="39.762245"
+         id="rect3621"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <use
+         height="1052.3622"
+         width="744.09448"
+         transform="translate(89.105835,0.0108573)"
+         id="use3623"
+         xlink:href="#rect3621"
+         y="0"
+         x="0" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:22.30965424px;font-style:normal;font-weight:normal;line-height:125%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="-15.353072"
+       y="373.87039"
+       id="text3649"
+       sodipodi:linespacing="125%"
+       transform="matrix(0.85528254,-0.51816192,0.51816192,0.85528254,0,0)"
+       inkscape:export-filename="/home/kane/Dropbox/shares/ece411/pcb/logo01.png"
+       inkscape:export-xdpi="179.72496"
+       inkscape:export-ydpi="179.72496"><tspan
+         sodipodi:role="line"
+         id="tspan3651"
+         x="-15.353072"
+         y="373.87039"
+         style="font-size:26.77158356px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LainieDaySH;-inkscape-font-specification:LainieDaySH">Coda Kama</tspan></text>
+  </g>
+</svg>
