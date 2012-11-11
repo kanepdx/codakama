@@ -7,6 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "testing keypad functions", 
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "testing on micro", "testing on micro\testing on micro.cproj", "{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "testing with lcd", "testing with lcd\testing with lcd.cproj", "{F57609F3-22BB-4BF0-A9E0-7183787BEFCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -25,6 +27,10 @@ Global
 		{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}.Debug|AVR.Build.0 = Debug|AVR
 		{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}.Release|AVR.ActiveCfg = Release|AVR
 		{946DA0D1-DDA0-4CAC-B9DF-74147D64258D}.Release|AVR.Build.0 = Release|AVR
+		{F57609F3-22BB-4BF0-A9E0-7183787BEFCD}.Debug|AVR.ActiveCfg = Debug|AVR
+		{F57609F3-22BB-4BF0-A9E0-7183787BEFCD}.Debug|AVR.Build.0 = Debug|AVR
+		{F57609F3-22BB-4BF0-A9E0-7183787BEFCD}.Release|AVR.ActiveCfg = Release|AVR
+		{F57609F3-22BB-4BF0-A9E0-7183787BEFCD}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
