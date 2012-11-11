@@ -17,11 +17,15 @@ void initColumns(int c[]);
 
 ISR(PCINT0_vect){
 	_delay_ms(5);
-	if(getButtonState()){
-		//writeLCDcharacter('*');
-		getKeyPress();
+	if(getButtonState()){		
+		getKeyPress();		
+		//_delay_ms(500);
+		//writeLCDcharacter('p');
+		_delay_ms(50);
 	}
-	if(!getButtonState()){
+	else if(!getButtonState()){
+		//writeLCDcharacter('q');
+		pushKey(current_key);
 		writeLCDcharacter(key_queue[0]);		
 	}
 }
@@ -31,9 +35,11 @@ int main(void)
 	// initialize
 	int rows[] = {ROW1, ROW2, ROW3, ROW4};
 	int cols[] = {COL1, COL2, COL3};
+	int i;
 	initRows(rows);										// set keypad rows as inputs
 	initColumns(cols);									// set keypad columns as outputs
 	initializeLCD();									// set up LCD and initialize in 4 bit mode
+	clearKeyQueue();
 	clearLCD();
 	writeLCDcharacter('#');
 	
@@ -48,6 +54,15 @@ int main(void)
 	while(1)											
 	{
 		_delay_us(5);
+		
+		if(key_queue[0] == '#'){
+			i = 1;
+			while(key_queue[i] != '\0'){
+				writeLCDcharacter(key_queue[i]);
+				i++;	
+			}
+			key_queue[0] = '?';
+		}
 	}
 }
 

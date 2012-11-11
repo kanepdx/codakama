@@ -26,6 +26,7 @@
 // globals to be moved later
 int lock_state = 1;										// will be updated by Colin's lock/unlock functions
 int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
+int current_key;
 
 // adds the most recent key press to the key_queue
 void getKeyPress(void){		
@@ -35,7 +36,8 @@ void getKeyPress(void){
 	row = getRow();									// get the row of current key being pressed
 	col = getCol(row); 								// get the col of current key being pressed		
 	key = keyMap(row,col);							// will hold the key value to be added to queue
-	pushKey(key); 									// push key onto queue		
+	//pushKey(key); 									// push key onto queue		
+	current_key = key;
 }
 
 int getButtonState(){									// check rows, if any are low then a key is being pressed
@@ -110,6 +112,7 @@ int popKey(void){ 											// pop first element and shift queue;
 	for(int i = 0; i < KEY_QUEUE_SIZE - 1; i++){
 		key_queue[i] = key_queue[i+1];
 	}	
+	key_queue[KEY_QUEUE_SIZE-1] = '\0';
 	return k;
 }
 
@@ -122,6 +125,7 @@ void pushKey(int k){ 										// shift queue and update first element
 
 void clearKeyQueue(void){ 										// clears submit_input, code_input, and input_index
 	for(int i = 0; i < KEY_QUEUE_SIZE; i++){
-		key_queue[i] = 0;
+		key_queue[i] = '\0';
 	}
+	
 }
