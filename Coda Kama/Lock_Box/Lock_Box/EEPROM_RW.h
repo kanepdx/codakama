@@ -17,5 +17,5 @@
 */
 
 
-void writeTOeeprom(int short code_to_save[8]);
-void readFROMeeprom(int short *saved_code[8]);
+void writeTOeeprom(int short code_to_save[9]);
+void readFROMeeprom(int short *saved_code[9]);
