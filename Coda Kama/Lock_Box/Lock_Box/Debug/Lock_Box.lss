@@ -3,55 +3,29 @@ Lock_Box.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-<<<<<<< HEAD
-  0 .data         00000002  00800100  00000462  000004f6  2**0
+  0 .data         000000e2  00800100  000009dc  00000a70  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000462  00000000  00000000  00000094  2**1
+  1 .text         000009dc  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000014  00800102  00800102  000004f8  2**0
+  2 .bss          00000016  008001e2  008001e2  00000b52  2**0
                   ALLOC
-  3 .stab         00000840  00000000  00000000  000004f8  2**2
+  3 .stab         00000840  00000000  00000000  00000b54  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      0000014b  00000000  00000000  00000d38  2**0
+  4 .stabstr      0000014b  00000000  00000000  00001394  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000080  00000000  00000000  00000e88  2**3
+  5 .debug_aranges 00000080  00000000  00000000  000014e0  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000a3f  00000000  00000000  00000f08  2**0
+  6 .debug_info   00000e94  00000000  00000000  00001560  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000249  00000000  00000000  00001947  2**0
+  7 .debug_abbrev 0000027e  00000000  00000000  000023f4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000004e8  00000000  00000000  00001b90  2**0
+  8 .debug_line   00000656  00000000  00000000  00002672  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001b8  00000000  00000000  00002078  2**2
+  9 .debug_frame  00000298  00000000  00000000  00002cc8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000029e  00000000  00000000  00002230  2**0
+ 10 .debug_str    00000387  00000000  00000000  00002f60  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000049f  00000000  00000000  000024ce  2**0
-=======
-  0 .data         00000030  00800100  0000067e  00000712  2**0
-                  CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000067e  00000000  00000000  00000094  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000014  00800130  00800130  00000742  2**0
-                  ALLOC
-  3 .stab         00000840  00000000  00000000  00000744  2**2
-                  CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      0000014b  00000000  00000000  00000f84  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000080  00000000  00000000  000010d0  2**3
-                  CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000ca4  00000000  00000000  00001150  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000273  00000000  00000000  00001df4  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000059f  00000000  00000000  00002067  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000260  00000000  00000000  00002608  2**2
-                  CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000002d7  00000000  00000000  00002868  2**0
-                  CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000006b7  00000000  00000000  00002b3f  2**0
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+ 11 .debug_loc    000009df  00000000  00000000  000032e7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -60,11 +34,7 @@ Disassembly of section .text:
    0:	19 c0       	rjmp	.+50     	; 0x34 <__ctors_end>
    2:	33 c0       	rjmp	.+102    	; 0x6a <__bad_interrupt>
    4:	32 c0       	rjmp	.+100    	; 0x6a <__bad_interrupt>
-<<<<<<< HEAD
-   6:	31 c0       	rjmp	.+98     	; 0x6a <__bad_interrupt>
-=======
-   6:	48 c2       	rjmp	.+1168   	; 0x498 <__vector_3>
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+   6:	ef c2       	rjmp	.+1502   	; 0x5e6 <__vector_3>
    8:	30 c0       	rjmp	.+96     	; 0x6a <__bad_interrupt>
    a:	2f c0       	rjmp	.+94     	; 0x6a <__bad_interrupt>
    c:	2e c0       	rjmp	.+92     	; 0x6a <__bad_interrupt>
@@ -100,31 +70,18 @@ Disassembly of section .text:
   40:	11 e0       	ldi	r17, 0x01	; 1
   42:	a0 e0       	ldi	r26, 0x00	; 0
   44:	b1 e0       	ldi	r27, 0x01	; 1
-<<<<<<< HEAD
-  46:	e2 e6       	ldi	r30, 0x62	; 98
-  48:	f4 e0       	ldi	r31, 0x04	; 4
+  46:	ec ed       	ldi	r30, 0xDC	; 220
+  48:	f9 e0       	ldi	r31, 0x09	; 9
   4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
   4c:	05 90       	lpm	r0, Z+
   4e:	0d 92       	st	X+, r0
-  50:	a2 30       	cpi	r26, 0x02	; 2
-=======
-  46:	ee e7       	ldi	r30, 0x7E	; 126
-  48:	f6 e0       	ldi	r31, 0x06	; 6
-  4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
-  4c:	05 90       	lpm	r0, Z+
-  4e:	0d 92       	st	X+, r0
-  50:	a0 33       	cpi	r26, 0x30	; 48
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+  50:	a2 3e       	cpi	r26, 0xE2	; 226
   52:	b1 07       	cpc	r27, r17
   54:	d9 f7       	brne	.-10     	; 0x4c <__do_copy_data+0xc>
 
 00000056 <__do_clear_bss>:
   56:	11 e0       	ldi	r17, 0x01	; 1
-<<<<<<< HEAD
-  58:	a2 e0       	ldi	r26, 0x02	; 2
-=======
-  58:	a0 e3       	ldi	r26, 0x30	; 48
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+  58:	a2 ee       	ldi	r26, 0xE2	; 226
   5a:	b1 e0       	ldi	r27, 0x01	; 1
   5c:	01 c0       	rjmp	.+2      	; 0x60 <.do_clear_bss_start>
 
@@ -132,19 +89,11 @@ Disassembly of section .text:
   5e:	1d 92       	st	X+, r1
 
 00000060 <.do_clear_bss_start>:
-<<<<<<< HEAD
-  60:	a6 31       	cpi	r26, 0x16	; 22
+  60:	a8 3f       	cpi	r26, 0xF8	; 248
   62:	b1 07       	cpc	r27, r17
   64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
-  66:	e4 d1       	rcall	.+968    	; 0x430 <main>
-  68:	fa c1       	rjmp	.+1012   	; 0x45e <_exit>
-=======
-  60:	a4 34       	cpi	r26, 0x44	; 68
-  62:	b1 07       	cpc	r27, r17
-  64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
-  66:	91 d2       	rcall	.+1314   	; 0x58a <main>
-  68:	08 c3       	rjmp	.+1552   	; 0x67a <_exit>
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+  66:	fa d2       	rcall	.+1524   	; 0x65c <main>
+  68:	b7 c4       	rjmp	.+2414   	; 0x9d8 <_exit>
 
 0000006a <__bad_interrupt>:
   6a:	ca cf       	rjmp	.-108    	; 0x0 <__vectors>
@@ -508,1117 +457,1807 @@ void BacklightLCD (int on1_off0){
  1e2:	08 95       	ret
 
 000001e4 <writeTOeeprom>:
-#define EEPROM_DATA_ADDRESS 0x01		// Starting address of saved data
 
-typedef unsigned short int unit8_t;			// making uni8_t mean unsigned short int
+int short default_code[9] = {'0','0','0','0','0','0','0','0','\0'};		// Factory default code 
 
-// Writes an 8 element array pass code to EEPROM
-void writeTOeeprom(int short code_to_save[8]){
+
+// Writes an 9 element array pass code to EEPROM
+void writeTOeeprom(int short code_to_save[9]){
  1e4:	0f 93       	push	r16
  1e6:	1f 93       	push	r17
  1e8:	cf 93       	push	r28
- 1ea:	df 93       	push	r29
-	int add_count;														// variable declaration to loop through eeprom addresses
-	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
- 1ec:	08 2f       	mov	r16, r24
- 1ee:	19 2f       	mov	r17, r25
- 1f0:	c1 e0       	ldi	r28, 0x01	; 1
- 1f2:	d0 e0       	ldi	r29, 0x00	; 0
-	
-	for(int add_count = 0; add_count <8; add_count++){					// looping through code to save array
-	eeprom_write_byte(temp_ee_address, code_to_save[add_count]);		// writing byte to specified address
- 1f4:	f8 01       	movw	r30, r16
- 1f6:	60 81       	ld	r22, Z
+	int add_count = 0;													// variable declaration to loop through eeprom addresses
+	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+	while(code_to_save[add_count] != '\0'){								// looping through code to save array
+ 1ea:	fc 01       	movw	r30, r24
+ 1ec:	60 81       	ld	r22, Z
+ 1ee:	71 81       	ldd	r23, Z+1	; 0x01
+ 1f0:	61 15       	cp	r22, r1
+ 1f2:	71 05       	cpc	r23, r1
+ 1f4:	81 f0       	breq	.+32     	; 0x216 <writeTOeeprom+0x32>
+
+int short default_code[9] = {'0','0','0','0','0','0','0','0','\0'};		// Factory default code 
+
+
+// Writes an 9 element array pass code to EEPROM
+void writeTOeeprom(int short code_to_save[9]){
+ 1f6:	8c 01       	movw	r16, r24
  1f8:	0e 5f       	subi	r16, 0xFE	; 254
  1fa:	1f 4f       	sbci	r17, 0xFF	; 255
- 1fc:	ce 01       	movw	r24, r28
-<<<<<<< HEAD
- 1fe:	21 d1       	rcall	.+578    	; 0x442 <__eewr_byte_m48a>
-=======
- 1fe:	2f d2       	rcall	.+1118   	; 0x65e <__eewr_byte_m48a>
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
-	temp_ee_address++;												// incrementing address counter
- 200:	21 96       	adiw	r28, 0x01	; 1
-// Writes an 8 element array pass code to EEPROM
-void writeTOeeprom(int short code_to_save[8]){
-	int add_count;														// variable declaration to loop through eeprom addresses
-	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
-	
-	for(int add_count = 0; add_count <8; add_count++){					// looping through code to save array
- 202:	c9 30       	cpi	r28, 0x09	; 9
- 204:	d1 05       	cpc	r29, r1
- 206:	b1 f7       	brne	.-20     	; 0x1f4 <writeTOeeprom+0x10>
-	eeprom_write_byte(temp_ee_address, code_to_save[add_count]);		// writing byte to specified address
-	temp_ee_address++;												// incrementing address counter
+	int add_count = 0;													// variable declaration to loop through eeprom addresses
+	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+ 1fc:	c1 e0       	ldi	r28, 0x01	; 1
+	while(code_to_save[add_count] != '\0'){								// looping through code to save array
+		eeprom_write_byte(temp_ee_address, code_to_save[add_count]);	// writing byte to specified address
+ 1fe:	8c 2f       	mov	r24, r28
+ 200:	90 e0       	ldi	r25, 0x00	; 0
+ 202:	dc d3       	rcall	.+1976   	; 0x9bc <__eewr_byte_m48a>
+		temp_ee_address++;												// incrementing address counter
+ 204:	cf 5f       	subi	r28, 0xFF	; 255
+
+// Writes an 9 element array pass code to EEPROM
+void writeTOeeprom(int short code_to_save[9]){
+	int add_count = 0;													// variable declaration to loop through eeprom addresses
+	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+	while(code_to_save[add_count] != '\0'){								// looping through code to save array
+ 206:	f8 01       	movw	r30, r16
+ 208:	61 91       	ld	r22, Z+
+ 20a:	71 91       	ld	r23, Z+
+ 20c:	8f 01       	movw	r16, r30
+ 20e:	61 15       	cp	r22, r1
+ 210:	71 05       	cpc	r23, r1
+ 212:	a9 f7       	brne	.-22     	; 0x1fe <writeTOeeprom+0x1a>
+ 214:	01 c0       	rjmp	.+2      	; 0x218 <writeTOeeprom+0x34>
+
+
+// Writes an 9 element array pass code to EEPROM
+void writeTOeeprom(int short code_to_save[9]){
+	int add_count = 0;													// variable declaration to loop through eeprom addresses
+	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
+ 216:	c1 e0       	ldi	r28, 0x01	; 1
+	while(code_to_save[add_count] != '\0'){								// looping through code to save array
+		eeprom_write_byte(temp_ee_address, code_to_save[add_count]);	// writing byte to specified address
+		temp_ee_address++;												// incrementing address counter
+		add_count++;													// incrementing array counter
 	}
+	eeprom_write_byte(temp_ee_address, code_to_save[add_count]);		// writing the NULL character to the end of the pass code
+ 218:	8c 2f       	mov	r24, r28
+ 21a:	90 e0       	ldi	r25, 0x00	; 0
+ 21c:	cf d3       	rcall	.+1950   	; 0x9bc <__eewr_byte_m48a>
+	eeprom_write_byte(EEPROM_NEWCODE_ADDRESS,0x0);						// Setting new code flag
+ 21e:	80 e0       	ldi	r24, 0x00	; 0
+ 220:	90 e0       	ldi	r25, 0x00	; 0
+ 222:	60 e0       	ldi	r22, 0x00	; 0
+ 224:	cb d3       	rcall	.+1942   	; 0x9bc <__eewr_byte_m48a>
 }
- 208:	df 91       	pop	r29
- 20a:	cf 91       	pop	r28
- 20c:	1f 91       	pop	r17
- 20e:	0f 91       	pop	r16
- 210:	08 95       	ret
+ 226:	cf 91       	pop	r28
+ 228:	1f 91       	pop	r17
+ 22a:	0f 91       	pop	r16
+ 22c:	08 95       	ret
 
-00000212 <readFROMeeprom>:
+0000022e <readFROMeeprom>:
 
-// Reads the contents of EEPROM and store them in an 8 element array
-void readFROMeeprom(int short *saved_code[8]){
- 212:	0f 93       	push	r16
- 214:	1f 93       	push	r17
- 216:	cf 93       	push	r28
- 218:	df 93       	push	r29
-	int add_count;														// variable declaration to loop through eeprom and elements of array
-	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
- 21a:	c8 2f       	mov	r28, r24
- 21c:	d9 2f       	mov	r29, r25
- 21e:	01 e0       	ldi	r16, 0x01	; 1
- 220:	10 e0       	ldi	r17, 0x00	; 0
+
+// Reads the contents of EEPROM and store them in an 9 element array
+void readFROMeeprom(int short *saved_code[9]){
+ 22e:	ef 92       	push	r14
+ 230:	ff 92       	push	r15
+ 232:	0f 93       	push	r16
+ 234:	1f 93       	push	r17
+ 236:	cf 93       	push	r28
+ 238:	df 93       	push	r29
+ 23a:	7c 01       	movw	r14, r24
+	int add_count = 0;														// variable declaration to loop through eeprom and elements of array
+	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;							// temp address variable to go through eeprom
 	
-	for(int add_count = 0; add_count <  8; add_count++){				// looping through code to save array
-		saved_code[add_count] = eeprom_read_byte(temp_ee_address);		// writing byte to specified address
- 222:	c8 01       	movw	r24, r16
-<<<<<<< HEAD
- 224:	06 d1       	rcall	.+524    	; 0x432 <__eerd_byte_m48a>
-=======
- 224:	14 d2       	rcall	.+1064   	; 0x64e <__eerd_byte_m48a>
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
- 226:	88 83       	st	Y, r24
- 228:	19 82       	std	Y+1, r1	; 0x01
- 22a:	22 96       	adiw	r28, 0x02	; 2
-		temp_ee_address++;												// incrementing address counter		
- 22c:	0f 5f       	subi	r16, 0xFF	; 255
- 22e:	1f 4f       	sbci	r17, 0xFF	; 255
-// Reads the contents of EEPROM and store them in an 8 element array
-void readFROMeeprom(int short *saved_code[8]){
-	int add_count;														// variable declaration to loop through eeprom and elements of array
-	unit8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
-	
-	for(int add_count = 0; add_count <  8; add_count++){				// looping through code to save array
- 230:	09 30       	cpi	r16, 0x09	; 9
- 232:	11 05       	cpc	r17, r1
- 234:	b1 f7       	brne	.-20     	; 0x222 <readFROMeeprom+0x10>
-		saved_code[add_count] = eeprom_read_byte(temp_ee_address);		// writing byte to specified address
-		temp_ee_address++;												// incrementing address counter		
+	if(eeprom_read_byte(EEPROM_NEWCODE_ADDRESS) == 0x0){
+ 23c:	80 e0       	ldi	r24, 0x00	; 0
+ 23e:	90 e0       	ldi	r25, 0x00	; 0
+ 240:	b5 d3       	rcall	.+1898   	; 0x9ac <__eerd_byte_m48a>
+ 242:	88 23       	and	r24, r24
+ 244:	21 f4       	brne	.+8      	; 0x24e <readFROMeeprom+0x20>
+ 246:	87 01       	movw	r16, r14
+ 248:	c0 e0       	ldi	r28, 0x00	; 0
+ 24a:	d0 e0       	ldi	r29, 0x00	; 0
+ 24c:	0e c0       	rjmp	.+28     	; 0x26a <readFROMeeprom+0x3c>
+			add_count ++;													// incrementing array counter
+		}
+		saved_code[add_count] = eeprom_read_byte(temp_ee_address);			// setting NULL character at the end of pass code array
 	}
- 236:	df 91       	pop	r29
- 238:	cf 91       	pop	r28
- 23a:	1f 91       	pop	r17
- 23c:	0f 91       	pop	r16
- 23e:	08 95       	ret
+	else{
+		while(default_code[add_count] != NULL){								// looping through code to save array
+ 24e:	80 91 d0 01 	lds	r24, 0x01D0
+ 252:	90 91 d1 01 	lds	r25, 0x01D1
+ 256:	00 97       	sbiw	r24, 0x00	; 0
+ 258:	b1 f4       	brne	.+44     	; 0x286 <readFROMeeprom+0x58>
+ 25a:	20 e0       	ldi	r18, 0x00	; 0
+ 25c:	30 e0       	ldi	r19, 0x00	; 0
+ 25e:	23 c0       	rjmp	.+70     	; 0x2a6 <readFROMeeprom+0x78>
+	int add_count = 0;														// variable declaration to loop through eeprom and elements of array
+	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;							// temp address variable to go through eeprom
+	
+	if(eeprom_read_byte(EEPROM_NEWCODE_ADDRESS) == 0x0){
+		while(eeprom_read_byte(temp_ee_address) != NULL){					// looping through code to save array
+			saved_code[add_count] = eeprom_read_byte(temp_ee_address);		// writing byte to specified address
+ 260:	f8 01       	movw	r30, r16
+ 262:	81 93       	st	Z+, r24
+ 264:	91 93       	st	Z+, r25
+ 266:	8f 01       	movw	r16, r30
+			temp_ee_address++;												// incrementing address counter		
+			add_count ++;													// incrementing array counter
+ 268:	21 96       	adiw	r28, 0x01	; 1
+void readFROMeeprom(int short *saved_code[9]){
+	int add_count = 0;														// variable declaration to loop through eeprom and elements of array
+	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;							// temp address variable to go through eeprom
+	
+	if(eeprom_read_byte(EEPROM_NEWCODE_ADDRESS) == 0x0){
+		while(eeprom_read_byte(temp_ee_address) != NULL){					// looping through code to save array
+ 26a:	8c 2f       	mov	r24, r28
+ 26c:	8f 5f       	subi	r24, 0xFF	; 255
+ 26e:	90 e0       	ldi	r25, 0x00	; 0
+ 270:	9d d3       	rcall	.+1850   	; 0x9ac <__eerd_byte_m48a>
+ 272:	90 e0       	ldi	r25, 0x00	; 0
+ 274:	00 97       	sbiw	r24, 0x00	; 0
+ 276:	a1 f7       	brne	.-24     	; 0x260 <readFROMeeprom+0x32>
+			saved_code[add_count] = eeprom_read_byte(temp_ee_address);		// writing byte to specified address
+			temp_ee_address++;												// incrementing address counter		
+			add_count ++;													// incrementing array counter
+		}
+		saved_code[add_count] = eeprom_read_byte(temp_ee_address);			// setting NULL character at the end of pass code array
+ 278:	cc 0f       	add	r28, r28
+ 27a:	dd 1f       	adc	r29, r29
+ 27c:	ce 0d       	add	r28, r14
+ 27e:	df 1d       	adc	r29, r15
+ 280:	19 82       	std	Y+1, r1	; 0x01
+ 282:	18 82       	st	Y, r1
+ 284:	17 c0       	rjmp	.+46     	; 0x2b4 <readFROMeeprom+0x86>
+ 286:	d7 01       	movw	r26, r14
+ 288:	e2 ed       	ldi	r30, 0xD2	; 210
+ 28a:	f1 e0       	ldi	r31, 0x01	; 1
+	}
+	else{
+		while(default_code[add_count] != NULL){								// looping through code to save array
+ 28c:	20 e0       	ldi	r18, 0x00	; 0
+ 28e:	30 e0       	ldi	r19, 0x00	; 0
+			saved_code[add_count] = default_code[add_count];				// writing byte to specified address
+ 290:	8d 93       	st	X+, r24
+ 292:	9d 93       	st	X+, r25
+			add_count++;													// incrementing array counter			
+ 294:	2f 5f       	subi	r18, 0xFF	; 255
+ 296:	3f 4f       	sbci	r19, 0xFF	; 255
+			add_count ++;													// incrementing array counter
+		}
+		saved_code[add_count] = eeprom_read_byte(temp_ee_address);			// setting NULL character at the end of pass code array
+	}
+	else{
+		while(default_code[add_count] != NULL){								// looping through code to save array
+ 298:	50 81       	ld	r21, Z
+ 29a:	41 81       	ldd	r20, Z+1	; 0x01
+ 29c:	32 96       	adiw	r30, 0x02	; 2
+ 29e:	85 2f       	mov	r24, r21
+ 2a0:	94 2f       	mov	r25, r20
+ 2a2:	00 97       	sbiw	r24, 0x00	; 0
+ 2a4:	a9 f7       	brne	.-22     	; 0x290 <readFROMeeprom+0x62>
+			saved_code[add_count] = default_code[add_count];				// writing byte to specified address
+			add_count++;													// incrementing array counter			
+		}
+		saved_code[add_count] = default_code[add_count];					// setting NULL character at the end of pass code array
+ 2a6:	22 0f       	add	r18, r18
+ 2a8:	33 1f       	adc	r19, r19
+ 2aa:	e2 0e       	add	r14, r18
+ 2ac:	f3 1e       	adc	r15, r19
+ 2ae:	f7 01       	movw	r30, r14
+ 2b0:	91 83       	std	Z+1, r25	; 0x01
+ 2b2:	80 83       	st	Z, r24
+	}	
+ 2b4:	df 91       	pop	r29
+ 2b6:	cf 91       	pop	r28
+ 2b8:	1f 91       	pop	r17
+ 2ba:	0f 91       	pop	r16
+ 2bc:	ff 90       	pop	r15
+ 2be:	ef 90       	pop	r14
+ 2c0:	08 95       	ret
 
-00000240 <getButtonState>:
+000002c2 <getButtonState>:
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 240:	81 e2       	ldi	r24, 0x21	; 33
- 242:	8a 95       	dec	r24
- 244:	f1 f7       	brne	.-4      	; 0x242 <getButtonState+0x2>
- 246:	00 00       	nop
+ 2c2:	81 e2       	ldi	r24, 0x21	; 33
+ 2c4:	8a 95       	dec	r24
+ 2c6:	f1 f7       	brne	.-4      	; 0x2c4 <getButtonState+0x2>
+ 2c8:	00 00       	nop
 }
 
 int getButtonState(){									// check rows, if any are low then a key is being pressed
 	_delay_us(100);
 	int s = 0;
 	if(!(PINB &(1 << ROW1))) s = 1;
- 248:	18 9b       	sbis	0x03, 0	; 3
- 24a:	0f c0       	rjmp	.+30     	; 0x26a <getButtonState+0x2a>
+ 2ca:	18 9b       	sbis	0x03, 0	; 3
+ 2cc:	0f c0       	rjmp	.+30     	; 0x2ec <getButtonState+0x2a>
 	else if(!(PINB &(1 << ROW2))) s = 1;				
- 24c:	19 9b       	sbis	0x03, 1	; 3
- 24e:	10 c0       	rjmp	.+32     	; 0x270 <getButtonState+0x30>
+ 2ce:	19 9b       	sbis	0x03, 1	; 3
+ 2d0:	10 c0       	rjmp	.+32     	; 0x2f2 <getButtonState+0x30>
 	else if(!(PINB &(1 << ROW3))) s = 1;				
- 250:	1a 9b       	sbis	0x03, 2	; 3
- 252:	11 c0       	rjmp	.+34     	; 0x276 <getButtonState+0x36>
+ 2d2:	1a 9b       	sbis	0x03, 2	; 3
+ 2d4:	11 c0       	rjmp	.+34     	; 0x2f8 <getButtonState+0x36>
 	else if(!(PINB &(1 << ROW4))) s = 1;
- 254:	83 b1       	in	r24, 0x03	; 3
+ 2d6:	83 b1       	in	r24, 0x03	; 3
 }
 
 int getButtonState(){									// check rows, if any are low then a key is being pressed
 	_delay_us(100);
 	int s = 0;
 	if(!(PINB &(1 << ROW1))) s = 1;
- 256:	99 27       	eor	r25, r25
- 258:	87 fd       	sbrc	r24, 7
- 25a:	90 95       	com	r25
- 25c:	80 95       	com	r24
- 25e:	90 95       	com	r25
- 260:	88 27       	eor	r24, r24
- 262:	99 0f       	add	r25, r25
- 264:	88 1f       	adc	r24, r24
- 266:	99 27       	eor	r25, r25
- 268:	08 95       	ret
- 26a:	81 e0       	ldi	r24, 0x01	; 1
- 26c:	90 e0       	ldi	r25, 0x00	; 0
- 26e:	08 95       	ret
+ 2d8:	99 27       	eor	r25, r25
+ 2da:	87 fd       	sbrc	r24, 7
+ 2dc:	90 95       	com	r25
+ 2de:	80 95       	com	r24
+ 2e0:	90 95       	com	r25
+ 2e2:	88 27       	eor	r24, r24
+ 2e4:	99 0f       	add	r25, r25
+ 2e6:	88 1f       	adc	r24, r24
+ 2e8:	99 27       	eor	r25, r25
+ 2ea:	08 95       	ret
+ 2ec:	81 e0       	ldi	r24, 0x01	; 1
+ 2ee:	90 e0       	ldi	r25, 0x00	; 0
+ 2f0:	08 95       	ret
 	else if(!(PINB &(1 << ROW2))) s = 1;				
- 270:	81 e0       	ldi	r24, 0x01	; 1
- 272:	90 e0       	ldi	r25, 0x00	; 0
- 274:	08 95       	ret
+ 2f2:	81 e0       	ldi	r24, 0x01	; 1
+ 2f4:	90 e0       	ldi	r25, 0x00	; 0
+ 2f6:	08 95       	ret
 	else if(!(PINB &(1 << ROW3))) s = 1;				
- 276:	81 e0       	ldi	r24, 0x01	; 1
- 278:	90 e0       	ldi	r25, 0x00	; 0
+ 2f8:	81 e0       	ldi	r24, 0x01	; 1
+ 2fa:	90 e0       	ldi	r25, 0x00	; 0
 	else if(!(PINB &(1 << ROW4))) s = 1;
 	return s;
 }
- 27a:	08 95       	ret
+ 2fc:	08 95       	ret
 
-0000027c <getRow>:
+000002fe <getRow>:
 
 int getRow(void){										// determine which row on the keypad caused the interrupts.
 	int r;												// temporary placeholder for the row 
 		 if(!(PINB &(1 << ROW1))) r = ROW1;				// if row 1 is low then the key press was in row 1
- 27c:	18 9b       	sbis	0x03, 0	; 3
- 27e:	07 c0       	rjmp	.+14     	; 0x28e <getRow+0x12>
+ 2fe:	18 9b       	sbis	0x03, 0	; 3
+ 300:	07 c0       	rjmp	.+14     	; 0x310 <__stack+0x11>
 	else if(!(PINB &(1 << ROW2))) r = ROW2;				// if row 2 is low then the key press was in row 2	
- 280:	19 9b       	sbis	0x03, 1	; 3
- 282:	08 c0       	rjmp	.+16     	; 0x294 <getRow+0x18>
+ 302:	19 9b       	sbis	0x03, 1	; 3
+ 304:	08 c0       	rjmp	.+16     	; 0x316 <__stack+0x17>
 	else if(!(PINB &(1 << ROW3))) r = ROW3;				// if row 3 is low then the key press was in row 3
- 284:	1a 9b       	sbis	0x03, 2	; 3
- 286:	09 c0       	rjmp	.+18     	; 0x29a <getRow+0x1e>
+ 306:	1a 9b       	sbis	0x03, 2	; 3
+ 308:	09 c0       	rjmp	.+18     	; 0x31c <__stack+0x1d>
 	else if(!(PINB &(1 << ROW4))) r = ROW4;				// if row 4 is low then the key press was in row 4
- 288:	1f 9b       	sbis	0x03, 7	; 3
- 28a:	0a c0       	rjmp	.+20     	; 0x2a0 <getRow+0x24>
- 28c:	08 95       	ret
+ 30a:	1f 9b       	sbis	0x03, 7	; 3
+ 30c:	0a c0       	rjmp	.+20     	; 0x322 <__stack+0x23>
+ 30e:	08 95       	ret
 	return s;
 }
 
 int getRow(void){										// determine which row on the keypad caused the interrupts.
 	int r;												// temporary placeholder for the row 
 		 if(!(PINB &(1 << ROW1))) r = ROW1;				// if row 1 is low then the key press was in row 1
- 28e:	80 e0       	ldi	r24, 0x00	; 0
- 290:	90 e0       	ldi	r25, 0x00	; 0
- 292:	08 95       	ret
+ 310:	80 e0       	ldi	r24, 0x00	; 0
+ 312:	90 e0       	ldi	r25, 0x00	; 0
+ 314:	08 95       	ret
 	else if(!(PINB &(1 << ROW2))) r = ROW2;				// if row 2 is low then the key press was in row 2	
- 294:	81 e0       	ldi	r24, 0x01	; 1
- 296:	90 e0       	ldi	r25, 0x00	; 0
- 298:	08 95       	ret
+ 316:	81 e0       	ldi	r24, 0x01	; 1
+ 318:	90 e0       	ldi	r25, 0x00	; 0
+ 31a:	08 95       	ret
 	else if(!(PINB &(1 << ROW3))) r = ROW3;				// if row 3 is low then the key press was in row 3
- 29a:	82 e0       	ldi	r24, 0x02	; 2
- 29c:	90 e0       	ldi	r25, 0x00	; 0
- 29e:	08 95       	ret
+ 31c:	82 e0       	ldi	r24, 0x02	; 2
+ 31e:	90 e0       	ldi	r25, 0x00	; 0
+ 320:	08 95       	ret
 	else if(!(PINB &(1 << ROW4))) r = ROW4;				// if row 4 is low then the key press was in row 4
- 2a0:	87 e0       	ldi	r24, 0x07	; 7
- 2a2:	90 e0       	ldi	r25, 0x00	; 0
+ 322:	87 e0       	ldi	r24, 0x07	; 7
+ 324:	90 e0       	ldi	r25, 0x00	; 0
 	return r;
 }
- 2a4:	08 95       	ret
+ 326:	08 95       	ret
 
-000002a6 <getCol>:
+00000328 <getCol>:
 
 int getCol(int r) {										// strobe outputs to determine column
 	int c;
 		
 	PORTB |= (1 << COL1);								// set first column high
- 2a6:	2b 9a       	sbi	0x05, 3	; 5
- 2a8:	6a e0       	ldi	r22, 0x0A	; 10
- 2aa:	6a 95       	dec	r22
- 2ac:	f1 f7       	brne	.-4      	; 0x2aa <getCol+0x4>
+ 328:	2b 9a       	sbi	0x05, 3	; 5
+ 32a:	6a e0       	ldi	r22, 0x0A	; 10
+ 32c:	6a 95       	dec	r22
+ 32e:	f1 f7       	brne	.-4      	; 0x32c <getCol+0x4>
 	_delay_us(30);										// wait for debouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
- 2ae:	93 b1       	in	r25, 0x03	; 3
+ 330:	93 b1       	in	r25, 0x03	; 3
 		c = 1;											// then the key press was in the first column
 	}
 	PORTB &= ~(1 << COL1);								// set first column back to low
- 2b0:	2b 98       	cbi	0x05, 3	; 5
+ 332:	2b 98       	cbi	0x05, 3	; 5
 	
 	
 	PORTB |= (1 << COL2);								// set second column high
- 2b2:	2c 9a       	sbi	0x05, 4	; 5
- 2b4:	7a e0       	ldi	r23, 0x0A	; 10
- 2b6:	7a 95       	dec	r23
- 2b8:	f1 f7       	brne	.-4      	; 0x2b6 <getCol+0x10>
-<<<<<<< HEAD
-	_delay_us(30);										// wait for debouncing filter
-=======
+ 334:	2c 9a       	sbi	0x05, 4	; 5
+ 336:	7a e0       	ldi	r23, 0x0A	; 10
+ 338:	7a 95       	dec	r23
+ 33a:	f1 f7       	brne	.-4      	; 0x338 <getCol+0x10>
 	_delay_us(30);										// wait for denouncing filter
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
 	if((PINB & (1 << r))) {								// if the row went high
- 2ba:	23 b1       	in	r18, 0x03	; 3
- 2bc:	30 e0       	ldi	r19, 0x00	; 0
- 2be:	08 2e       	mov	r0, r24
- 2c0:	02 c0       	rjmp	.+4      	; 0x2c6 <getCol+0x20>
- 2c2:	35 95       	asr	r19
- 2c4:	27 95       	ror	r18
- 2c6:	0a 94       	dec	r0
- 2c8:	e2 f7       	brpl	.-8      	; 0x2c2 <getCol+0x1c>
- 2ca:	20 fd       	sbrc	r18, 0
- 2cc:	03 c0       	rjmp	.+6      	; 0x2d4 <getCol+0x2e>
- 2ce:	21 e0       	ldi	r18, 0x01	; 1
- 2d0:	30 e0       	ldi	r19, 0x00	; 0
- 2d2:	02 c0       	rjmp	.+4      	; 0x2d8 <getCol+0x32>
+ 33c:	23 b1       	in	r18, 0x03	; 3
+ 33e:	30 e0       	ldi	r19, 0x00	; 0
+ 340:	08 2e       	mov	r0, r24
+ 342:	02 c0       	rjmp	.+4      	; 0x348 <getCol+0x20>
+ 344:	35 95       	asr	r19
+ 346:	27 95       	ror	r18
+ 348:	0a 94       	dec	r0
+ 34a:	e2 f7       	brpl	.-8      	; 0x344 <getCol+0x1c>
+ 34c:	20 fd       	sbrc	r18, 0
+ 34e:	03 c0       	rjmp	.+6      	; 0x356 <getCol+0x2e>
+ 350:	21 e0       	ldi	r18, 0x01	; 1
+ 352:	30 e0       	ldi	r19, 0x00	; 0
+ 354:	02 c0       	rjmp	.+4      	; 0x35a <getCol+0x32>
 		c = 2;											// then the key press was in the second column
- 2d4:	22 e0       	ldi	r18, 0x02	; 2
- 2d6:	30 e0       	ldi	r19, 0x00	; 0
+ 356:	22 e0       	ldi	r18, 0x02	; 2
+ 358:	30 e0       	ldi	r19, 0x00	; 0
 	}
 	PORTB &= ~(1 << COL2);								// set the second column back to low
- 2d8:	2c 98       	cbi	0x05, 4	; 5
+ 35a:	2c 98       	cbi	0x05, 4	; 5
 
 	
 	PORTB |= (1 << COL3);								// set third column high
- 2da:	2d 9a       	sbi	0x05, 5	; 5
- 2dc:	9a e0       	ldi	r25, 0x0A	; 10
- 2de:	9a 95       	dec	r25
- 2e0:	f1 f7       	brne	.-4      	; 0x2de <getCol+0x38>
-<<<<<<< HEAD
-	_delay_us(30);										// wait for debouncing filter
-=======
+ 35c:	2d 9a       	sbi	0x05, 5	; 5
+ 35e:	9a e0       	ldi	r25, 0x0A	; 10
+ 360:	9a 95       	dec	r25
+ 362:	f1 f7       	brne	.-4      	; 0x360 <getCol+0x38>
 	_delay_us(30);										// wait for denouncing filter
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
 	if((PINB & (1 << r))) {								// if the row went high
- 2e2:	43 b1       	in	r20, 0x03	; 3
- 2e4:	50 e0       	ldi	r21, 0x00	; 0
- 2e6:	ba 01       	movw	r22, r20
- 2e8:	02 c0       	rjmp	.+4      	; 0x2ee <getCol+0x48>
- 2ea:	75 95       	asr	r23
- 2ec:	67 95       	ror	r22
- 2ee:	8a 95       	dec	r24
- 2f0:	e2 f7       	brpl	.-8      	; 0x2ea <getCol+0x44>
- 2f2:	60 ff       	sbrs	r22, 0
- 2f4:	02 c0       	rjmp	.+4      	; 0x2fa <getCol+0x54>
+ 364:	43 b1       	in	r20, 0x03	; 3
+ 366:	50 e0       	ldi	r21, 0x00	; 0
+ 368:	ba 01       	movw	r22, r20
+ 36a:	02 c0       	rjmp	.+4      	; 0x370 <getCol+0x48>
+ 36c:	75 95       	asr	r23
+ 36e:	67 95       	ror	r22
+ 370:	8a 95       	dec	r24
+ 372:	e2 f7       	brpl	.-8      	; 0x36c <getCol+0x44>
+ 374:	60 ff       	sbrs	r22, 0
+ 376:	02 c0       	rjmp	.+4      	; 0x37c <getCol+0x54>
 		c = 3;											// then the key press was in the third column
- 2f6:	23 e0       	ldi	r18, 0x03	; 3
- 2f8:	30 e0       	ldi	r19, 0x00	; 0
+ 378:	23 e0       	ldi	r18, 0x03	; 3
+ 37a:	30 e0       	ldi	r19, 0x00	; 0
 	}
 	PORTB &= ~(1 << COL3);								// set the third column back to low
- 2fa:	2d 98       	cbi	0x05, 5	; 5
+ 37c:	2d 98       	cbi	0x05, 5	; 5
 
 	
 	return c;
 }
- 2fc:	82 2f       	mov	r24, r18
- 2fe:	93 2f       	mov	r25, r19
- 300:	08 95       	ret
+ 37e:	82 2f       	mov	r24, r18
+ 380:	93 2f       	mov	r25, r19
+ 382:	08 95       	ret
 
-00000302 <keyMap>:
+00000384 <keyMap>:
 
-<<<<<<< HEAD
-int keyMap(int r,int c) { 										// maps (row,column) pairs to an integer value corresponding to a key
-=======
 int keyMap(int r,int c) { 								// maps (row,column) pairs to an integer value corresponding to a key
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
 	int k;
 														// adjust row value to account for 0 index
 		 if((r == ROW1) && (c == 1)) k = 0x31;
- 302:	00 97       	sbiw	r24, 0x00	; 0
- 304:	51 f4       	brne	.+20     	; 0x31a <keyMap+0x18>
- 306:	61 30       	cpi	r22, 0x01	; 1
- 308:	71 05       	cpc	r23, r1
- 30a:	81 f1       	breq	.+96     	; 0x36c <keyMap+0x6a>
+ 384:	00 97       	sbiw	r24, 0x00	; 0
+ 386:	51 f4       	brne	.+20     	; 0x39c <keyMap+0x18>
+ 388:	61 30       	cpi	r22, 0x01	; 1
+ 38a:	71 05       	cpc	r23, r1
+ 38c:	81 f1       	breq	.+96     	; 0x3ee <keyMap+0x6a>
 	else if((r == ROW1) && (c == 2)) k = 0x32;
- 30c:	62 30       	cpi	r22, 0x02	; 2
- 30e:	71 05       	cpc	r23, r1
- 310:	81 f1       	breq	.+96     	; 0x372 <keyMap+0x70>
+ 38e:	62 30       	cpi	r22, 0x02	; 2
+ 390:	71 05       	cpc	r23, r1
+ 392:	81 f1       	breq	.+96     	; 0x3f4 <keyMap+0x70>
 	else if((r == ROW1) && (c == 3)) k = 0x33;
- 312:	63 30       	cpi	r22, 0x03	; 3
- 314:	71 05       	cpc	r23, r1
- 316:	e9 f4       	brne	.+58     	; 0x352 <keyMap+0x50>
- 318:	2f c0       	rjmp	.+94     	; 0x378 <keyMap+0x76>
+ 394:	63 30       	cpi	r22, 0x03	; 3
+ 396:	71 05       	cpc	r23, r1
+ 398:	e9 f4       	brne	.+58     	; 0x3d4 <keyMap+0x50>
+ 39a:	2f c0       	rjmp	.+94     	; 0x3fa <keyMap+0x76>
 	else if((r == ROW2) && (c == 1)) k = 0x34;
- 31a:	81 30       	cpi	r24, 0x01	; 1
- 31c:	91 05       	cpc	r25, r1
- 31e:	51 f4       	brne	.+20     	; 0x334 <keyMap+0x32>
- 320:	61 30       	cpi	r22, 0x01	; 1
- 322:	71 05       	cpc	r23, r1
- 324:	61 f1       	breq	.+88     	; 0x37e <keyMap+0x7c>
+ 39c:	81 30       	cpi	r24, 0x01	; 1
+ 39e:	91 05       	cpc	r25, r1
+ 3a0:	51 f4       	brne	.+20     	; 0x3b6 <keyMap+0x32>
+ 3a2:	61 30       	cpi	r22, 0x01	; 1
+ 3a4:	71 05       	cpc	r23, r1
+ 3a6:	61 f1       	breq	.+88     	; 0x400 <keyMap+0x7c>
 	else if((r == ROW2) && (c == 2)) k = 0x35;
- 326:	62 30       	cpi	r22, 0x02	; 2
- 328:	71 05       	cpc	r23, r1
- 32a:	61 f1       	breq	.+88     	; 0x384 <keyMap+0x82>
+ 3a8:	62 30       	cpi	r22, 0x02	; 2
+ 3aa:	71 05       	cpc	r23, r1
+ 3ac:	61 f1       	breq	.+88     	; 0x406 <keyMap+0x82>
 	else if((r == ROW2) && (c == 3)) k = 0x36;
- 32c:	63 30       	cpi	r22, 0x03	; 3
- 32e:	71 05       	cpc	r23, r1
- 330:	e9 f5       	brne	.+122    	; 0x3ac <keyMap+0xaa>
- 332:	2b c0       	rjmp	.+86     	; 0x38a <keyMap+0x88>
+ 3ae:	63 30       	cpi	r22, 0x03	; 3
+ 3b0:	71 05       	cpc	r23, r1
+ 3b2:	e9 f5       	brne	.+122    	; 0x42e <keyMap+0xaa>
+ 3b4:	2b c0       	rjmp	.+86     	; 0x40c <keyMap+0x88>
 	else if((r == ROW3) && (c == 1)) k = 0x37;
- 334:	82 30       	cpi	r24, 0x02	; 2
- 336:	91 05       	cpc	r25, r1
- 338:	61 f4       	brne	.+24     	; 0x352 <keyMap+0x50>
- 33a:	61 30       	cpi	r22, 0x01	; 1
- 33c:	71 05       	cpc	r23, r1
- 33e:	41 f1       	breq	.+80     	; 0x390 <keyMap+0x8e>
+ 3b6:	82 30       	cpi	r24, 0x02	; 2
+ 3b8:	91 05       	cpc	r25, r1
+ 3ba:	61 f4       	brne	.+24     	; 0x3d4 <keyMap+0x50>
+ 3bc:	61 30       	cpi	r22, 0x01	; 1
+ 3be:	71 05       	cpc	r23, r1
+ 3c0:	41 f1       	breq	.+80     	; 0x412 <keyMap+0x8e>
 	else if((r == ROW3) && (c == 2)) k = 0x38;
- 340:	62 30       	cpi	r22, 0x02	; 2
- 342:	71 05       	cpc	r23, r1
- 344:	41 f1       	breq	.+80     	; 0x396 <keyMap+0x94>
+ 3c2:	62 30       	cpi	r22, 0x02	; 2
+ 3c4:	71 05       	cpc	r23, r1
+ 3c6:	41 f1       	breq	.+80     	; 0x418 <keyMap+0x94>
 	else if((r == ROW3) && (c == 3)) k = 0x39;
- 346:	63 30       	cpi	r22, 0x03	; 3
- 348:	71 05       	cpc	r23, r1
- 34a:	81 f5       	brne	.+96     	; 0x3ac <keyMap+0xaa>
- 34c:	29 e3       	ldi	r18, 0x39	; 57
- 34e:	30 e0       	ldi	r19, 0x00	; 0
- 350:	2d c0       	rjmp	.+90     	; 0x3ac <keyMap+0xaa>
+ 3c8:	63 30       	cpi	r22, 0x03	; 3
+ 3ca:	71 05       	cpc	r23, r1
+ 3cc:	81 f5       	brne	.+96     	; 0x42e <keyMap+0xaa>
+ 3ce:	29 e3       	ldi	r18, 0x39	; 57
+ 3d0:	30 e0       	ldi	r19, 0x00	; 0
+ 3d2:	2d c0       	rjmp	.+90     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW4) && (c == 1)) k = 0x2A;
- 352:	87 30       	cpi	r24, 0x07	; 7
- 354:	91 05       	cpc	r25, r1
- 356:	51 f5       	brne	.+84     	; 0x3ac <keyMap+0xaa>
- 358:	61 30       	cpi	r22, 0x01	; 1
- 35a:	71 05       	cpc	r23, r1
- 35c:	f9 f0       	breq	.+62     	; 0x39c <keyMap+0x9a>
+ 3d4:	87 30       	cpi	r24, 0x07	; 7
+ 3d6:	91 05       	cpc	r25, r1
+ 3d8:	51 f5       	brne	.+84     	; 0x42e <keyMap+0xaa>
+ 3da:	61 30       	cpi	r22, 0x01	; 1
+ 3dc:	71 05       	cpc	r23, r1
+ 3de:	f9 f0       	breq	.+62     	; 0x41e <keyMap+0x9a>
 	else if((r == ROW4) && (c == 2)) k = 0x30;
- 35e:	62 30       	cpi	r22, 0x02	; 2
- 360:	71 05       	cpc	r23, r1
- 362:	f9 f0       	breq	.+62     	; 0x3a2 <keyMap+0xa0>
+ 3e0:	62 30       	cpi	r22, 0x02	; 2
+ 3e2:	71 05       	cpc	r23, r1
+ 3e4:	f9 f0       	breq	.+62     	; 0x424 <keyMap+0xa0>
 	else if((r == ROW4) && (c == 3)) k = 0x23;
- 364:	63 30       	cpi	r22, 0x03	; 3
- 366:	71 05       	cpc	r23, r1
- 368:	09 f5       	brne	.+66     	; 0x3ac <keyMap+0xaa>
- 36a:	1e c0       	rjmp	.+60     	; 0x3a8 <keyMap+0xa6>
+ 3e6:	63 30       	cpi	r22, 0x03	; 3
+ 3e8:	71 05       	cpc	r23, r1
+ 3ea:	09 f5       	brne	.+66     	; 0x42e <keyMap+0xaa>
+ 3ec:	1e c0       	rjmp	.+60     	; 0x42a <keyMap+0xa6>
 }
 
-<<<<<<< HEAD
-int keyMap(int r,int c) { 										// maps (row,column) pairs to an integer value corresponding to a key
-=======
 int keyMap(int r,int c) { 								// maps (row,column) pairs to an integer value corresponding to a key
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
 	int k;
 														// adjust row value to account for 0 index
 		 if((r == ROW1) && (c == 1)) k = 0x31;
- 36c:	21 e3       	ldi	r18, 0x31	; 49
- 36e:	30 e0       	ldi	r19, 0x00	; 0
- 370:	1d c0       	rjmp	.+58     	; 0x3ac <keyMap+0xaa>
+ 3ee:	21 e3       	ldi	r18, 0x31	; 49
+ 3f0:	30 e0       	ldi	r19, 0x00	; 0
+ 3f2:	1d c0       	rjmp	.+58     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW1) && (c == 2)) k = 0x32;
- 372:	22 e3       	ldi	r18, 0x32	; 50
- 374:	30 e0       	ldi	r19, 0x00	; 0
- 376:	1a c0       	rjmp	.+52     	; 0x3ac <keyMap+0xaa>
+ 3f4:	22 e3       	ldi	r18, 0x32	; 50
+ 3f6:	30 e0       	ldi	r19, 0x00	; 0
+ 3f8:	1a c0       	rjmp	.+52     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW1) && (c == 3)) k = 0x33;
- 378:	23 e3       	ldi	r18, 0x33	; 51
- 37a:	30 e0       	ldi	r19, 0x00	; 0
- 37c:	17 c0       	rjmp	.+46     	; 0x3ac <keyMap+0xaa>
+ 3fa:	23 e3       	ldi	r18, 0x33	; 51
+ 3fc:	30 e0       	ldi	r19, 0x00	; 0
+ 3fe:	17 c0       	rjmp	.+46     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW2) && (c == 1)) k = 0x34;
- 37e:	24 e3       	ldi	r18, 0x34	; 52
- 380:	30 e0       	ldi	r19, 0x00	; 0
- 382:	14 c0       	rjmp	.+40     	; 0x3ac <keyMap+0xaa>
+ 400:	24 e3       	ldi	r18, 0x34	; 52
+ 402:	30 e0       	ldi	r19, 0x00	; 0
+ 404:	14 c0       	rjmp	.+40     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW2) && (c == 2)) k = 0x35;
- 384:	25 e3       	ldi	r18, 0x35	; 53
- 386:	30 e0       	ldi	r19, 0x00	; 0
- 388:	11 c0       	rjmp	.+34     	; 0x3ac <keyMap+0xaa>
+ 406:	25 e3       	ldi	r18, 0x35	; 53
+ 408:	30 e0       	ldi	r19, 0x00	; 0
+ 40a:	11 c0       	rjmp	.+34     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW2) && (c == 3)) k = 0x36;
- 38a:	26 e3       	ldi	r18, 0x36	; 54
- 38c:	30 e0       	ldi	r19, 0x00	; 0
- 38e:	0e c0       	rjmp	.+28     	; 0x3ac <keyMap+0xaa>
+ 40c:	26 e3       	ldi	r18, 0x36	; 54
+ 40e:	30 e0       	ldi	r19, 0x00	; 0
+ 410:	0e c0       	rjmp	.+28     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW3) && (c == 1)) k = 0x37;
- 390:	27 e3       	ldi	r18, 0x37	; 55
- 392:	30 e0       	ldi	r19, 0x00	; 0
- 394:	0b c0       	rjmp	.+22     	; 0x3ac <keyMap+0xaa>
+ 412:	27 e3       	ldi	r18, 0x37	; 55
+ 414:	30 e0       	ldi	r19, 0x00	; 0
+ 416:	0b c0       	rjmp	.+22     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW3) && (c == 2)) k = 0x38;
- 396:	28 e3       	ldi	r18, 0x38	; 56
- 398:	30 e0       	ldi	r19, 0x00	; 0
- 39a:	08 c0       	rjmp	.+16     	; 0x3ac <keyMap+0xaa>
+ 418:	28 e3       	ldi	r18, 0x38	; 56
+ 41a:	30 e0       	ldi	r19, 0x00	; 0
+ 41c:	08 c0       	rjmp	.+16     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW3) && (c == 3)) k = 0x39;
 	else if((r == ROW4) && (c == 1)) k = 0x2A;
- 39c:	2a e2       	ldi	r18, 0x2A	; 42
- 39e:	30 e0       	ldi	r19, 0x00	; 0
- 3a0:	05 c0       	rjmp	.+10     	; 0x3ac <keyMap+0xaa>
+ 41e:	2a e2       	ldi	r18, 0x2A	; 42
+ 420:	30 e0       	ldi	r19, 0x00	; 0
+ 422:	05 c0       	rjmp	.+10     	; 0x42e <keyMap+0xaa>
 	else if((r == ROW4) && (c == 2)) k = 0x30;
- 3a2:	20 e3       	ldi	r18, 0x30	; 48
- 3a4:	30 e0       	ldi	r19, 0x00	; 0
- 3a6:	02 c0       	rjmp	.+4      	; 0x3ac <keyMap+0xaa>
+ 424:	20 e3       	ldi	r18, 0x30	; 48
+ 426:	30 e0       	ldi	r19, 0x00	; 0
+ 428:	02 c0       	rjmp	.+4      	; 0x42e <keyMap+0xaa>
 	else if((r == ROW4) && (c == 3)) k = 0x23;
- 3a8:	23 e2       	ldi	r18, 0x23	; 35
- 3aa:	30 e0       	ldi	r19, 0x00	; 0
+ 42a:	23 e2       	ldi	r18, 0x23	; 35
+ 42c:	30 e0       	ldi	r19, 0x00	; 0
 	return k;
 }
- 3ac:	82 2f       	mov	r24, r18
- 3ae:	93 2f       	mov	r25, r19
- 3b0:	08 95       	ret
+ 42e:	82 2f       	mov	r24, r18
+ 430:	93 2f       	mov	r25, r19
+ 432:	08 95       	ret
 
-000003b2 <getKeyPress>:
+00000434 <getKeyPress>:
 int lock_state = 1;										// will be updated by Colin's lock/unlock functions
 int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
 int current_key;
 
 // adds the most recent key press to the key_queue
 void getKeyPress(void){		
- 3b2:	cf 93       	push	r28
- 3b4:	df 93       	push	r29
+ 434:	cf 93       	push	r28
+ 436:	df 93       	push	r29
 	int row;
 	int col;
 	int key;							
 	row = getRow();									// get the row of current key being pressed
- 3b6:	62 df       	rcall	.-316    	; 0x27c <getRow>
- 3b8:	ec 01       	movw	r28, r24
+ 438:	62 df       	rcall	.-316    	; 0x2fe <getRow>
+ 43a:	ec 01       	movw	r28, r24
 	col = getCol(row); 								// get the col of current key being pressed		
- 3ba:	75 df       	rcall	.-278    	; 0x2a6 <getCol>
- 3bc:	bc 01       	movw	r22, r24
+ 43c:	75 df       	rcall	.-278    	; 0x328 <getCol>
+ 43e:	bc 01       	movw	r22, r24
 	key = keyMap(row,col);							// will hold the key value to be added to queue
- 3be:	ce 01       	movw	r24, r28
- 3c0:	a0 df       	rcall	.-192    	; 0x302 <keyMap>
+ 440:	ce 01       	movw	r24, r28
+ 442:	a0 df       	rcall	.-192    	; 0x384 <keyMap>
 	//pushKey(key); 									// push key onto queue		
 	current_key = key;
-<<<<<<< HEAD
- 3c2:	90 93 03 01 	sts	0x0103, r25
- 3c6:	80 93 02 01 	sts	0x0102, r24
-=======
- 3c2:	90 93 31 01 	sts	0x0131, r25
- 3c6:	80 93 30 01 	sts	0x0130, r24
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+ 444:	90 93 e3 01 	sts	0x01E3, r25
+ 448:	80 93 e2 01 	sts	0x01E2, r24
 }
- 3ca:	df 91       	pop	r29
- 3cc:	cf 91       	pop	r28
- 3ce:	08 95       	ret
+ 44c:	df 91       	pop	r29
+ 44e:	cf 91       	pop	r28
+ 450:	08 95       	ret
 
-000003d0 <popKey>:
+00000452 <popKey>:
 	else if((r == ROW4) && (c == 3)) k = 0x23;
 	return k;
 }
 
 int popKey(void){ 											// pop first element and shift queue;
 	int k = key_queue[0];
-<<<<<<< HEAD
- 3d0:	44 e0       	ldi	r20, 0x04	; 4
- 3d2:	51 e0       	ldi	r21, 0x01	; 1
- 3d4:	80 91 04 01 	lds	r24, 0x0104
- 3d8:	90 91 05 01 	lds	r25, 0x0105
-=======
- 3d0:	42 e3       	ldi	r20, 0x32	; 50
- 3d2:	51 e0       	ldi	r21, 0x01	; 1
- 3d4:	80 91 32 01 	lds	r24, 0x0132
- 3d8:	90 91 33 01 	lds	r25, 0x0133
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
- 3dc:	fa 01       	movw	r30, r20
+ 452:	44 ee       	ldi	r20, 0xE4	; 228
+ 454:	51 e0       	ldi	r21, 0x01	; 1
+ 456:	80 91 e4 01 	lds	r24, 0x01E4
+ 45a:	90 91 e5 01 	lds	r25, 0x01E5
+ 45e:	fa 01       	movw	r30, r20
 	else if((r == ROW4) && (c == 2)) k = 0x30;
 	else if((r == ROW4) && (c == 3)) k = 0x23;
 	return k;
 }
 
 int popKey(void){ 											// pop first element and shift queue;
- 3de:	40 5f       	subi	r20, 0xF0	; 240
- 3e0:	5f 4f       	sbci	r21, 0xFF	; 255
+ 460:	4e 5e       	subi	r20, 0xEE	; 238
+ 462:	5f 4f       	sbci	r21, 0xFF	; 255
 	int k = key_queue[0];
 	for(int i = 0; i < KEY_QUEUE_SIZE - 1; i++){
 		key_queue[i] = key_queue[i+1];
- 3e2:	22 81       	ldd	r18, Z+2	; 0x02
- 3e4:	33 81       	ldd	r19, Z+3	; 0x03
- 3e6:	21 93       	st	Z+, r18
- 3e8:	31 93       	st	Z+, r19
+ 464:	22 81       	ldd	r18, Z+2	; 0x02
+ 466:	33 81       	ldd	r19, Z+3	; 0x03
+ 468:	21 93       	st	Z+, r18
+ 46a:	31 93       	st	Z+, r19
 	return k;
 }
 
 int popKey(void){ 											// pop first element and shift queue;
 	int k = key_queue[0];
 	for(int i = 0; i < KEY_QUEUE_SIZE - 1; i++){
- 3ea:	e4 17       	cp	r30, r20
- 3ec:	f5 07       	cpc	r31, r21
- 3ee:	c9 f7       	brne	.-14     	; 0x3e2 <popKey+0x12>
+ 46c:	e4 17       	cp	r30, r20
+ 46e:	f5 07       	cpc	r31, r21
+ 470:	c9 f7       	brne	.-14     	; 0x464 <popKey+0x12>
 		key_queue[i] = key_queue[i+1];
 	}	
 	key_queue[KEY_QUEUE_SIZE-1] = '\0';
-<<<<<<< HEAD
- 3f0:	10 92 15 01 	sts	0x0115, r1
- 3f4:	10 92 14 01 	sts	0x0114, r1
-=======
- 3f0:	10 92 43 01 	sts	0x0143, r1
- 3f4:	10 92 42 01 	sts	0x0142, r1
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+ 472:	10 92 f7 01 	sts	0x01F7, r1
+ 476:	10 92 f6 01 	sts	0x01F6, r1
 	return k;
 }
- 3f8:	08 95       	ret
+ 47a:	08 95       	ret
 
-000003fa <pushKey>:
+0000047c <pushKey>:
 
 void pushKey(int k){ 										// shift queue and update first element
- 3fa:	ac 01       	movw	r20, r24
-<<<<<<< HEAD
- 3fc:	e4 e1       	ldi	r30, 0x14	; 20
-=======
- 3fc:	e2 e4       	ldi	r30, 0x42	; 66
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
- 3fe:	f1 e0       	ldi	r31, 0x01	; 1
- 400:	cf 01       	movw	r24, r30
- 402:	40 97       	sbiw	r24, 0x10	; 16
+ 47c:	ac 01       	movw	r20, r24
+ 47e:	e6 ef       	ldi	r30, 0xF6	; 246
+ 480:	f1 e0       	ldi	r31, 0x01	; 1
+ 482:	cf 01       	movw	r24, r30
+ 484:	42 97       	sbiw	r24, 0x12	; 18
 	for(int i = KEY_QUEUE_SIZE - 1; i > 0; i--){
 		key_queue[i] = key_queue[i-1];
- 404:	32 91       	ld	r19, -Z
- 406:	22 91       	ld	r18, -Z
- 408:	33 83       	std	Z+3, r19	; 0x03
- 40a:	22 83       	std	Z+2, r18	; 0x02
+ 486:	32 91       	ld	r19, -Z
+ 488:	22 91       	ld	r18, -Z
+ 48a:	33 83       	std	Z+3, r19	; 0x03
+ 48c:	22 83       	std	Z+2, r18	; 0x02
 	key_queue[KEY_QUEUE_SIZE-1] = '\0';
 	return k;
 }
 
 void pushKey(int k){ 										// shift queue and update first element
 	for(int i = KEY_QUEUE_SIZE - 1; i > 0; i--){
- 40c:	e8 17       	cp	r30, r24
- 40e:	f9 07       	cpc	r31, r25
- 410:	c9 f7       	brne	.-14     	; 0x404 <pushKey+0xa>
+ 48e:	e8 17       	cp	r30, r24
+ 490:	f9 07       	cpc	r31, r25
+ 492:	c9 f7       	brne	.-14     	; 0x486 <pushKey+0xa>
 		key_queue[i] = key_queue[i-1];
 	}
 	key_queue[0] = k;		
-<<<<<<< HEAD
- 412:	50 93 05 01 	sts	0x0105, r21
- 416:	40 93 04 01 	sts	0x0104, r20
-=======
- 412:	50 93 33 01 	sts	0x0133, r21
- 416:	40 93 32 01 	sts	0x0132, r20
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+ 494:	50 93 e5 01 	sts	0x01E5, r21
+ 498:	40 93 e4 01 	sts	0x01E4, r20
 }
- 41a:	08 95       	ret
+ 49c:	08 95       	ret
 
-0000041c <clearKeyQueue>:
+0000049e <clearKeyQueue>:
 
 void clearKeyQueue(void){ 										// clears submit_input, code_input, and input_index
-<<<<<<< HEAD
- 41c:	e4 e0       	ldi	r30, 0x04	; 4
-=======
- 41c:	e2 e3       	ldi	r30, 0x32	; 50
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
- 41e:	f1 e0       	ldi	r31, 0x01	; 1
- 420:	cf 01       	movw	r24, r30
- 422:	42 96       	adiw	r24, 0x12	; 18
+ 49e:	e4 ee       	ldi	r30, 0xE4	; 228
+ 4a0:	f1 e0       	ldi	r31, 0x01	; 1
+ 4a2:	cf 01       	movw	r24, r30
+ 4a4:	44 96       	adiw	r24, 0x14	; 20
 	for(int i = 0; i < KEY_QUEUE_SIZE; i++){
 		key_queue[i] = '\0';
- 424:	11 92       	st	Z+, r1
- 426:	11 92       	st	Z+, r1
+ 4a6:	11 92       	st	Z+, r1
+ 4a8:	11 92       	st	Z+, r1
 	}
 	key_queue[0] = k;		
 }
 
 void clearKeyQueue(void){ 										// clears submit_input, code_input, and input_index
 	for(int i = 0; i < KEY_QUEUE_SIZE; i++){
- 428:	e8 17       	cp	r30, r24
- 42a:	f9 07       	cpc	r31, r25
- 42c:	d9 f7       	brne	.-10     	; 0x424 <clearKeyQueue+0x8>
+ 4aa:	e8 17       	cp	r30, r24
+ 4ac:	f9 07       	cpc	r31, r25
+ 4ae:	d9 f7       	brne	.-10     	; 0x4a6 <clearKeyQueue+0x8>
 		key_queue[i] = '\0';
 	}
 	
- 42e:	08 95       	ret
+}
+ 4b0:	08 95       	ret
 
-<<<<<<< HEAD
-00000430 <main>:
-#include "EEPROM_RW.c"			// EEPROM_RW.c - EEPROM read/write functions
-#include "keypad.h"				// keypad.h function library - Function prototypes
-#include "keypad.c"				// keypad.c function library - Functions only
+000004b2 <initRows>:
 
-int main(void)
-{
- 430:	ff cf       	rjmp	.-2      	; 0x430 <main>
+void initRows(int r[]){									// sets keypad rows as inputs
+ 4b2:	e8 2f       	mov	r30, r24
+ 4b4:	f9 2f       	mov	r31, r25
+ 4b6:	84 e0       	ldi	r24, 0x04	; 4
+ 4b8:	90 e0       	ldi	r25, 0x00	; 0
+for(int i = 0; i < NUM_ROWS; i++){
+	DDRB &= ~(1 << r[i]);
+ 4ba:	41 e0       	ldi	r20, 0x01	; 1
+ 4bc:	50 e0       	ldi	r21, 0x00	; 0
+ 4be:	64 b1       	in	r22, 0x04	; 4
+ 4c0:	20 81       	ld	r18, Z
+ 4c2:	32 96       	adiw	r30, 0x02	; 2
+ 4c4:	da 01       	movw	r26, r20
+ 4c6:	02 c0       	rjmp	.+4      	; 0x4cc <initRows+0x1a>
+ 4c8:	aa 0f       	add	r26, r26
+ 4ca:	bb 1f       	adc	r27, r27
+ 4cc:	2a 95       	dec	r18
+ 4ce:	e2 f7       	brpl	.-8      	; 0x4c8 <initRows+0x16>
+ 4d0:	9d 01       	movw	r18, r26
+ 4d2:	20 95       	com	r18
+ 4d4:	26 23       	and	r18, r22
+ 4d6:	24 b9       	out	0x04, r18	; 4
+ 4d8:	01 97       	sbiw	r24, 0x01	; 1
+	}
+	
+}
 
-00000432 <__eerd_byte_m48a>:
- 432:	f9 99       	sbic	0x1f, 1	; 31
- 434:	fe cf       	rjmp	.-4      	; 0x432 <__eerd_byte_m48a>
- 436:	12 bc       	out	0x22, r1	; 34
- 438:	81 bd       	out	0x21, r24	; 33
- 43a:	f8 9a       	sbi	0x1f, 0	; 31
- 43c:	99 27       	eor	r25, r25
- 43e:	80 b5       	in	r24, 0x20	; 32
- 440:	08 95       	ret
+void initRows(int r[]){									// sets keypad rows as inputs
+for(int i = 0; i < NUM_ROWS; i++){
+ 4da:	89 f7       	brne	.-30     	; 0x4be <initRows+0xc>
+	DDRB &= ~(1 << r[i]);
+}
+}
+ 4dc:	08 95       	ret
 
-00000442 <__eewr_byte_m48a>:
- 442:	26 2f       	mov	r18, r22
+000004de <initColumns>:
 
-00000444 <__eewr_r18_m48a>:
- 444:	f9 99       	sbic	0x1f, 1	; 31
- 446:	fe cf       	rjmp	.-4      	; 0x444 <__eewr_r18_m48a>
- 448:	1f ba       	out	0x1f, r1	; 31
- 44a:	12 bc       	out	0x22, r1	; 34
- 44c:	81 bd       	out	0x21, r24	; 33
- 44e:	20 bd       	out	0x20, r18	; 32
- 450:	0f b6       	in	r0, 0x3f	; 63
- 452:	f8 94       	cli
- 454:	fa 9a       	sbi	0x1f, 2	; 31
- 456:	f9 9a       	sbi	0x1f, 1	; 31
- 458:	0f be       	out	0x3f, r0	; 63
- 45a:	01 96       	adiw	r24, 0x01	; 1
- 45c:	08 95       	ret
+void initColumns(int c[]){								// sets keypad columns as outputs
+	for(int i = 0; i < NUM_COLS; i++){
+ 4de:	e8 2f       	mov	r30, r24
+ 4e0:	f9 2f       	mov	r31, r25
+ 4e2:	20 e0       	ldi	r18, 0x00	; 0
+ 4e4:	30 e0       	ldi	r19, 0x00	; 0
+		PORTB &= ~(1 << c[i]);							// columns to output low
+ 4e6:	41 e0       	ldi	r20, 0x01	; 1
+ 4e8:	50 e0       	ldi	r21, 0x00	; 0
+ 4ea:	65 b1       	in	r22, 0x05	; 5
+for(int i = 0; i < NUM_ROWS; i++){
+	DDRB &= ~(1 << r[i]);
+}
+}
 
-0000045e <_exit>:
- 45e:	f8 94       	cli
+void initColumns(int c[]){								// sets keypad columns as outputs
+ 4ec:	df 01       	movw	r26, r30
+	for(int i = 0; i < NUM_COLS; i++){
+		PORTB &= ~(1 << c[i]);							// columns to output low
+ 4ee:	ca 01       	movw	r24, r20
+ 4f0:	00 80       	ld	r0, Z
+ 4f2:	02 c0       	rjmp	.+4      	; 0x4f8 <initColumns+0x1a>
+ 4f4:	88 0f       	add	r24, r24
+ 4f6:	99 1f       	adc	r25, r25
+ 4f8:	0a 94       	dec	r0
+ 4fa:	e2 f7       	brpl	.-8      	; 0x4f4 <initColumns+0x16>
+ 4fc:	80 95       	com	r24
+ 4fe:	86 23       	and	r24, r22
+ 500:	85 b9       	out	0x05, r24	; 5
+		DDRB |= (1 << c[i]);							// set columns as outputs
+ 502:	64 b1       	in	r22, 0x04	; 4
+ 504:	32 96       	adiw	r30, 0x02	; 2
+ 506:	ca 01       	movw	r24, r20
+ 508:	0c 90       	ld	r0, X
+ 50a:	02 c0       	rjmp	.+4      	; 0x510 <initColumns+0x32>
+ 50c:	88 0f       	add	r24, r24
+ 50e:	99 1f       	adc	r25, r25
+ 510:	0a 94       	dec	r0
+ 512:	e2 f7       	brpl	.-8      	; 0x50c <initColumns+0x2e>
+ 514:	86 2b       	or	r24, r22
+ 516:	84 b9       	out	0x04, r24	; 4
+	DDRB &= ~(1 << r[i]);
+}
+}
 
-00000460 <__stop_program>:
- 460:	ff cf       	rjmp	.-2      	; 0x460 <__stop_program>
-=======
-00000430 <unlock>:
+void initColumns(int c[]){								// sets keypad columns as outputs
+	for(int i = 0; i < NUM_COLS; i++){
+ 518:	2f 5f       	subi	r18, 0xFF	; 255
+ 51a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 51c:	23 30       	cpi	r18, 0x03	; 3
+ 51e:	31 05       	cpc	r19, r1
+ 520:	21 f7       	brne	.-56     	; 0x4ea <initColumns+0xc>
+		PORTB &= ~(1 << c[i]);							// columns to output low
+		DDRB |= (1 << c[i]);							// set columns as outputs
+	}
+}
+ 522:	08 95       	ret
+
+00000524 <unlock>:
 #define BUFFER 250				// pause for 1/4 sec to allow motor to shove off
 
 
 int unlock(int status)
 {
 	cli();							// disable interrupt
- 430:	f8 94       	cli
+ 524:	f8 94       	cli
 	
 	if(status != 0)					// if not open, open
- 432:	00 97       	sbiw	r24, 0x00	; 0
- 434:	09 f0       	breq	.+2      	; 0x438 <unlock+0x8>
+ 526:	00 97       	sbiw	r24, 0x00	; 0
+ 528:	09 f0       	breq	.+2      	; 0x52c <unlock+0x8>
 		MOTORPORT |= PULLIN;		// FIN goes high, lock shoves off
- 436:	5c 9a       	sbi	0x0b, 4	; 11
+ 52a:	5c 9a       	sbi	0x0b, 4	; 11
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 438:	e3 e2       	ldi	r30, 0x23	; 35
- 43a:	f4 ef       	ldi	r31, 0xF4	; 244
- 43c:	31 97       	sbiw	r30, 0x01	; 1
- 43e:	f1 f7       	brne	.-4      	; 0x43c <unlock+0xc>
- 440:	00 c0       	rjmp	.+0      	; 0x442 <unlock+0x12>
- 442:	00 00       	nop
+ 52c:	e3 e2       	ldi	r30, 0x23	; 35
+ 52e:	f4 ef       	ldi	r31, 0xF4	; 244
+ 530:	31 97       	sbiw	r30, 0x01	; 1
+ 532:	f1 f7       	brne	.-4      	; 0x530 <unlock+0xc>
+ 534:	00 c0       	rjmp	.+0      	; 0x536 <unlock+0x12>
+ 536:	00 00       	nop
 	
 	_delay_ms(BUFFER);				// motor propagation delay
 	
 	while(status != 0){				// while not open
- 444:	00 97       	sbiw	r24, 0x00	; 0
- 446:	31 f4       	brne	.+12     	; 0x454 <unlock+0x24>
- 448:	09 c0       	rjmp	.+18     	; 0x45c <unlock+0x2c>
+ 538:	00 97       	sbiw	r24, 0x00	; 0
+ 53a:	31 f4       	brne	.+12     	; 0x548 <unlock+0x24>
+ 53c:	09 c0       	rjmp	.+18     	; 0x550 <unlock+0x2c>
 									
 		if((FDBKPORT & (1<<FDBKPIN))==0)	// check for button press
- 44a:	1e 99       	sbic	0x03, 6	; 3
- 44c:	fe cf       	rjmp	.-4      	; 0x44a <unlock+0x1a>
+ 53e:	1e 99       	sbic	0x03, 6	; 3
+ 540:	fe cf       	rjmp	.-4      	; 0x53e <unlock+0x1a>
 			status = 0;						// lock is 0=open
- 44e:	80 e0       	ldi	r24, 0x00	; 0
- 450:	90 e0       	ldi	r25, 0x00	; 0
- 452:	04 c0       	rjmp	.+8      	; 0x45c <unlock+0x2c>
+ 542:	80 e0       	ldi	r24, 0x00	; 0
+ 544:	90 e0       	ldi	r25, 0x00	; 0
+ 546:	04 c0       	rjmp	.+8      	; 0x550 <unlock+0x2c>
 	
 	_delay_ms(BUFFER);				// motor propagation delay
 	
 	while(status != 0){				// while not open
 									
 		if((FDBKPORT & (1<<FDBKPIN))==0)	// check for button press
- 454:	1e 99       	sbic	0x03, 6	; 3
- 456:	f9 cf       	rjmp	.-14     	; 0x44a <unlock+0x1a>
+ 548:	1e 99       	sbic	0x03, 6	; 3
+ 54a:	f9 cf       	rjmp	.-14     	; 0x53e <unlock+0x1a>
 			status = 0;						// lock is 0=open
- 458:	80 e0       	ldi	r24, 0x00	; 0
- 45a:	90 e0       	ldi	r25, 0x00	; 0
+ 54c:	80 e0       	ldi	r24, 0x00	; 0
+ 54e:	90 e0       	ldi	r25, 0x00	; 0
 	}		
 
 	MOTORPORT &= ~PULLIN;		// FIN goes low, lock stops
- 45c:	5c 98       	cbi	0x0b, 4	; 11
+ 550:	5c 98       	cbi	0x0b, 4	; 11
 	sei();						// re-enable interrupt
- 45e:	78 94       	sei
+ 552:	78 94       	sei
 	return status;				// update lock state
 }
- 460:	08 95       	ret
+ 554:	08 95       	ret
 
-00000462 <lock>:
+00000556 <lock>:
 
 int lock(int status)
 {
 	cli();						// disable interrupt
- 462:	f8 94       	cli
+ 556:	f8 94       	cli
 	
 	if(status != 1)					// if not locked, lock
- 464:	81 30       	cpi	r24, 0x01	; 1
- 466:	91 05       	cpc	r25, r1
- 468:	09 f0       	breq	.+2      	; 0x46c <lock+0xa>
+ 558:	81 30       	cpi	r24, 0x01	; 1
+ 55a:	91 05       	cpc	r25, r1
+ 55c:	09 f0       	breq	.+2      	; 0x560 <lock+0xa>
 		MOTORPORT |= PUSHOUT;		// RIN goes high, lock shoves off
- 46a:	5b 9a       	sbi	0x0b, 3	; 11
- 46c:	e3 e2       	ldi	r30, 0x23	; 35
- 46e:	f4 ef       	ldi	r31, 0xF4	; 244
- 470:	31 97       	sbiw	r30, 0x01	; 1
- 472:	f1 f7       	brne	.-4      	; 0x470 <lock+0xe>
- 474:	00 c0       	rjmp	.+0      	; 0x476 <lock+0x14>
- 476:	00 00       	nop
+ 55e:	5b 9a       	sbi	0x0b, 3	; 11
+ 560:	e3 e2       	ldi	r30, 0x23	; 35
+ 562:	f4 ef       	ldi	r31, 0xF4	; 244
+ 564:	31 97       	sbiw	r30, 0x01	; 1
+ 566:	f1 f7       	brne	.-4      	; 0x564 <lock+0xe>
+ 568:	00 c0       	rjmp	.+0      	; 0x56a <lock+0x14>
+ 56a:	00 00       	nop
 	
 	_delay_ms(BUFFER);				// motor propagation delay
 	
 	while(status != 1){				// while not open
- 478:	81 30       	cpi	r24, 0x01	; 1
- 47a:	91 05       	cpc	r25, r1
- 47c:	31 f4       	brne	.+12     	; 0x48a <lock+0x28>
- 47e:	09 c0       	rjmp	.+18     	; 0x492 <lock+0x30>
+ 56c:	81 30       	cpi	r24, 0x01	; 1
+ 56e:	91 05       	cpc	r25, r1
+ 570:	31 f4       	brne	.+12     	; 0x57e <lock+0x28>
+ 572:	09 c0       	rjmp	.+18     	; 0x586 <lock+0x30>
 	
 		if((FDBKPORT & (1<<FDBKPIN))==0)	// check for button press
- 480:	1e 99       	sbic	0x03, 6	; 3
- 482:	fe cf       	rjmp	.-4      	; 0x480 <lock+0x1e>
+ 574:	1e 99       	sbic	0x03, 6	; 3
+ 576:	fe cf       	rjmp	.-4      	; 0x574 <lock+0x1e>
 			status = 1;						// lock is 1=locked
- 484:	81 e0       	ldi	r24, 0x01	; 1
- 486:	90 e0       	ldi	r25, 0x00	; 0
- 488:	04 c0       	rjmp	.+8      	; 0x492 <lock+0x30>
+ 578:	81 e0       	ldi	r24, 0x01	; 1
+ 57a:	90 e0       	ldi	r25, 0x00	; 0
+ 57c:	04 c0       	rjmp	.+8      	; 0x586 <lock+0x30>
 	
 	_delay_ms(BUFFER);				// motor propagation delay
 	
 	while(status != 1){				// while not open
 	
 		if((FDBKPORT & (1<<FDBKPIN))==0)	// check for button press
- 48a:	1e 99       	sbic	0x03, 6	; 3
- 48c:	f9 cf       	rjmp	.-14     	; 0x480 <lock+0x1e>
+ 57e:	1e 99       	sbic	0x03, 6	; 3
+ 580:	f9 cf       	rjmp	.-14     	; 0x574 <lock+0x1e>
 			status = 1;						// lock is 1=locked
- 48e:	81 e0       	ldi	r24, 0x01	; 1
- 490:	90 e0       	ldi	r25, 0x00	; 0
+ 582:	81 e0       	ldi	r24, 0x01	; 1
+ 584:	90 e0       	ldi	r25, 0x00	; 0
 	}
 
 	MOTORPORT &= ~PUSHOUT;		// RIN goes low, lock stops
- 492:	5b 98       	cbi	0x0b, 3	; 11
+ 586:	5b 98       	cbi	0x0b, 3	; 11
 	sei();						// re-enable interrupt
- 494:	78 94       	sei
+ 588:	78 94       	sei
 	return status;				// update lock state
 }
- 496:	08 95       	ret
+ 58a:	08 95       	ret
 
-00000498 <__vector_3>:
+0000058c <getCurrentUserInput>:
+#include "keypad.c"				// keypad.c function library - Functions only
+#include "lockCode.h"			// lockCode.h function library - Function prototypes
+#include "lockCode.c"			// lockcCocde.h function library - Functions only
 
+// Puts the users inputs in an array after the '*' is pressed
+void getCurrentUserInput(int count_queue, int *current_user_input[9]){
+ 58c:	ac 01       	movw	r20, r24
+	int i;
+	for(int i = count_queue; i>=0; i--){
+ 58e:	99 23       	and	r25, r25
+ 590:	7c f0       	brlt	.+30     	; 0x5b0 <getCurrentUserInput+0x24>
+#include "keypad.c"				// keypad.c function library - Functions only
+#include "lockCode.h"			// lockCode.h function library - Function prototypes
+#include "lockCode.c"			// lockcCocde.h function library - Functions only
 
-void initRows(int r[]);
-void initColumns(int c[]);
+// Puts the users inputs in an array after the '*' is pressed
+void getCurrentUserInput(int count_queue, int *current_user_input[9]){
+ 592:	fc 01       	movw	r30, r24
+ 594:	ee 0f       	add	r30, r30
+ 596:	ff 1f       	adc	r31, r31
+ 598:	ea 51       	subi	r30, 0x1A	; 26
+ 59a:	fe 4f       	sbci	r31, 0xFE	; 254
+	int i;
+	for(int i = count_queue; i>=0; i--){
+ 59c:	db 01       	movw	r26, r22
+#include "keypad.c"				// keypad.c function library - Functions only
+#include "lockCode.h"			// lockCode.h function library - Function prototypes
+#include "lockCode.c"			// lockcCocde.h function library - Functions only
+
+// Puts the users inputs in an array after the '*' is pressed
+void getCurrentUserInput(int count_queue, int *current_user_input[9]){
+ 59e:	24 ee       	ldi	r18, 0xE4	; 228
+ 5a0:	31 e0       	ldi	r19, 0x01	; 1
+	int i;
+	for(int i = count_queue; i>=0; i--){
+		current_user_input[count_queue - i] = key_queue[i];
+ 5a2:	92 91       	ld	r25, -Z
+ 5a4:	82 91       	ld	r24, -Z
+ 5a6:	8d 93       	st	X+, r24
+ 5a8:	9d 93       	st	X+, r25
+#include "lockCode.c"			// lockcCocde.h function library - Functions only
+
+// Puts the users inputs in an array after the '*' is pressed
+void getCurrentUserInput(int count_queue, int *current_user_input[9]){
+	int i;
+	for(int i = count_queue; i>=0; i--){
+ 5aa:	e2 17       	cp	r30, r18
+ 5ac:	f3 07       	cpc	r31, r19
+ 5ae:	c9 f7       	brne	.-14     	; 0x5a2 <getCurrentUserInput+0x16>
+		current_user_input[count_queue - i] = key_queue[i];
+	}		
+	for(int i = count_queue+1; i < 9; i++){
+ 5b0:	fa 01       	movw	r30, r20
+ 5b2:	31 96       	adiw	r30, 0x01	; 1
+ 5b4:	e9 30       	cpi	r30, 0x09	; 9
+ 5b6:	f1 05       	cpc	r31, r1
+ 5b8:	5c f4       	brge	.+22     	; 0x5d0 <getCurrentUserInput+0x44>
+#include "keypad.c"				// keypad.c function library - Functions only
+#include "lockCode.h"			// lockCode.h function library - Function prototypes
+#include "lockCode.c"			// lockcCocde.h function library - Functions only
+
+// Puts the users inputs in an array after the '*' is pressed
+void getCurrentUserInput(int count_queue, int *current_user_input[9]){
+ 5ba:	ee 0f       	add	r30, r30
+ 5bc:	ff 1f       	adc	r31, r31
+ 5be:	e6 0f       	add	r30, r22
+ 5c0:	f7 1f       	adc	r31, r23
+	int i;
+	for(int i = count_queue; i>=0; i--){
+		current_user_input[count_queue - i] = key_queue[i];
+	}		
+	for(int i = count_queue+1; i < 9; i++){
+		current_user_input[i] = '\0';	
+ 5c2:	11 92       	st	Z+, r1
+ 5c4:	11 92       	st	Z+, r1
+ 5c6:	4f 5f       	subi	r20, 0xFF	; 255
+ 5c8:	5f 4f       	sbci	r21, 0xFF	; 255
+void getCurrentUserInput(int count_queue, int *current_user_input[9]){
+	int i;
+	for(int i = count_queue; i>=0; i--){
+		current_user_input[count_queue - i] = key_queue[i];
+	}		
+	for(int i = count_queue+1; i < 9; i++){
+ 5ca:	48 30       	cpi	r20, 0x08	; 8
+ 5cc:	51 05       	cpc	r21, r1
+ 5ce:	c9 f7       	brne	.-14     	; 0x5c2 <getCurrentUserInput+0x36>
+ 5d0:	08 95       	ret
+
+000005d2 <testLock>:
+		current_user_input[i] = '\0';	
+	}
+}
+
+int testLock(int status){
+	DDRD |= (1 << PD6);
+ 5d2:	56 9a       	sbi	0x0a, 6	; 10
+	PORTD |= (1 << PD6);
+ 5d4:	5e 9a       	sbi	0x0b, 6	; 11
+	return status = 1;
+}
+ 5d6:	81 e0       	ldi	r24, 0x01	; 1
+ 5d8:	90 e0       	ldi	r25, 0x00	; 0
+ 5da:	08 95       	ret
+
+000005dc <testUnlock>:
+
+int testUnlock(int status){
+	DDRD |= (1 << PD6);
+ 5dc:	56 9a       	sbi	0x0a, 6	; 10
+	PORTD &= ~(1 << PD6);
+ 5de:	5e 98       	cbi	0x0b, 6	; 11
+	return status = 0;
+}
+ 5e0:	80 e0       	ldi	r24, 0x00	; 0
+ 5e2:	90 e0       	ldi	r25, 0x00	; 0
+ 5e4:	08 95       	ret
+
+000005e6 <__vector_3>:
 
 ISR(PCINT0_vect){
- 498:	1f 92       	push	r1
- 49a:	0f 92       	push	r0
- 49c:	0f b6       	in	r0, 0x3f	; 63
- 49e:	0f 92       	push	r0
- 4a0:	11 24       	eor	r1, r1
- 4a2:	2f 93       	push	r18
- 4a4:	3f 93       	push	r19
- 4a6:	4f 93       	push	r20
- 4a8:	5f 93       	push	r21
- 4aa:	6f 93       	push	r22
- 4ac:	7f 93       	push	r23
- 4ae:	8f 93       	push	r24
- 4b0:	9f 93       	push	r25
- 4b2:	af 93       	push	r26
- 4b4:	bf 93       	push	r27
- 4b6:	ef 93       	push	r30
- 4b8:	ff 93       	push	r31
- 4ba:	81 ee       	ldi	r24, 0xE1	; 225
- 4bc:	94 e0       	ldi	r25, 0x04	; 4
- 4be:	01 97       	sbiw	r24, 0x01	; 1
- 4c0:	f1 f7       	brne	.-4      	; 0x4be <__vector_3+0x26>
- 4c2:	00 c0       	rjmp	.+0      	; 0x4c4 <__vector_3+0x2c>
- 4c4:	00 00       	nop
+ 5e6:	1f 92       	push	r1
+ 5e8:	0f 92       	push	r0
+ 5ea:	0f b6       	in	r0, 0x3f	; 63
+ 5ec:	0f 92       	push	r0
+ 5ee:	11 24       	eor	r1, r1
+ 5f0:	2f 93       	push	r18
+ 5f2:	3f 93       	push	r19
+ 5f4:	4f 93       	push	r20
+ 5f6:	5f 93       	push	r21
+ 5f8:	6f 93       	push	r22
+ 5fa:	7f 93       	push	r23
+ 5fc:	8f 93       	push	r24
+ 5fe:	9f 93       	push	r25
+ 600:	af 93       	push	r26
+ 602:	bf 93       	push	r27
+ 604:	ef 93       	push	r30
+ 606:	ff 93       	push	r31
+ 608:	81 ee       	ldi	r24, 0xE1	; 225
+ 60a:	94 e0       	ldi	r25, 0x04	; 4
+ 60c:	01 97       	sbiw	r24, 0x01	; 1
+ 60e:	f1 f7       	brne	.-4      	; 0x60c <__vector_3+0x26>
+ 610:	00 c0       	rjmp	.+0      	; 0x612 <__vector_3+0x2c>
+ 612:	00 00       	nop
 	_delay_ms(5);
 	if(getButtonState()){
- 4c6:	bc de       	rcall	.-648    	; 0x240 <getButtonState>
- 4c8:	00 97       	sbiw	r24, 0x00	; 0
- 4ca:	41 f0       	breq	.+16     	; 0x4dc <__vector_3+0x44>
+ 614:	56 de       	rcall	.-852    	; 0x2c2 <getButtonState>
+ 616:	00 97       	sbiw	r24, 0x00	; 0
+ 618:	41 f0       	breq	.+16     	; 0x62a <__vector_3+0x44>
 		getKeyPress();
- 4cc:	72 df       	rcall	.-284    	; 0x3b2 <getKeyPress>
- 4ce:	83 ed       	ldi	r24, 0xD3	; 211
- 4d0:	90 e3       	ldi	r25, 0x30	; 48
- 4d2:	01 97       	sbiw	r24, 0x01	; 1
- 4d4:	f1 f7       	brne	.-4      	; 0x4d2 <__vector_3+0x3a>
- 4d6:	00 c0       	rjmp	.+0      	; 0x4d8 <__vector_3+0x40>
- 4d8:	00 00       	nop
- 4da:	0d c0       	rjmp	.+26     	; 0x4f6 <__vector_3+0x5e>
+ 61a:	0c df       	rcall	.-488    	; 0x434 <getKeyPress>
+ 61c:	83 ed       	ldi	r24, 0xD3	; 211
+ 61e:	90 e3       	ldi	r25, 0x30	; 48
+ 620:	01 97       	sbiw	r24, 0x01	; 1
+ 622:	f1 f7       	brne	.-4      	; 0x620 <__vector_3+0x3a>
+ 624:	00 c0       	rjmp	.+0      	; 0x626 <__vector_3+0x40>
+ 626:	00 00       	nop
+ 628:	08 c0       	rjmp	.+16     	; 0x63a <__vector_3+0x54>
 		_delay_ms(50);
 	}
 	else if(!getButtonState()){
- 4dc:	b1 de       	rcall	.-670    	; 0x240 <getButtonState>
- 4de:	00 97       	sbiw	r24, 0x00	; 0
- 4e0:	51 f4       	brne	.+20     	; 0x4f6 <__vector_3+0x5e>
+ 62a:	4b de       	rcall	.-874    	; 0x2c2 <getButtonState>
+ 62c:	00 97       	sbiw	r24, 0x00	; 0
+ 62e:	29 f4       	brne	.+10     	; 0x63a <__vector_3+0x54>
 		pushKey(current_key);
- 4e2:	80 91 30 01 	lds	r24, 0x0130
- 4e6:	90 91 31 01 	lds	r25, 0x0131
- 4ea:	87 df       	rcall	.-242    	; 0x3fa <pushKey>
-		writeLCDcharacter(key_queue[0]);
- 4ec:	80 91 32 01 	lds	r24, 0x0132
- 4f0:	90 91 33 01 	lds	r25, 0x0133
- 4f4:	16 de       	rcall	.-980    	; 0x122 <writeLCDcharacter>
+ 630:	80 91 e2 01 	lds	r24, 0x01E2
+ 634:	90 91 e3 01 	lds	r25, 0x01E3
+ 638:	21 df       	rcall	.-446    	; 0x47c <pushKey>
+		//writeLCDcharacter(key_queue[0]);
 	}
 }
- 4f6:	ff 91       	pop	r31
- 4f8:	ef 91       	pop	r30
- 4fa:	bf 91       	pop	r27
- 4fc:	af 91       	pop	r26
- 4fe:	9f 91       	pop	r25
- 500:	8f 91       	pop	r24
- 502:	7f 91       	pop	r23
- 504:	6f 91       	pop	r22
- 506:	5f 91       	pop	r21
- 508:	4f 91       	pop	r20
- 50a:	3f 91       	pop	r19
- 50c:	2f 91       	pop	r18
- 50e:	0f 90       	pop	r0
- 510:	0f be       	out	0x3f, r0	; 63
- 512:	0f 90       	pop	r0
- 514:	1f 90       	pop	r1
- 516:	18 95       	reti
+ 63a:	ff 91       	pop	r31
+ 63c:	ef 91       	pop	r30
+ 63e:	bf 91       	pop	r27
+ 640:	af 91       	pop	r26
+ 642:	9f 91       	pop	r25
+ 644:	8f 91       	pop	r24
+ 646:	7f 91       	pop	r23
+ 648:	6f 91       	pop	r22
+ 64a:	5f 91       	pop	r21
+ 64c:	4f 91       	pop	r20
+ 64e:	3f 91       	pop	r19
+ 650:	2f 91       	pop	r18
+ 652:	0f 90       	pop	r0
+ 654:	0f be       	out	0x3f, r0	; 63
+ 656:	0f 90       	pop	r0
+ 658:	1f 90       	pop	r1
+ 65a:	18 95       	reti
 
-00000518 <initRows>:
-		}
-		
-	}
-}
+0000065c <main>:
 
-void initRows(int r[]){									// sets keypad rows as inputs
- 518:	e8 2f       	mov	r30, r24
- 51a:	f9 2f       	mov	r31, r25
- 51c:	84 e0       	ldi	r24, 0x04	; 4
- 51e:	90 e0       	ldi	r25, 0x00	; 0
-	for(int i = 0; i < NUM_ROWS; i++){
-		DDRB &= ~(1 << r[i]);
- 520:	41 e0       	ldi	r20, 0x01	; 1
- 522:	50 e0       	ldi	r21, 0x00	; 0
- 524:	64 b1       	in	r22, 0x04	; 4
- 526:	20 81       	ld	r18, Z
- 528:	32 96       	adiw	r30, 0x02	; 2
- 52a:	da 01       	movw	r26, r20
- 52c:	02 c0       	rjmp	.+4      	; 0x532 <initRows+0x1a>
- 52e:	aa 0f       	add	r26, r26
- 530:	bb 1f       	adc	r27, r27
- 532:	2a 95       	dec	r18
- 534:	e2 f7       	brpl	.-8      	; 0x52e <initRows+0x16>
- 536:	9d 01       	movw	r18, r26
- 538:	20 95       	com	r18
- 53a:	26 23       	and	r18, r22
- 53c:	24 b9       	out	0x04, r18	; 4
- 53e:	01 97       	sbiw	r24, 0x01	; 1
-		
-	}
-}
-
-void initRows(int r[]){									// sets keypad rows as inputs
-	for(int i = 0; i < NUM_ROWS; i++){
- 540:	89 f7       	brne	.-30     	; 0x524 <initRows+0xc>
-		DDRB &= ~(1 << r[i]);
-	}
-}
- 542:	08 95       	ret
-
-00000544 <initColumns>:
-
-void initColumns(int c[]){								// sets keypad columns as outputs
-	for(int i = 0; i < NUM_COLS; i++){
- 544:	e8 2f       	mov	r30, r24
- 546:	f9 2f       	mov	r31, r25
- 548:	20 e0       	ldi	r18, 0x00	; 0
- 54a:	30 e0       	ldi	r19, 0x00	; 0
-		PORTB &= ~(1 << c[i]);							// columns to output low
- 54c:	41 e0       	ldi	r20, 0x01	; 1
- 54e:	50 e0       	ldi	r21, 0x00	; 0
- 550:	65 b1       	in	r22, 0x05	; 5
-	for(int i = 0; i < NUM_ROWS; i++){
-		DDRB &= ~(1 << r[i]);
-	}
-}
-
-void initColumns(int c[]){								// sets keypad columns as outputs
- 552:	df 01       	movw	r26, r30
-	for(int i = 0; i < NUM_COLS; i++){
-		PORTB &= ~(1 << c[i]);							// columns to output low
- 554:	ca 01       	movw	r24, r20
- 556:	00 80       	ld	r0, Z
- 558:	02 c0       	rjmp	.+4      	; 0x55e <initColumns+0x1a>
- 55a:	88 0f       	add	r24, r24
- 55c:	99 1f       	adc	r25, r25
- 55e:	0a 94       	dec	r0
- 560:	e2 f7       	brpl	.-8      	; 0x55a <initColumns+0x16>
- 562:	80 95       	com	r24
- 564:	86 23       	and	r24, r22
- 566:	85 b9       	out	0x05, r24	; 5
-		DDRB |= (1 << c[i]);							// set columns as outputs
- 568:	64 b1       	in	r22, 0x04	; 4
- 56a:	32 96       	adiw	r30, 0x02	; 2
- 56c:	ca 01       	movw	r24, r20
- 56e:	0c 90       	ld	r0, X
- 570:	02 c0       	rjmp	.+4      	; 0x576 <initColumns+0x32>
- 572:	88 0f       	add	r24, r24
- 574:	99 1f       	adc	r25, r25
- 576:	0a 94       	dec	r0
- 578:	e2 f7       	brpl	.-8      	; 0x572 <initColumns+0x2e>
- 57a:	86 2b       	or	r24, r22
- 57c:	84 b9       	out	0x04, r24	; 4
-		DDRB &= ~(1 << r[i]);
-	}
-}
-
-void initColumns(int c[]){								// sets keypad columns as outputs
-	for(int i = 0; i < NUM_COLS; i++){
- 57e:	2f 5f       	subi	r18, 0xFF	; 255
- 580:	3f 4f       	sbci	r19, 0xFF	; 255
- 582:	23 30       	cpi	r18, 0x03	; 3
- 584:	31 05       	cpc	r19, r1
- 586:	21 f7       	brne	.-56     	; 0x550 <initColumns+0xc>
-		PORTB &= ~(1 << c[i]);							// columns to output low
-		DDRB |= (1 << c[i]);							// set columns as outputs
-	}
- 588:	08 95       	ret
-
-0000058a <main>:
-		writeLCDcharacter(key_queue[0]);
-	}
-}
-
-int main(void)
-{
- 58a:	cf 93       	push	r28
- 58c:	df 93       	push	r29
- 58e:	cd b7       	in	r28, 0x3d	; 61
- 590:	de b7       	in	r29, 0x3e	; 62
- 592:	ae 97       	sbiw	r28, 0x2e	; 46
- 594:	0f b6       	in	r0, 0x3f	; 63
- 596:	f8 94       	cli
- 598:	de bf       	out	0x3e, r29	; 62
- 59a:	0f be       	out	0x3f, r0	; 63
- 59c:	cd bf       	out	0x3d, r28	; 61
+int main(void) {
+ 65c:	cf 93       	push	r28
+ 65e:	df 93       	push	r29
+ 660:	cd b7       	in	r28, 0x3d	; 61
+ 662:	de b7       	in	r29, 0x3e	; 62
+ 664:	c2 5f       	subi	r28, 0xF2	; 242
+ 666:	d0 40       	sbci	r29, 0x00	; 0
+ 668:	0f b6       	in	r0, 0x3f	; 63
+ 66a:	f8 94       	cli
+ 66c:	de bf       	out	0x3e, r29	; 62
+ 66e:	0f be       	out	0x3f, r0	; 63
+ 670:	cd bf       	out	0x3d, r28	; 61
 	// initialize
 	int rows[] = {ROW1, ROW2, ROW3, ROW4};
- 59e:	de 01       	movw	r26, r28
- 5a0:	11 96       	adiw	r26, 0x01	; 1
- 5a2:	e0 e0       	ldi	r30, 0x00	; 0
- 5a4:	f1 e0       	ldi	r31, 0x01	; 1
- 5a6:	88 e0       	ldi	r24, 0x08	; 8
- 5a8:	01 90       	ld	r0, Z+
- 5aa:	0d 92       	st	X+, r0
- 5ac:	81 50       	subi	r24, 0x01	; 1
- 5ae:	e1 f7       	brne	.-8      	; 0x5a8 <main+0x1e>
+ 672:	de 01       	movw	r26, r28
+ 674:	11 96       	adiw	r26, 0x01	; 1
+ 676:	e0 e0       	ldi	r30, 0x00	; 0
+ 678:	f1 e0       	ldi	r31, 0x01	; 1
+ 67a:	88 e0       	ldi	r24, 0x08	; 8
+ 67c:	01 90       	ld	r0, Z+
+ 67e:	0d 92       	st	X+, r0
+ 680:	81 50       	subi	r24, 0x01	; 1
+ 682:	e1 f7       	brne	.-8      	; 0x67c <main+0x20>
 	int cols[] = {COL1, COL2, COL3};
- 5b0:	de 01       	movw	r26, r28
- 5b2:	19 96       	adiw	r26, 0x09	; 9
- 5b4:	e8 e0       	ldi	r30, 0x08	; 8
- 5b6:	f1 e0       	ldi	r31, 0x01	; 1
- 5b8:	86 e0       	ldi	r24, 0x06	; 6
- 5ba:	01 90       	ld	r0, Z+
- 5bc:	0d 92       	st	X+, r0
- 5be:	81 50       	subi	r24, 0x01	; 1
- 5c0:	e1 f7       	brne	.-8      	; 0x5ba <main+0x30>
-	int i;
+ 684:	de 01       	movw	r26, r28
+ 686:	19 96       	adiw	r26, 0x09	; 9
+ 688:	e8 e0       	ldi	r30, 0x08	; 8
+ 68a:	f1 e0       	ldi	r31, 0x01	; 1
+ 68c:	86 e0       	ldi	r24, 0x06	; 6
+ 68e:	01 90       	ld	r0, Z+
+ 690:	0d 92       	st	X+, r0
+ 692:	81 50       	subi	r24, 0x01	; 1
+ 694:	e1 f7       	brne	.-8      	; 0x68e <main+0x32>
+														// in the queue
+	int code_is_correct;								 
+	int lock_state = 2;									// initialized lock variable to intermediate status		
 	
 	// initialize interrupts
 	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
- 5c2:	e8 e6       	ldi	r30, 0x68	; 104
- 5c4:	f0 e0       	ldi	r31, 0x00	; 0
- 5c6:	80 81       	ld	r24, Z
- 5c8:	81 60       	ori	r24, 0x01	; 1
- 5ca:	80 83       	st	Z, r24
- 5cc:	fe 01       	movw	r30, r28
- 5ce:	31 96       	adiw	r30, 0x01	; 1
+ 696:	e8 e6       	ldi	r30, 0x68	; 104
+ 698:	f0 e0       	ldi	r31, 0x00	; 0
+ 69a:	80 81       	ld	r24, Z
+ 69c:	81 60       	ori	r24, 0x01	; 1
+ 69e:	80 83       	st	Z, r24
+ 6a0:	fe 01       	movw	r30, r28
+ 6a2:	31 96       	adiw	r30, 0x01	; 1
 		pushKey(current_key);
-		writeLCDcharacter(key_queue[0]);
+		//writeLCDcharacter(key_queue[0]);
 	}
 }
 
-int main(void)
- 5d0:	9e 01       	movw	r18, r28
- 5d2:	27 5f       	subi	r18, 0xF7	; 247
- 5d4:	3f 4f       	sbci	r19, 0xFF	; 255
-	int i;
+int main(void) {
+ 6a4:	9e 01       	movw	r18, r28
+ 6a6:	27 5f       	subi	r18, 0xF7	; 247
+ 6a8:	3f 4f       	sbci	r19, 0xFF	; 255
+	int lock_state = 2;									// initialized lock variable to intermediate status		
 	
 	// initialize interrupts
 	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
 	for(int i = 0; i < NUM_ROWS; i++){
 		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
- 5d6:	ab e6       	ldi	r26, 0x6B	; 107
- 5d8:	b0 e0       	ldi	r27, 0x00	; 0
- 5da:	41 e0       	ldi	r20, 0x01	; 1
- 5dc:	50 e0       	ldi	r21, 0x00	; 0
- 5de:	6c 91       	ld	r22, X
- 5e0:	80 81       	ld	r24, Z
- 5e2:	32 96       	adiw	r30, 0x02	; 2
- 5e4:	8a 01       	movw	r16, r20
- 5e6:	02 c0       	rjmp	.+4      	; 0x5ec <main+0x62>
- 5e8:	00 0f       	add	r16, r16
- 5ea:	11 1f       	adc	r17, r17
- 5ec:	8a 95       	dec	r24
- 5ee:	e2 f7       	brpl	.-8      	; 0x5e8 <main+0x5e>
- 5f0:	c8 01       	movw	r24, r16
- 5f2:	86 2b       	or	r24, r22
- 5f4:	8c 93       	st	X, r24
-	int cols[] = {COL1, COL2, COL3};
-	int i;
+ 6aa:	ab e6       	ldi	r26, 0x6B	; 107
+ 6ac:	b0 e0       	ldi	r27, 0x00	; 0
+ 6ae:	41 e0       	ldi	r20, 0x01	; 1
+ 6b0:	50 e0       	ldi	r21, 0x00	; 0
+ 6b2:	6c 91       	ld	r22, X
+ 6b4:	80 81       	ld	r24, Z
+ 6b6:	32 96       	adiw	r30, 0x02	; 2
+ 6b8:	8a 01       	movw	r16, r20
+ 6ba:	02 c0       	rjmp	.+4      	; 0x6c0 <main+0x64>
+ 6bc:	00 0f       	add	r16, r16
+ 6be:	11 1f       	adc	r17, r17
+ 6c0:	8a 95       	dec	r24
+ 6c2:	e2 f7       	brpl	.-8      	; 0x6bc <main+0x60>
+ 6c4:	c8 01       	movw	r24, r16
+ 6c6:	86 2b       	or	r24, r22
+ 6c8:	8c 93       	st	X, r24
+	int code_is_correct;								 
+	int lock_state = 2;									// initialized lock variable to intermediate status		
 	
 	// initialize interrupts
 	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
 	for(int i = 0; i < NUM_ROWS; i++){
- 5f6:	e2 17       	cp	r30, r18
- 5f8:	f3 07       	cpc	r31, r19
- 5fa:	89 f7       	brne	.-30     	; 0x5de <main+0x54>
+ 6ca:	e2 17       	cp	r30, r18
+ 6cc:	f3 07       	cpc	r31, r19
+ 6ce:	89 f7       	brne	.-30     	; 0x6b2 <main+0x56>
 		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
 	}
 	sei();												// global interrupt enable
- 5fc:	78 94       	sei
+ 6d0:	78 94       	sei
 	
 	// Initializing arrays 
 	int enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
- 5fe:	de 01       	movw	r26, r28
- 600:	1f 96       	adiw	r26, 0x0f	; 15
- 602:	ee e0       	ldi	r30, 0x0E	; 14
- 604:	f1 e0       	ldi	r31, 0x01	; 1
- 606:	80 e2       	ldi	r24, 0x20	; 32
- 608:	01 90       	ld	r0, Z+
- 60a:	0d 92       	st	X+, r0
- 60c:	81 50       	subi	r24, 0x01	; 1
- 60e:	e1 f7       	brne	.-8      	; 0x608 <main+0x7e>
-	
-	
+ 6d2:	de 01       	movw	r26, r28
+ 6d4:	1f 96       	adiw	r26, 0x0f	; 15
+ 6d6:	ee e0       	ldi	r30, 0x0E	; 14
+ 6d8:	f1 e0       	ldi	r31, 0x01	; 1
+ 6da:	80 e2       	ldi	r24, 0x20	; 32
+ 6dc:	01 90       	ld	r0, Z+
+ 6de:	0d 92       	st	X+, r0
+ 6e0:	81 50       	subi	r24, 0x01	; 1
+ 6e2:	e1 f7       	brne	.-8      	; 0x6dc <main+0x80>
+	int incorrect_code[16] = {'I','N','C','O','R','R','E','C','T',' ','C','O','D','E',' ',' '};
+ 6e4:	de 01       	movw	r26, r28
+ 6e6:	9f 96       	adiw	r26, 0x2f	; 47
+ 6e8:	ee e2       	ldi	r30, 0x2E	; 46
+ 6ea:	f1 e0       	ldi	r31, 0x01	; 1
+ 6ec:	80 e2       	ldi	r24, 0x20	; 32
+ 6ee:	01 90       	ld	r0, Z+
+ 6f0:	0d 92       	st	X+, r0
+ 6f2:	81 50       	subi	r24, 0x01	; 1
+ 6f4:	e1 f7       	brne	.-8      	; 0x6ee <main+0x92>
+	int unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
+ 6f6:	de 01       	movw	r26, r28
+ 6f8:	a1 5b       	subi	r26, 0xB1	; 177
+ 6fa:	bf 4f       	sbci	r27, 0xFF	; 255
+ 6fc:	ee e4       	ldi	r30, 0x4E	; 78
+ 6fe:	f1 e0       	ldi	r31, 0x01	; 1
+ 700:	80 e2       	ldi	r24, 0x20	; 32
+ 702:	01 90       	ld	r0, Z+
+ 704:	0d 92       	st	X+, r0
+ 706:	81 50       	subi	r24, 0x01	; 1
+ 708:	e1 f7       	brne	.-8      	; 0x702 <main+0xa6>
+	int unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
+ 70a:	de 01       	movw	r26, r28
+ 70c:	a1 59       	subi	r26, 0x91	; 145
+ 70e:	bf 4f       	sbci	r27, 0xFF	; 255
+ 710:	ee e6       	ldi	r30, 0x6E	; 110
+ 712:	f1 e0       	ldi	r31, 0x01	; 1
+ 714:	80 e2       	ldi	r24, 0x20	; 32
+ 716:	01 90       	ld	r0, Z+
+ 718:	0d 92       	st	X+, r0
+ 71a:	81 50       	subi	r24, 0x01	; 1
+ 71c:	e1 f7       	brne	.-8      	; 0x716 <main+0xba>
+	int new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
+ 71e:	de 01       	movw	r26, r28
+ 720:	a1 57       	subi	r26, 0x71	; 113
+ 722:	bf 4f       	sbci	r27, 0xFF	; 255
+ 724:	ee e8       	ldi	r30, 0x8E	; 142
+ 726:	f1 e0       	ldi	r31, 0x01	; 1
+ 728:	80 e2       	ldi	r24, 0x20	; 32
+ 72a:	01 90       	ld	r0, Z+
+ 72c:	0d 92       	st	X+, r0
+ 72e:	81 50       	subi	r24, 0x01	; 1
+ 730:	e1 f7       	brne	.-8      	; 0x72a <main+0xce>
+	int cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
+ 732:	de 01       	movw	r26, r28
+ 734:	a1 55       	subi	r26, 0x51	; 81
+ 736:	bf 4f       	sbci	r27, 0xFF	; 255
+ 738:	ee ea       	ldi	r30, 0xAE	; 174
+ 73a:	f1 e0       	ldi	r31, 0x01	; 1
+ 73c:	80 e2       	ldi	r24, 0x20	; 32
+ 73e:	01 90       	ld	r0, Z+
+ 740:	0d 92       	st	X+, r0
+ 742:	81 50       	subi	r24, 0x01	; 1
+ 744:	e1 f7       	brne	.-8      	; 0x73e <main+0xe2>
+	int current_code[9];
+	int current_user_input[9];
 	
 	initRows(rows);										// set keypad rows as inputs
- 610:	ce 01       	movw	r24, r28
- 612:	01 96       	adiw	r24, 0x01	; 1
- 614:	81 df       	rcall	.-254    	; 0x518 <initRows>
+ 746:	ce 01       	movw	r24, r28
+ 748:	01 96       	adiw	r24, 0x01	; 1
+ 74a:	b3 de       	rcall	.-666    	; 0x4b2 <initRows>
 	initColumns(cols);									// set keypad columns as outputs
- 616:	ce 01       	movw	r24, r28
- 618:	09 96       	adiw	r24, 0x09	; 9
- 61a:	94 df       	rcall	.-216    	; 0x544 <initColumns>
+ 74c:	ce 01       	movw	r24, r28
+ 74e:	09 96       	adiw	r24, 0x09	; 9
+ 750:	c6 de       	rcall	.-628    	; 0x4de <initColumns>
 	initializeLCD();									// set up LCD and initialize in 4 bit mode
- 61c:	ac dd       	rcall	.-1192   	; 0x176 <initializeLCD>
+ 752:	11 dd       	rcall	.-1502   	; 0x176 <initializeLCD>
 	clearKeyQueue();
- 61e:	fe de       	rcall	.-516    	; 0x41c <clearKeyQueue>
-	clearLCD();
- 620:	a1 dd       	rcall	.-1214   	; 0x164 <clearLCD>
-	while(1)											
-	{
-		writeLCDline(enter_code,1);
-		cursorPosition(2);
-		
-		while(key_queue[0] == '\0');
- 622:	02 e3       	ldi	r16, 0x32	; 50
- 624:	11 e0       	ldi	r17, 0x01	; 1
-	
-	
+ 754:	a4 de       	rcall	.-696    	; 0x49e <clearKeyQueue>
+	count_queue = 0;
+
+
+	// Ensure we're locked to start with.
+	while (lock_state != 1) {
+			lock_state = testLock(2);
+ 756:	82 e0       	ldi	r24, 0x02	; 2
+ 758:	90 e0       	ldi	r25, 0x00	; 0
+ 75a:	3b df       	rcall	.-394    	; 0x5d2 <testLock>
+ 75c:	5c 01       	movw	r10, r24
+	clearKeyQueue();
+	count_queue = 0;
+
+
+	// Ensure we're locked to start with.
+	while (lock_state != 1) {
+ 75e:	81 30       	cpi	r24, 0x01	; 1
+ 760:	91 05       	cpc	r25, r1
+ 762:	c9 f7       	brne	.-14     	; 0x756 <main+0xfa>
+ 764:	ee 24       	eor	r14, r14
+ 766:	ff 24       	eor	r15, r15
+		while (lock_state == 1) {
+				
+				
+					
+				// Wait for a key press
+				while(key_queue[count_queue] == '\0');
+ 768:	0f 2e       	mov	r0, r31
+ 76a:	f4 ee       	ldi	r31, 0xE4	; 228
+ 76c:	cf 2e       	mov	r12, r31
+ 76e:	f1 e0       	ldi	r31, 0x01	; 1
+ 770:	df 2e       	mov	r13, r31
+ 772:	f0 2d       	mov	r31, r0
+				// ...or if first key in the queue isn't a digit or '#' then
+				// it must be the '*'
+				} else {
+					count = 0;
+					code_is_correct = 1;
+					getCurrentUserInput(count_queue,current_user_input);
+ 774:	0f 2e       	mov	r0, r31
+ 776:	f1 ee       	ldi	r31, 0xE1	; 225
+ 778:	6f 2e       	mov	r6, r31
+ 77a:	77 24       	eor	r7, r7
+ 77c:	f0 2d       	mov	r31, r0
+ 77e:	6c 0e       	add	r6, r28
+ 780:	7d 1e       	adc	r7, r29
+					
+					// Checks the current queue code with the correct code
+					while(current_user_input[count] != '\0'){
+ 782:	22 24       	eor	r2, r2
+ 784:	33 24       	eor	r3, r3
+ 786:	68 94       	set
+ 788:	21 f8       	bld	r2, 1
+ 78a:	26 0c       	add	r2, r6
+ 78c:	37 1c       	adc	r3, r7
+
 	// wait loop
-	while(1)											
-	{
+	while(1) {
+		
+		// Print greeting
+		clearLCD();
+ 78e:	ea dc       	rcall	.-1580   	; 0x164 <clearLCD>
 		writeLCDline(enter_code,1);
- 626:	ce 01       	movw	r24, r28
- 628:	0f 96       	adiw	r24, 0x0f	; 15
- 62a:	61 e0       	ldi	r22, 0x01	; 1
- 62c:	70 e0       	ldi	r23, 0x00	; 0
- 62e:	80 dd       	rcall	.-1280   	; 0x130 <writeLCDline>
+ 790:	ce 01       	movw	r24, r28
+ 792:	0f 96       	adiw	r24, 0x0f	; 15
+ 794:	61 e0       	ldi	r22, 0x01	; 1
+ 796:	70 e0       	ldi	r23, 0x00	; 0
+ 798:	cb dc       	rcall	.-1642   	; 0x130 <writeLCDline>
 		cursorPosition(2);
- 630:	82 e0       	ldi	r24, 0x02	; 2
- 632:	90 e0       	ldi	r25, 0x00	; 0
- 634:	54 dd       	rcall	.-1368   	; 0xde <cursorPosition>
-		
-		while(key_queue[0] == '\0');
- 636:	f8 01       	movw	r30, r16
- 638:	80 81       	ld	r24, Z
- 63a:	91 81       	ldd	r25, Z+1	; 0x01
- 63c:	00 97       	sbiw	r24, 0x00	; 0
- 63e:	31 f0       	breq	.+12     	; 0x64c <main+0xc2>
-		
-		if(key_queue[0] == '#'){
- 640:	83 32       	cpi	r24, 0x23	; 35
- 642:	91 05       	cpc	r25, r1
- 644:	81 f7       	brne	.-32     	; 0x626 <main+0x9c>
-			clearLCD();
- 646:	8e dd       	rcall	.-1252   	; 0x164 <clearLCD>
-			clearKeyQueue();
- 648:	e9 de       	rcall	.-558    	; 0x41c <clearKeyQueue>
- 64a:	ed cf       	rjmp	.-38     	; 0x626 <main+0x9c>
- 64c:	ff cf       	rjmp	.-2      	; 0x64c <main+0xc2>
+ 79a:	82 e0       	ldi	r24, 0x02	; 2
+ 79c:	90 e0       	ldi	r25, 0x00	; 0
+ 79e:	9f dc       	rcall	.-1730   	; 0xde <cursorPosition>
+		readFROMeeprom(current_code);
+ 7a0:	ce 01       	movw	r24, r28
+ 7a2:	81 53       	subi	r24, 0x31	; 49
+ 7a4:	9f 4f       	sbci	r25, 0xFF	; 255
+ 7a6:	43 dd       	rcall	.-1402   	; 0x22e <readFROMeeprom>
 
-0000064e <__eerd_byte_m48a>:
- 64e:	f9 99       	sbic	0x1f, 1	; 31
- 650:	fe cf       	rjmp	.-4      	; 0x64e <__eerd_byte_m48a>
- 652:	12 bc       	out	0x22, r1	; 34
- 654:	81 bd       	out	0x21, r24	; 33
- 656:	f8 9a       	sbi	0x1f, 0	; 31
- 658:	99 27       	eor	r25, r25
- 65a:	80 b5       	in	r24, 0x20	; 32
- 65c:	08 95       	ret
+		// While box is in locked state
+		while (lock_state == 1) {
+ 7a8:	21 e0       	ldi	r18, 0x01	; 1
+ 7aa:	a2 16       	cp	r10, r18
+ 7ac:	b1 04       	cpc	r11, r1
+ 7ae:	09 f0       	breq	.+2      	; 0x7b2 <main+0x156>
+ 7b0:	6c c0       	rjmp	.+216    	; 0x88a <main+0x22e>
+				
+				// ...or if first key in the queue isn't a digit or '#' then
+				// it must be the '*'
+				} else {
+					count = 0;
+					code_is_correct = 1;
+ 7b2:	88 24       	eor	r8, r8
+ 7b4:	99 24       	eor	r9, r9
+ 7b6:	83 94       	inc	r8
+					getCurrentUserInput(count_queue,current_user_input);
+					
+					// Checks the current queue code with the correct code
+					while(current_user_input[count] != '\0'){
+						if(current_user_input[count] != current_code[count])
+							code_is_correct = 0;
+ 7b8:	44 24       	eor	r4, r4
+ 7ba:	55 24       	eor	r5, r5
+ 7bc:	14 2d       	mov	r17, r4
+ 7be:	05 2d       	mov	r16, r5
+		while (lock_state == 1) {
+				
+				
+					
+				// Wait for a key press
+				while(key_queue[count_queue] == '\0');
+ 7c0:	c7 01       	movw	r24, r14
+ 7c2:	88 0f       	add	r24, r24
+ 7c4:	99 1f       	adc	r25, r25
+ 7c6:	8c 0d       	add	r24, r12
+ 7c8:	9d 1d       	adc	r25, r13
+ 7ca:	dc 01       	movw	r26, r24
+ 7cc:	8d 91       	ld	r24, X+
+ 7ce:	9c 91       	ld	r25, X
+ 7d0:	11 97       	sbiw	r26, 0x01	; 1
+ 7d2:	00 97       	sbiw	r24, 0x00	; 0
+ 7d4:	09 f4       	brne	.+2      	; 0x7d8 <main+0x17c>
+ 7d6:	e9 c0       	rjmp	.+466    	; 0x9aa <main+0x34e>
+				
+				// Now that we have a key press we need to look at what was pressed.
+				// Is the first key in the queue a '#'...
+				if(key_queue[0] == '#'){
+ 7d8:	f6 01       	movw	r30, r12
+ 7da:	80 81       	ld	r24, Z
+ 7dc:	91 81       	ldd	r25, Z+1	; 0x01
+ 7de:	83 32       	cpi	r24, 0x23	; 35
+ 7e0:	91 05       	cpc	r25, r1
+ 7e2:	59 f4       	brne	.+22     	; 0x7fa <main+0x19e>
+					clearLCD();
+ 7e4:	bf dc       	rcall	.-1666   	; 0x164 <clearLCD>
+					writeLCDline(enter_code,1);
+ 7e6:	ce 01       	movw	r24, r28
+ 7e8:	0f 96       	adiw	r24, 0x0f	; 15
+ 7ea:	b4 01       	movw	r22, r8
+ 7ec:	a1 dc       	rcall	.-1726   	; 0x130 <writeLCDline>
+					cursorPosition(2);
+ 7ee:	82 e0       	ldi	r24, 0x02	; 2
+ 7f0:	90 e0       	ldi	r25, 0x00	; 0
+ 7f2:	75 dc       	rcall	.-1814   	; 0xde <cursorPosition>
+					clearKeyQueue();
+ 7f4:	54 de       	rcall	.-856    	; 0x49e <clearKeyQueue>
+					count_queue = 0;
+ 7f6:	72 01       	movw	r14, r4
+ 7f8:	43 c0       	rjmp	.+134    	; 0x880 <main+0x224>
+				
+				// ...or is the first key in the queue a digit?...
+				} else if(key_queue[0] >= '0' && key_queue[0] <= '9'){
+ 7fa:	9c 01       	movw	r18, r24
+ 7fc:	20 53       	subi	r18, 0x30	; 48
+ 7fe:	30 40       	sbci	r19, 0x00	; 0
+ 800:	2a 30       	cpi	r18, 0x0A	; 10
+ 802:	31 05       	cpc	r19, r1
+ 804:	28 f4       	brcc	.+10     	; 0x810 <main+0x1b4>
+					writeLCDcharacter(key_queue[0]);
+ 806:	8d dc       	rcall	.-1766   	; 0x122 <writeLCDcharacter>
+					++count_queue;
+ 808:	08 94       	sec
+ 80a:	e1 1c       	adc	r14, r1
+ 80c:	f1 1c       	adc	r15, r1
+ 80e:	38 c0       	rjmp	.+112    	; 0x880 <main+0x224>
+				// ...or if first key in the queue isn't a digit or '#' then
+				// it must be the '*'
+				} else {
+					count = 0;
+					code_is_correct = 1;
+					getCurrentUserInput(count_queue,current_user_input);
+ 810:	c7 01       	movw	r24, r14
+ 812:	b3 01       	movw	r22, r6
+ 814:	bb de       	rcall	.-650    	; 0x58c <getCurrentUserInput>
+					
+					// Checks the current queue code with the correct code
+					while(current_user_input[count] != '\0'){
+ 816:	d3 01       	movw	r26, r6
+ 818:	8d 91       	ld	r24, X+
+ 81a:	9c 91       	ld	r25, X
+ 81c:	11 97       	sbiw	r26, 0x01	; 1
+ 81e:	00 97       	sbiw	r24, 0x00	; 0
+ 820:	61 f1       	breq	.+88     	; 0x87a <main+0x21e>
+ 822:	fe 01       	movw	r30, r28
+ 824:	e1 53       	subi	r30, 0x31	; 49
+ 826:	ff 4f       	sbci	r31, 0xFF	; 255
+ 828:	d1 01       	movw	r26, r2
+				
+				// ...or if first key in the queue isn't a digit or '#' then
+				// it must be the '*'
+				} else {
+					count = 0;
+					code_is_correct = 1;
+ 82a:	a4 01       	movw	r20, r8
+					getCurrentUserInput(count_queue,current_user_input);
+					
+					// Checks the current queue code with the correct code
+					while(current_user_input[count] != '\0'){
+						if(current_user_input[count] != current_code[count])
+ 82c:	21 91       	ld	r18, Z+
+ 82e:	31 91       	ld	r19, Z+
+ 830:	82 17       	cp	r24, r18
+ 832:	93 07       	cpc	r25, r19
+ 834:	11 f0       	breq	.+4      	; 0x83a <main+0x1de>
+							code_is_correct = 0;
+ 836:	41 2f       	mov	r20, r17
+ 838:	50 2f       	mov	r21, r16
+					count = 0;
+					code_is_correct = 1;
+					getCurrentUserInput(count_queue,current_user_input);
+					
+					// Checks the current queue code with the correct code
+					while(current_user_input[count] != '\0'){
+ 83a:	8d 91       	ld	r24, X+
+ 83c:	9d 91       	ld	r25, X+
+ 83e:	00 97       	sbiw	r24, 0x00	; 0
+ 840:	a9 f7       	brne	.-22     	; 0x82c <main+0x1d0>
+						if(current_user_input[count] != current_code[count])
+							code_is_correct = 0;
+						count++;				
+					}
+					if(!code_is_correct){
+ 842:	41 15       	cp	r20, r1
+ 844:	51 05       	cpc	r21, r1
+ 846:	c9 f4       	brne	.+50     	; 0x87a <main+0x21e>
+						clearLCD();
+ 848:	8d dc       	rcall	.-1766   	; 0x164 <clearLCD>
+						writeLCDline(incorrect_code,1);
+ 84a:	ce 01       	movw	r24, r28
+ 84c:	8f 96       	adiw	r24, 0x2f	; 47
+ 84e:	b4 01       	movw	r22, r8
+ 850:	6f dc       	rcall	.-1826   	; 0x130 <writeLCDline>
+ 852:	8f e3       	ldi	r24, 0x3F	; 63
+ 854:	92 e4       	ldi	r25, 0x42	; 66
+ 856:	af e0       	ldi	r26, 0x0F	; 15
+ 858:	81 50       	subi	r24, 0x01	; 1
+ 85a:	90 40       	sbci	r25, 0x00	; 0
+ 85c:	a0 40       	sbci	r26, 0x00	; 0
+ 85e:	e1 f7       	brne	.-8      	; 0x858 <main+0x1fc>
+ 860:	00 c0       	rjmp	.+0      	; 0x862 <main+0x206>
+ 862:	00 00       	nop
+						_delay_ms(5000);
+						clearKeyQueue();
+ 864:	1c de       	rcall	.-968    	; 0x49e <clearKeyQueue>
+						count_queue = 0;
+						clearLCD();
+ 866:	7e dc       	rcall	.-1796   	; 0x164 <clearLCD>
+						writeLCDline(enter_code,1);
+ 868:	ce 01       	movw	r24, r28
+ 86a:	0f 96       	adiw	r24, 0x0f	; 15
+ 86c:	b4 01       	movw	r22, r8
+ 86e:	60 dc       	rcall	.-1856   	; 0x130 <writeLCDline>
+						cursorPosition(2);
+ 870:	82 e0       	ldi	r24, 0x02	; 2
+ 872:	90 e0       	ldi	r25, 0x00	; 0
+ 874:	34 dc       	rcall	.-1944   	; 0xde <cursorPosition>
+					if(!code_is_correct){
+						clearLCD();
+						writeLCDline(incorrect_code,1);
+						_delay_ms(5000);
+						clearKeyQueue();
+						count_queue = 0;
+ 876:	72 01       	movw	r14, r4
+ 878:	03 c0       	rjmp	.+6      	; 0x880 <main+0x224>
+						writeLCDline(enter_code,1);
+						cursorPosition(2);
+					}else{
 
-0000065e <__eewr_byte_m48a>:
- 65e:	26 2f       	mov	r18, r22
+						// Unlock the box
+						lock_state = testUnlock(lock_state);
+ 87a:	c5 01       	movw	r24, r10
+ 87c:	af de       	rcall	.-674    	; 0x5dc <testUnlock>
+ 87e:	5c 01       	movw	r10, r24
+		writeLCDline(enter_code,1);
+		cursorPosition(2);
+		readFROMeeprom(current_code);
 
-00000660 <__eewr_r18_m48a>:
- 660:	f9 99       	sbic	0x1f, 1	; 31
- 662:	fe cf       	rjmp	.-4      	; 0x660 <__eewr_r18_m48a>
- 664:	1f ba       	out	0x1f, r1	; 31
- 666:	12 bc       	out	0x22, r1	; 34
- 668:	81 bd       	out	0x21, r24	; 33
- 66a:	20 bd       	out	0x20, r18	; 32
- 66c:	0f b6       	in	r0, 0x3f	; 63
- 66e:	f8 94       	cli
- 670:	fa 9a       	sbi	0x1f, 2	; 31
- 672:	f9 9a       	sbi	0x1f, 1	; 31
- 674:	0f be       	out	0x3f, r0	; 63
- 676:	01 96       	adiw	r24, 0x01	; 1
- 678:	08 95       	ret
+		// While box is in locked state
+		while (lock_state == 1) {
+ 880:	91 e0       	ldi	r25, 0x01	; 1
+ 882:	a9 16       	cp	r10, r25
+ 884:	b1 04       	cpc	r11, r1
+ 886:	09 f4       	brne	.+2      	; 0x88a <main+0x22e>
+ 888:	9b cf       	rjmp	.-202    	; 0x7c0 <main+0x164>
+					}
+				}		
+			} // End while (lock_state == 1)
 
-0000067a <_exit>:
- 67a:	f8 94       	cli
+		// While box is in unlocked state
+			while (lock_state == 0 ) {
+ 88a:	a1 14       	cp	r10, r1
+ 88c:	b1 04       	cpc	r11, r1
+ 88e:	09 f0       	breq	.+2      	; 0x892 <main+0x236>
+ 890:	7e cf       	rjmp	.-260    	; 0x78e <main+0x132>
+				clearLCD();
+				writeLCDline(unlocked_menu_1, 1);
+				writeLCDline(unlocked_menu_2, 2);
 
-0000067c <__stop_program>:
- 67c:	ff cf       	rjmp	.-2      	; 0x67c <__stop_program>
->>>>>>> 36901f85fc843ec0329de10e3d5d8b31d6d5e5c8
+				clearKeyQueue();
+				count_queue = 0;
+ 892:	00 e0       	ldi	r16, 0x00	; 0
+ 894:	10 e0       	ldi	r17, 0x00	; 0
+						} else {
+							clearLCD();
+							writeLCDline(cancel_code_change,1);
+							_delay_ms(5000);
+							clearKeyQueue();
+							count_queue = 0;
+ 896:	90 2e       	mov	r9, r16
+ 898:	51 2e       	mov	r5, r17
+							++count_queue;
+						
+						// If the latest key pressed is '*' then lets write the new
+						// code to eeprom
+						} else if (key_queue[0] == '*') {
+							getCurrentUserInput(count_queue, current_user_input);
+ 89a:	86 2c       	mov	r8, r6
+ 89c:	47 2c       	mov	r4, r7
+
+		// While box is in unlocked state
+			while (lock_state == 0 ) {
+
+				// Write unlocked menu
+				clearLCD();
+ 89e:	62 dc       	rcall	.-1852   	; 0x164 <clearLCD>
+				writeLCDline(unlocked_menu_1, 1);
+ 8a0:	ce 01       	movw	r24, r28
+ 8a2:	81 5b       	subi	r24, 0xB1	; 177
+ 8a4:	9f 4f       	sbci	r25, 0xFF	; 255
+ 8a6:	61 e0       	ldi	r22, 0x01	; 1
+ 8a8:	70 e0       	ldi	r23, 0x00	; 0
+ 8aa:	42 dc       	rcall	.-1916   	; 0x130 <writeLCDline>
+				writeLCDline(unlocked_menu_2, 2);
+ 8ac:	ce 01       	movw	r24, r28
+ 8ae:	81 59       	subi	r24, 0x91	; 145
+ 8b0:	9f 4f       	sbci	r25, 0xFF	; 255
+ 8b2:	62 e0       	ldi	r22, 0x02	; 2
+ 8b4:	70 e0       	ldi	r23, 0x00	; 0
+ 8b6:	3c dc       	rcall	.-1928   	; 0x130 <writeLCDline>
+
+				clearKeyQueue();
+ 8b8:	f2 dd       	rcall	.-1052   	; 0x49e <clearKeyQueue>
+				count_queue = 0;
+
+				// Wait for key press
+				while(key_queue[count_queue] == '\0');
+ 8ba:	d6 01       	movw	r26, r12
+ 8bc:	8d 91       	ld	r24, X+
+ 8be:	9c 91       	ld	r25, X
+ 8c0:	11 97       	sbiw	r26, 0x01	; 1
+ 8c2:	00 97       	sbiw	r24, 0x00	; 0
+ 8c4:	09 f4       	brne	.+2      	; 0x8c8 <main+0x26c>
+ 8c6:	70 c0       	rjmp	.+224    	; 0x9a8 <main+0x34c>
+
+				// Now that we have a key press we need to look at what was pressed.
+				// Is the first key in the queue a '#'...
+				if(key_queue[0] == '#'){
+ 8c8:	83 32       	cpi	r24, 0x23	; 35
+ 8ca:	91 05       	cpc	r25, r1
+ 8cc:	71 f4       	brne	.+28     	; 0x8ea <main+0x28e>
+					lock_state = testLock(lock_state);
+ 8ce:	c5 01       	movw	r24, r10
+ 8d0:	80 de       	rcall	.-768    	; 0x5d2 <testLock>
+ 8d2:	5c 01       	movw	r10, r24
+					clearKeyQueue();
+ 8d4:	e4 dd       	rcall	.-1080   	; 0x49e <clearKeyQueue>
+					count_queue = 0;
+					writeLCDline(enter_code,1);
+ 8d6:	ce 01       	movw	r24, r28
+ 8d8:	0f 96       	adiw	r24, 0x0f	; 15
+ 8da:	61 e0       	ldi	r22, 0x01	; 1
+ 8dc:	70 e0       	ldi	r23, 0x00	; 0
+ 8de:	28 dc       	rcall	.-1968   	; 0x130 <writeLCDline>
+					cursorPosition(2);
+ 8e0:	82 e0       	ldi	r24, 0x02	; 2
+ 8e2:	90 e0       	ldi	r25, 0x00	; 0
+ 8e4:	fc db       	rcall	.-2056   	; 0xde <cursorPosition>
+				// Now that we have a key press we need to look at what was pressed.
+				// Is the first key in the queue a '#'...
+				if(key_queue[0] == '#'){
+					lock_state = testLock(lock_state);
+					clearKeyQueue();
+					count_queue = 0;
+ 8e6:	78 01       	movw	r14, r16
+ 8e8:	59 c0       	rjmp	.+178    	; 0x99c <main+0x340>
+					writeLCDline(enter_code,1);
+					cursorPosition(2);
+
+				// ...or is the first key in the queue a '*'?
+				} else if(key_queue[0] == '*'){
+ 8ea:	8a 32       	cpi	r24, 0x2A	; 42
+ 8ec:	91 05       	cpc	r25, r1
+ 8ee:	09 f0       	breq	.+2      	; 0x8f2 <main+0x296>
+ 8f0:	54 c0       	rjmp	.+168    	; 0x99a <main+0x33e>
+
+					clearLCD();
+ 8f2:	38 dc       	rcall	.-1936   	; 0x164 <clearLCD>
+					clearKeyQueue();
+ 8f4:	d4 dd       	rcall	.-1112   	; 0x49e <clearKeyQueue>
+					count_queue = 0;
+					writeLCDline(new_code_menu, 1);
+ 8f6:	ce 01       	movw	r24, r28
+ 8f8:	81 57       	subi	r24, 0x71	; 113
+ 8fa:	9f 4f       	sbci	r25, 0xFF	; 255
+ 8fc:	61 e0       	ldi	r22, 0x01	; 1
+ 8fe:	70 e0       	ldi	r23, 0x00	; 0
+ 900:	17 dc       	rcall	.-2002   	; 0x130 <writeLCDline>
+					cursorPosition(2);
+ 902:	82 e0       	ldi	r24, 0x02	; 2
+ 904:	90 e0       	ldi	r25, 0x00	; 0
+ 906:	eb db       	rcall	.-2090   	; 0xde <cursorPosition>
+				// ...or is the first key in the queue a '*'?
+				} else if(key_queue[0] == '*'){
+
+					clearLCD();
+					clearKeyQueue();
+					count_queue = 0;
+ 908:	78 01       	movw	r14, r16
+					writeLCDline(new_code_menu, 1);
+					cursorPosition(2);
+
+					// Now we start entering the new code. An '*' indicates that we're
+					// done entering the code.
+					while(key_queue[0] != '*') {
+ 90a:	3e c0       	rjmp	.+124    	; 0x988 <main+0x32c>
+						
+						clearKeyQueue();
+ 90c:	c8 dd       	rcall	.-1136   	; 0x49e <clearKeyQueue>
+
+						// Wait for key press
+						while(key_queue[count_queue] == '\0');
+ 90e:	c7 01       	movw	r24, r14
+ 910:	88 0f       	add	r24, r24
+ 912:	99 1f       	adc	r25, r25
+ 914:	8c 0d       	add	r24, r12
+ 916:	9d 1d       	adc	r25, r13
+ 918:	fc 01       	movw	r30, r24
+ 91a:	80 81       	ld	r24, Z
+ 91c:	91 81       	ldd	r25, Z+1	; 0x01
+ 91e:	00 97       	sbiw	r24, 0x00	; 0
+ 920:	09 f4       	brne	.+2      	; 0x924 <main+0x2c8>
+ 922:	41 c0       	rjmp	.+130    	; 0x9a6 <main+0x34a>
+
+						// Was the latest key pressed between 0 and 9, AND has the user
+						// entered less than the max number (8) of digits allowed for the
+						// code.
+						if(key_queue[0] >= '0' && key_queue[0] <= '9' && count_queue < 9){
+ 924:	d6 01       	movw	r26, r12
+ 926:	8d 91       	ld	r24, X+
+ 928:	9c 91       	ld	r25, X
+ 92a:	11 97       	sbiw	r26, 0x01	; 1
+ 92c:	9c 01       	movw	r18, r24
+ 92e:	20 53       	subi	r18, 0x30	; 48
+ 930:	30 40       	sbci	r19, 0x00	; 0
+ 932:	2a 30       	cpi	r18, 0x0A	; 10
+ 934:	31 05       	cpc	r19, r1
+ 936:	48 f4       	brcc	.+18     	; 0x94a <main+0x2ee>
+ 938:	b9 e0       	ldi	r27, 0x09	; 9
+ 93a:	eb 16       	cp	r14, r27
+ 93c:	f1 04       	cpc	r15, r1
+ 93e:	2c f4       	brge	.+10     	; 0x94a <main+0x2ee>
+							// QUESTION: DO WE NEED TO MANUALLY SHIFT THE QUEUE??
+							writeLCDcharacter(key_queue[0]);
+ 940:	f0 db       	rcall	.-2080   	; 0x122 <writeLCDcharacter>
+							++count_queue;
+ 942:	08 94       	sec
+ 944:	e1 1c       	adc	r14, r1
+ 946:	f1 1c       	adc	r15, r1
+ 948:	1f c0       	rjmp	.+62     	; 0x988 <main+0x32c>
+						
+						// If the latest key pressed is '*' then lets write the new
+						// code to eeprom
+						} else if (key_queue[0] == '*') {
+ 94a:	8a 32       	cpi	r24, 0x2A	; 42
+ 94c:	91 05       	cpc	r25, r1
+ 94e:	41 f4       	brne	.+16     	; 0x960 <main+0x304>
+							getCurrentUserInput(count_queue, current_user_input);
+ 950:	c7 01       	movw	r24, r14
+ 952:	68 2d       	mov	r22, r8
+ 954:	74 2d       	mov	r23, r4
+ 956:	1a de       	rcall	.-972    	; 0x58c <getCurrentUserInput>
+							writeTOeeprom(current_user_input);
+ 958:	88 2d       	mov	r24, r8
+ 95a:	94 2d       	mov	r25, r4
+ 95c:	43 dc       	rcall	.-1914   	; 0x1e4 <writeTOeeprom>
+ 95e:	14 c0       	rjmp	.+40     	; 0x988 <main+0x32c>
+
+
+						// Otherwise the only key left is '#', so that's what must've been
+						// pressed. :)
+						} else {
+							clearLCD();
+ 960:	01 dc       	rcall	.-2046   	; 0x164 <clearLCD>
+							writeLCDline(cancel_code_change,1);
+ 962:	ce 01       	movw	r24, r28
+ 964:	81 55       	subi	r24, 0x51	; 81
+ 966:	9f 4f       	sbci	r25, 0xFF	; 255
+ 968:	61 e0       	ldi	r22, 0x01	; 1
+ 96a:	70 e0       	ldi	r23, 0x00	; 0
+ 96c:	e1 db       	rcall	.-2110   	; 0x130 <writeLCDline>
+ 96e:	8f e3       	ldi	r24, 0x3F	; 63
+ 970:	92 e4       	ldi	r25, 0x42	; 66
+ 972:	af e0       	ldi	r26, 0x0F	; 15
+ 974:	81 50       	subi	r24, 0x01	; 1
+ 976:	90 40       	sbci	r25, 0x00	; 0
+ 978:	a0 40       	sbci	r26, 0x00	; 0
+ 97a:	e1 f7       	brne	.-8      	; 0x974 <main+0x318>
+ 97c:	00 c0       	rjmp	.+0      	; 0x97e <main+0x322>
+ 97e:	00 00       	nop
+							_delay_ms(5000);
+							clearKeyQueue();
+ 980:	8e dd       	rcall	.-1252   	; 0x49e <clearKeyQueue>
+							count_queue = 0;
+							clearLCD();
+ 982:	f0 db       	rcall	.-2080   	; 0x164 <clearLCD>
+						} else {
+							clearLCD();
+							writeLCDline(cancel_code_change,1);
+							_delay_ms(5000);
+							clearKeyQueue();
+							count_queue = 0;
+ 984:	e9 2c       	mov	r14, r9
+ 986:	f5 2c       	mov	r15, r5
+					writeLCDline(new_code_menu, 1);
+					cursorPosition(2);
+
+					// Now we start entering the new code. An '*' indicates that we're
+					// done entering the code.
+					while(key_queue[0] != '*') {
+ 988:	d6 01       	movw	r26, r12
+ 98a:	8d 91       	ld	r24, X+
+ 98c:	9c 91       	ld	r25, X
+ 98e:	11 97       	sbiw	r26, 0x01	; 1
+ 990:	8a 32       	cpi	r24, 0x2A	; 42
+ 992:	91 05       	cpc	r25, r1
+ 994:	09 f0       	breq	.+2      	; 0x998 <main+0x33c>
+ 996:	ba cf       	rjmp	.-140    	; 0x90c <main+0x2b0>
+ 998:	01 c0       	rjmp	.+2      	; 0x99c <main+0x340>
+				clearLCD();
+				writeLCDline(unlocked_menu_1, 1);
+				writeLCDline(unlocked_menu_2, 2);
+
+				clearKeyQueue();
+				count_queue = 0;
+ 99a:	78 01       	movw	r14, r16
+					}
+				}		
+			} // End while (lock_state == 1)
+
+		// While box is in unlocked state
+			while (lock_state == 0 ) {
+ 99c:	a1 14       	cp	r10, r1
+ 99e:	b1 04       	cpc	r11, r1
+ 9a0:	09 f0       	breq	.+2      	; 0x9a4 <main+0x348>
+ 9a2:	f5 ce       	rjmp	.-534    	; 0x78e <main+0x132>
+ 9a4:	7c cf       	rjmp	.-264    	; 0x89e <main+0x242>
+ 9a6:	ff cf       	rjmp	.-2      	; 0x9a6 <main+0x34a>
+ 9a8:	ff cf       	rjmp	.-2      	; 0x9a8 <main+0x34c>
+ 9aa:	ff cf       	rjmp	.-2      	; 0x9aa <main+0x34e>
+
+000009ac <__eerd_byte_m48a>:
+ 9ac:	f9 99       	sbic	0x1f, 1	; 31
+ 9ae:	fe cf       	rjmp	.-4      	; 0x9ac <__eerd_byte_m48a>
+ 9b0:	12 bc       	out	0x22, r1	; 34
+ 9b2:	81 bd       	out	0x21, r24	; 33
+ 9b4:	f8 9a       	sbi	0x1f, 0	; 31
+ 9b6:	99 27       	eor	r25, r25
+ 9b8:	80 b5       	in	r24, 0x20	; 32
+ 9ba:	08 95       	ret
+
+000009bc <__eewr_byte_m48a>:
+ 9bc:	26 2f       	mov	r18, r22
+
+000009be <__eewr_r18_m48a>:
+ 9be:	f9 99       	sbic	0x1f, 1	; 31
+ 9c0:	fe cf       	rjmp	.-4      	; 0x9be <__eewr_r18_m48a>
+ 9c2:	1f ba       	out	0x1f, r1	; 31
+ 9c4:	12 bc       	out	0x22, r1	; 34
+ 9c6:	81 bd       	out	0x21, r24	; 33
+ 9c8:	20 bd       	out	0x20, r18	; 32
+ 9ca:	0f b6       	in	r0, 0x3f	; 63
+ 9cc:	f8 94       	cli
+ 9ce:	fa 9a       	sbi	0x1f, 2	; 31
+ 9d0:	f9 9a       	sbi	0x1f, 1	; 31
+ 9d2:	0f be       	out	0x3f, r0	; 63
+ 9d4:	01 96       	adiw	r24, 0x01	; 1
+ 9d6:	08 95       	ret
+
+000009d8 <_exit>:
+ 9d8:	f8 94       	cli
+
+000009da <__stop_program>:
+ 9da:	ff cf       	rjmp	.-2      	; 0x9da <__stop_program>

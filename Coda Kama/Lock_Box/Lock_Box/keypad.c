@@ -23,7 +23,7 @@
 #define ROW4 PINB7										// row 4 of keypad mapped to pin
 #define STAR 10 										// '*'' key mapped to a decimal value
 #define POUND 12										// '#' key mapped to a decimal value
-#define KEY_QUEUE_SIZE 9								// size of key queue
+#define KEY_QUEUE_SIZE 10								// size of key queue
 
 // globals to be moved later
 int lock_state = 1;										// will be updated by Colin's lock/unlock functions
@@ -130,4 +130,17 @@ void clearKeyQueue(void){ 										// clears submit_input, code_input, and inpu
 		key_queue[i] = '\0';
 	}
 	
+}
+
+void initRows(int r[]){									// sets keypad rows as inputs
+for(int i = 0; i < NUM_ROWS; i++){
+	DDRB &= ~(1 << r[i]);
+}
+}
+
+void initColumns(int c[]){								// sets keypad columns as outputs
+	for(int i = 0; i < NUM_COLS; i++){
+		PORTB &= ~(1 << c[i]);							// columns to output low
+		DDRB |= (1 << c[i]);							// set columns as outputs
+	}
 }
