@@ -16,7 +16,7 @@ int short default_code[9] = {'0','0','0','0','\0','\0','\0','\0','\0'};		// Fact
 
 
 // Writes an 9 element array pass code to EEPROM
-void writeTOeeprom(int short code_to_save[9]){
+void writeTOeeprom(int short code_to_save[]){
 	int add_count = 0;													// variable declaration to loop through eeprom addresses
 	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
 	while(code_to_save[add_count] != '\0'){								// looping through code to save array
@@ -30,7 +30,7 @@ void writeTOeeprom(int short code_to_save[9]){
 
 
 // Reads the contents of EEPROM and store them in an 9 element array
-void readFROMeeprom(int short *saved_code[9]){
+void readFROMeeprom(int short *saved_code[]){
 	int add_count = 0;														// variable declaration to loop through eeprom and elements of array
 	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;							// temp address variable to go through eeprom
 	

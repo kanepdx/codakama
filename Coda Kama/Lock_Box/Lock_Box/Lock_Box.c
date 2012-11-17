@@ -58,7 +58,7 @@
 
  int main(void) {
 	 // initialize
-	int testcode[9] = {'3','2','1','\0','\0','\0','\0','\0','\0'};
+	// short int testcode[9] = {'3','2','1','\0','\0','\0','\0','\0','\0'};
 	int rows[] = {ROW1, ROW2, ROW3, ROW4};
 	int cols[] = {COL1, COL2, COL3};
 	int count;											// counter variable used for loops
@@ -81,7 +81,7 @@
 	char unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
 	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
 	char cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
-	char current_code[9];
+	int current_code[9];
 	
 	initRows(rows);										// set keypad rows as inputs
 	initColumns(cols);									// set keypad columns as outputs
@@ -105,7 +105,6 @@
 		clearLCD();
 		writeLCDline(enter_code,1);
 		cursorPosition(2);
-		writeTOeeprom(testcode);
 		readFROMeeprom(current_code);
 
 		// While box is in locked state
@@ -126,7 +125,7 @@
 				//testfun(1);
 				
 			// ...or is the first key in the queue a digit?...
-			} else if(key_queue[0] >= '0' && key_queue[0] <= '9'){
+			} else if(key_queue[0] >= '0' && key_queue[0] <= '9' && count_queue < 8){
 				writeLCDcharacter(key_queue[0]);
 				count_queue++;
 				
@@ -141,6 +140,10 @@
 				cursorPosition(1);
 				for(int i = 0; i < 10; i++){
 					writeLCDcharacter(key_queue[i]);
+				}
+				cursorPosition(2);
+				for(int i = 0; i < 9; i++){
+					writeLCDcharacter(current_code[i]);
 				}
 				_delay_ms(1000);
 									
