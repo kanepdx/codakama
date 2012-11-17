@@ -25,9 +25,8 @@
 #define POUND 12										// '#' key mapped to a decimal value
 #define KEY_QUEUE_SIZE 10								// size of key queue
 
-// globals to be moved later
-int lock_state = 1;										// will be updated by Colin's lock/unlock functions
-int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
+// globals to be moved later							
+volatile int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
 int current_key;
 
 // adds the most recent key press to the key_queue
@@ -122,7 +121,7 @@ void pushKey(int k){ 										// shift queue and update first element
 	for(int i = KEY_QUEUE_SIZE - 1; i > 0; i--){
 		key_queue[i] = key_queue[i-1];
 	}
-	key_queue[0] = k;		
+	key_queue[0] = k;	
 }
 
 void clearKeyQueue(void){ 										// clears submit_input, code_input, and input_index

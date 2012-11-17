@@ -3,29 +3,29 @@ testing with lcd.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000010  00800100  000005a6  0000063a  2**0
+  0 .data         000000d0  00800100  000005b6  0000064a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000005a6  00000000  00000000  00000094  2**1
+  1 .text         000005b6  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000014  00800110  00800110  0000064a  2**0
+  2 .bss          00000014  008001d0  008001d0  0000071a  2**0
                   ALLOC
-  3 .stab         000006cc  00000000  00000000  0000064c  2**2
+  3 .stab         000006cc  00000000  00000000  0000071c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000085  00000000  00000000  00000d18  2**0
+  4 .stabstr      00000085  00000000  00000000  00000de8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000080  00000000  00000000  00000da0  2**3
+  5 .debug_aranges 00000080  00000000  00000000  00000e70  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000aec  00000000  00000000  00000e20  2**0
+  6 .debug_info   00000b75  00000000  00000000  00000ef0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000024a  00000000  00000000  0000190c  2**0
+  7 .debug_abbrev 0000024a  00000000  00000000  00001a65  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000533  00000000  00000000  00001b56  2**0
+  8 .debug_line   00000535  00000000  00000000  00001caf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001e8  00000000  00000000  0000208c  2**2
+  9 .debug_frame  000001e8  00000000  00000000  000021e4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000260  00000000  00000000  00002274  2**0
+ 10 .debug_str    000002bb  00000000  00000000  000023cc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000549  00000000  00000000  000024d4  2**0
+ 11 .debug_loc    00000549  00000000  00000000  00002687  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -70,18 +70,18 @@ Disassembly of section .text:
   40:	11 e0       	ldi	r17, 0x01	; 1
   42:	a0 e0       	ldi	r26, 0x00	; 0
   44:	b1 e0       	ldi	r27, 0x01	; 1
-  46:	e6 ea       	ldi	r30, 0xA6	; 166
+  46:	e6 eb       	ldi	r30, 0xB6	; 182
   48:	f5 e0       	ldi	r31, 0x05	; 5
   4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
   4c:	05 90       	lpm	r0, Z+
   4e:	0d 92       	st	X+, r0
-  50:	a0 31       	cpi	r26, 0x10	; 16
+  50:	a0 3d       	cpi	r26, 0xD0	; 208
   52:	b1 07       	cpc	r27, r17
   54:	d9 f7       	brne	.-10     	; 0x4c <__do_copy_data+0xc>
 
 00000056 <__do_clear_bss>:
   56:	11 e0       	ldi	r17, 0x01	; 1
-  58:	a0 e1       	ldi	r26, 0x10	; 16
+  58:	a0 ed       	ldi	r26, 0xD0	; 208
   5a:	b1 e0       	ldi	r27, 0x01	; 1
   5c:	01 c0       	rjmp	.+2      	; 0x60 <.do_clear_bss_start>
 
@@ -89,11 +89,11 @@ Disassembly of section .text:
   5e:	1d 92       	st	X+, r1
 
 00000060 <.do_clear_bss_start>:
-  60:	a4 32       	cpi	r26, 0x24	; 36
+  60:	a4 3e       	cpi	r26, 0xE4	; 228
   62:	b1 07       	cpc	r27, r17
   64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
   66:	27 d2       	rcall	.+1102   	; 0x4b6 <main>
-  68:	9c c2       	rjmp	.+1336   	; 0x5a2 <_exit>
+  68:	a4 c2       	rjmp	.+1352   	; 0x5b2 <_exit>
 
 0000006a <__bad_interrupt>:
   6a:	ca cf       	rjmp	.-108    	; 0x0 <__vectors>
@@ -423,8 +423,8 @@ void getKeyPress(void){
  1ec:	a0 df       	rcall	.-192    	; 0x12e <keyMap>
 	//pushKey(key); 									// push key onto queue		
 	current_key = key;
- 1ee:	90 93 11 01 	sts	0x0111, r25
- 1f2:	80 93 10 01 	sts	0x0110, r24
+ 1ee:	90 93 d1 01 	sts	0x01D1, r25
+ 1f2:	80 93 d0 01 	sts	0x01D0, r24
 }
  1f6:	df 91       	pop	r29
  1f8:	cf 91       	pop	r28
@@ -437,10 +437,10 @@ void getKeyPress(void){
 
 int popKey(void){ 											// pop first element and shift queue;
 	int k = key_queue[0];
- 1fc:	42 e1       	ldi	r20, 0x12	; 18
+ 1fc:	42 ed       	ldi	r20, 0xD2	; 210
  1fe:	51 e0       	ldi	r21, 0x01	; 1
- 200:	80 91 12 01 	lds	r24, 0x0112
- 204:	90 91 13 01 	lds	r25, 0x0113
+ 200:	80 91 d2 01 	lds	r24, 0x01D2
+ 204:	90 91 d3 01 	lds	r25, 0x01D3
  208:	fa 01       	movw	r30, r20
 	else if((r == ROW4) && (c == 2)) k = 0x30;
 	else if((r == ROW4) && (c == 3)) k = 0x23;
@@ -469,8 +469,8 @@ int popKey(void){ 											// pop first element and shift queue;
 		key_queue[i] = key_queue[i+1];
 	}	
 	key_queue[KEY_QUEUE_SIZE-1] = '\0';
- 21c:	10 92 23 01 	sts	0x0123, r1
- 220:	10 92 22 01 	sts	0x0122, r1
+ 21c:	10 92 e3 01 	sts	0x01E3, r1
+ 220:	10 92 e2 01 	sts	0x01E2, r1
 	return k;
 }
  224:	08 95       	ret
@@ -479,7 +479,7 @@ int popKey(void){ 											// pop first element and shift queue;
 
 void pushKey(int k){ 										// shift queue and update first element
  226:	ac 01       	movw	r20, r24
- 228:	e2 e2       	ldi	r30, 0x22	; 34
+ 228:	e2 ee       	ldi	r30, 0xE2	; 226
  22a:	f1 e0       	ldi	r31, 0x01	; 1
  22c:	cf 01       	movw	r24, r30
  22e:	40 97       	sbiw	r24, 0x10	; 16
@@ -501,15 +501,15 @@ void pushKey(int k){ 										// shift queue and update first element
 		key_queue[i] = key_queue[i-1];
 	}
 	key_queue[0] = k;		
- 23e:	50 93 13 01 	sts	0x0113, r21
- 242:	40 93 12 01 	sts	0x0112, r20
+ 23e:	50 93 d3 01 	sts	0x01D3, r21
+ 242:	40 93 d2 01 	sts	0x01D2, r20
 }
  246:	08 95       	ret
 
 00000248 <clearKeyQueue>:
 
 void clearKeyQueue(void){ 										// clears submit_input, code_input, and input_index
- 248:	e2 e1       	ldi	r30, 0x12	; 18
+ 248:	e2 ed       	ldi	r30, 0xD2	; 210
  24a:	f1 e0       	ldi	r31, 0x01	; 1
  24c:	cf 01       	movw	r24, r30
  24e:	42 96       	adiw	r24, 0x12	; 18
@@ -870,10 +870,10 @@ void initializeLCD(void){
  3c2:	08 95       	ret
 
 000003c4 <__vector_3>:
-#include "LCD.c"
-
-void initRows(int r[]);
-void initColumns(int c[]);
+int unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
+int unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
+int new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
+int cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
 
 ISR(PCINT0_vect){
  3c4:	1f 92       	push	r1
@@ -923,12 +923,12 @@ ISR(PCINT0_vect){
  40c:	51 f4       	brne	.+20     	; 0x422 <__vector_3+0x5e>
 		//writeLCDcharacter('q');
 		pushKey(current_key);
- 40e:	80 91 10 01 	lds	r24, 0x0110
- 412:	90 91 11 01 	lds	r25, 0x0111
+ 40e:	80 91 d0 01 	lds	r24, 0x01D0
+ 412:	90 91 d1 01 	lds	r25, 0x01D1
  416:	07 df       	rcall	.-498    	; 0x226 <pushKey>
 		writeLCDcharacter(key_queue[0]);		
- 418:	80 91 12 01 	lds	r24, 0x0112
- 41c:	90 91 13 01 	lds	r25, 0x0113
+ 418:	80 91 d2 01 	lds	r24, 0x01D2
+ 41c:	90 91 d3 01 	lds	r25, 0x01D3
  420:	78 df       	rcall	.-272    	; 0x312 <writeLCDcharacter>
 	}
 }
@@ -1105,146 +1105,156 @@ int main(void)
  500:	a3 de       	rcall	.-698    	; 0x248 <clearKeyQueue>
 	clearLCD();
  502:	28 df       	rcall	.-432    	; 0x354 <clearLCD>
+	writeLCDline(enter_code,1);
+ 504:	8e ea       	ldi	r24, 0xAE	; 174
+ 506:	91 e0       	ldi	r25, 0x01	; 1
+ 508:	61 e0       	ldi	r22, 0x01	; 1
+ 50a:	70 e0       	ldi	r23, 0x00	; 0
+ 50c:	09 df       	rcall	.-494    	; 0x320 <writeLCDline>
+	cursorPosition(2);
+ 50e:	82 e0       	ldi	r24, 0x02	; 2
+ 510:	90 e0       	ldi	r25, 0x00	; 0
+ 512:	dd de       	rcall	.-582    	; 0x2ce <cursorPosition>
 	writeLCDcharacter('#');
- 504:	83 e2       	ldi	r24, 0x23	; 35
- 506:	90 e0       	ldi	r25, 0x00	; 0
- 508:	04 df       	rcall	.-504    	; 0x312 <writeLCDcharacter>
+ 514:	83 e2       	ldi	r24, 0x23	; 35
+ 516:	90 e0       	ldi	r25, 0x00	; 0
+ 518:	fc de       	rcall	.-520    	; 0x312 <writeLCDcharacter>
 	
 	// initialize interrupts
 	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
- 50a:	e8 e6       	ldi	r30, 0x68	; 104
- 50c:	f0 e0       	ldi	r31, 0x00	; 0
- 50e:	80 81       	ld	r24, Z
- 510:	81 60       	ori	r24, 0x01	; 1
- 512:	80 83       	st	Z, r24
- 514:	fe 01       	movw	r30, r28
- 516:	31 96       	adiw	r30, 0x01	; 1
+ 51a:	e8 e6       	ldi	r30, 0x68	; 104
+ 51c:	f0 e0       	ldi	r31, 0x00	; 0
+ 51e:	80 81       	ld	r24, Z
+ 520:	81 60       	ori	r24, 0x01	; 1
+ 522:	80 83       	st	Z, r24
+ 524:	fe 01       	movw	r30, r28
+ 526:	31 96       	adiw	r30, 0x01	; 1
 	for(int i = 0; i < NUM_ROWS; i++){
 		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
- 518:	ab e6       	ldi	r26, 0x6B	; 107
- 51a:	b0 e0       	ldi	r27, 0x00	; 0
- 51c:	21 e0       	ldi	r18, 0x01	; 1
- 51e:	30 e0       	ldi	r19, 0x00	; 0
- 520:	4c 91       	ld	r20, X
- 522:	80 81       	ld	r24, Z
- 524:	32 96       	adiw	r30, 0x02	; 2
- 526:	b9 01       	movw	r22, r18
- 528:	02 c0       	rjmp	.+4      	; 0x52e <main+0x78>
- 52a:	66 0f       	add	r22, r22
- 52c:	77 1f       	adc	r23, r23
- 52e:	8a 95       	dec	r24
- 530:	e2 f7       	brpl	.-8      	; 0x52a <main+0x74>
- 532:	cb 01       	movw	r24, r22
- 534:	84 2b       	or	r24, r20
- 536:	8c 93       	st	X, r24
-	clearLCD();
+ 528:	ab e6       	ldi	r26, 0x6B	; 107
+ 52a:	b0 e0       	ldi	r27, 0x00	; 0
+ 52c:	21 e0       	ldi	r18, 0x01	; 1
+ 52e:	30 e0       	ldi	r19, 0x00	; 0
+ 530:	4c 91       	ld	r20, X
+ 532:	80 81       	ld	r24, Z
+ 534:	32 96       	adiw	r30, 0x02	; 2
+ 536:	b9 01       	movw	r22, r18
+ 538:	02 c0       	rjmp	.+4      	; 0x53e <main+0x88>
+ 53a:	66 0f       	add	r22, r22
+ 53c:	77 1f       	adc	r23, r23
+ 53e:	8a 95       	dec	r24
+ 540:	e2 f7       	brpl	.-8      	; 0x53a <main+0x84>
+ 542:	cb 01       	movw	r24, r22
+ 544:	84 2b       	or	r24, r20
+ 546:	8c 93       	st	X, r24
+	cursorPosition(2);
 	writeLCDcharacter('#');
 	
 	// initialize interrupts
 	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
 	for(int i = 0; i < NUM_ROWS; i++){
- 538:	e0 17       	cp	r30, r16
- 53a:	f1 07       	cpc	r31, r17
- 53c:	89 f7       	brne	.-30     	; 0x520 <main+0x6a>
+ 548:	e0 17       	cp	r30, r16
+ 54a:	f1 07       	cpc	r31, r17
+ 54c:	89 f7       	brne	.-30     	; 0x530 <main+0x7a>
 		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
 	}
 	sei();												// global interrupt enable
- 53e:	78 94       	sei
+ 54e:	78 94       	sei
 	// wait loop
 	while(1)											
 	{
 		_delay_us(5);
 		
 		if(key_queue[0] == '#'){
- 540:	0f 2e       	mov	r0, r31
- 542:	f2 e1       	ldi	r31, 0x12	; 18
- 544:	ef 2e       	mov	r14, r31
- 546:	f1 e0       	ldi	r31, 0x01	; 1
- 548:	ff 2e       	mov	r15, r31
- 54a:	f0 2d       	mov	r31, r0
+ 550:	0f 2e       	mov	r0, r31
+ 552:	f2 ed       	ldi	r31, 0xD2	; 210
+ 554:	ef 2e       	mov	r14, r31
+ 556:	f1 e0       	ldi	r31, 0x01	; 1
+ 558:	ff 2e       	mov	r15, r31
+ 55a:	f0 2d       	mov	r31, r0
 			i = 1;
 			while(key_queue[i] != '\0'){
- 54c:	0f 2e       	mov	r0, r31
- 54e:	f4 e1       	ldi	r31, 0x14	; 20
- 550:	cf 2e       	mov	r12, r31
- 552:	f1 e0       	ldi	r31, 0x01	; 1
- 554:	df 2e       	mov	r13, r31
- 556:	f0 2d       	mov	r31, r0
+ 55c:	0f 2e       	mov	r0, r31
+ 55e:	f4 ed       	ldi	r31, 0xD4	; 212
+ 560:	cf 2e       	mov	r12, r31
+ 562:	f1 e0       	ldi	r31, 0x01	; 1
+ 564:	df 2e       	mov	r13, r31
+ 566:	f0 2d       	mov	r31, r0
 				writeLCDcharacter(key_queue[i]);
 				i++;	
 			}
 			key_queue[0] = '?';
- 558:	0f 2e       	mov	r0, r31
- 55a:	ff e3       	ldi	r31, 0x3F	; 63
- 55c:	af 2e       	mov	r10, r31
- 55e:	bb 24       	eor	r11, r11
- 560:	f0 2d       	mov	r31, r0
+ 568:	0f 2e       	mov	r0, r31
+ 56a:	ff e3       	ldi	r31, 0x3F	; 63
+ 56c:	af 2e       	mov	r10, r31
+ 56e:	bb 24       	eor	r11, r11
+ 570:	f0 2d       	mov	r31, r0
 	{
 		_delay_us(5);
 		
 		if(key_queue[0] == '#'){
 			i = 1;
 			while(key_queue[i] != '\0'){
- 562:	0f 2e       	mov	r0, r31
- 564:	f6 e1       	ldi	r31, 0x16	; 22
- 566:	8f 2e       	mov	r8, r31
- 568:	f1 e0       	ldi	r31, 0x01	; 1
- 56a:	9f 2e       	mov	r9, r31
- 56c:	f0 2d       	mov	r31, r0
+ 572:	0f 2e       	mov	r0, r31
+ 574:	f6 ed       	ldi	r31, 0xD6	; 214
+ 576:	8f 2e       	mov	r8, r31
+ 578:	f1 e0       	ldi	r31, 0x01	; 1
+ 57a:	9f 2e       	mov	r9, r31
+ 57c:	f0 2d       	mov	r31, r0
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 56e:	00 c0       	rjmp	.+0      	; 0x570 <main+0xba>
- 570:	00 c0       	rjmp	.+0      	; 0x572 <main+0xbc>
- 572:	00 00       	nop
+ 57e:	00 c0       	rjmp	.+0      	; 0x580 <main+0xca>
+ 580:	00 c0       	rjmp	.+0      	; 0x582 <main+0xcc>
+ 582:	00 00       	nop
 	// wait loop
 	while(1)											
 	{
 		_delay_us(5);
 		
 		if(key_queue[0] == '#'){
- 574:	f7 01       	movw	r30, r14
- 576:	80 81       	ld	r24, Z
- 578:	91 81       	ldd	r25, Z+1	; 0x01
- 57a:	83 32       	cpi	r24, 0x23	; 35
- 57c:	91 05       	cpc	r25, r1
- 57e:	b9 f7       	brne	.-18     	; 0x56e <main+0xb8>
+ 584:	f7 01       	movw	r30, r14
+ 586:	80 81       	ld	r24, Z
+ 588:	91 81       	ldd	r25, Z+1	; 0x01
+ 58a:	83 32       	cpi	r24, 0x23	; 35
+ 58c:	91 05       	cpc	r25, r1
+ 58e:	b9 f7       	brne	.-18     	; 0x57e <main+0xc8>
 			i = 1;
 			while(key_queue[i] != '\0'){
- 580:	f6 01       	movw	r30, r12
- 582:	80 81       	ld	r24, Z
- 584:	91 81       	ldd	r25, Z+1	; 0x01
- 586:	00 97       	sbiw	r24, 0x00	; 0
- 588:	41 f0       	breq	.+16     	; 0x59a <main+0xe4>
- 58a:	84 01       	movw	r16, r8
+ 590:	f6 01       	movw	r30, r12
+ 592:	80 81       	ld	r24, Z
+ 594:	91 81       	ldd	r25, Z+1	; 0x01
+ 596:	00 97       	sbiw	r24, 0x00	; 0
+ 598:	41 f0       	breq	.+16     	; 0x5aa <main+0xf4>
+ 59a:	84 01       	movw	r16, r8
 				writeLCDcharacter(key_queue[i]);
- 58c:	c2 de       	rcall	.-636    	; 0x312 <writeLCDcharacter>
+ 59c:	ba de       	rcall	.-652    	; 0x312 <writeLCDcharacter>
 	{
 		_delay_us(5);
 		
 		if(key_queue[0] == '#'){
 			i = 1;
 			while(key_queue[i] != '\0'){
- 58e:	f8 01       	movw	r30, r16
- 590:	81 91       	ld	r24, Z+
- 592:	91 91       	ld	r25, Z+
- 594:	8f 01       	movw	r16, r30
- 596:	00 97       	sbiw	r24, 0x00	; 0
- 598:	c9 f7       	brne	.-14     	; 0x58c <main+0xd6>
+ 59e:	f8 01       	movw	r30, r16
+ 5a0:	81 91       	ld	r24, Z+
+ 5a2:	91 91       	ld	r25, Z+
+ 5a4:	8f 01       	movw	r16, r30
+ 5a6:	00 97       	sbiw	r24, 0x00	; 0
+ 5a8:	c9 f7       	brne	.-14     	; 0x59c <main+0xe6>
 				writeLCDcharacter(key_queue[i]);
 				i++;	
 			}
 			key_queue[0] = '?';
- 59a:	f7 01       	movw	r30, r14
- 59c:	b1 82       	std	Z+1, r11	; 0x01
- 59e:	a0 82       	st	Z, r10
- 5a0:	e6 cf       	rjmp	.-52     	; 0x56e <main+0xb8>
+ 5aa:	f7 01       	movw	r30, r14
+ 5ac:	b1 82       	std	Z+1, r11	; 0x01
+ 5ae:	a0 82       	st	Z, r10
+ 5b0:	e6 cf       	rjmp	.-52     	; 0x57e <main+0xc8>
 
-000005a2 <_exit>:
- 5a2:	f8 94       	cli
+000005b2 <_exit>:
+ 5b2:	f8 94       	cli
 
-000005a4 <__stop_program>:
- 5a4:	ff cf       	rjmp	.-2      	; 0x5a4 <__stop_program>
+000005b4 <__stop_program>:
+ 5b4:	ff cf       	rjmp	.-2      	; 0x5b4 <__stop_program>

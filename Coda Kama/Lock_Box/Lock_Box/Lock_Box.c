@@ -33,27 +33,37 @@ void getCurrentUserInput(int count_queue, int *current_user_input[9]){
 }
 
 int testLock(int status){
+	int lock_state = 1;
 	DDRD |= (1 << PD6);
 	PORTD |= (1 << PD6);
-	return status = 1;
+	return lock_state;
 }
 
 int testUnlock(int status){
+	int lock_state = 0;
 	DDRD |= (1 << PD6);
 	PORTD &= ~(1 << PD6);
-	return status = 0;
+	return lock_state;
+}
+
+void testfun(int on_off){
+	DDRD |= (1 << PD7);
+	if (on_off == 1)		
+		PORTD |= (1 << PD7);
+	else
+		PORTD &= ~(1 << PD7);
 }
 
 ISR(PCINT0_vect){
 	_delay_ms(5);
 	if(getButtonState()){
 		getKeyPress();
-		_delay_ms(50);
+		_delay_ms(75);
+		
 	}
 	else if(!getButtonState()){
 		pushKey(current_key);
-		//writeLCDcharacter(key_queue[0]);
-	}
+	}		
 }
 
 int main(void) {
@@ -61,7 +71,7 @@ int main(void) {
 	int rows[] = {ROW1, ROW2, ROW3, ROW4};
 	int cols[] = {COL1, COL2, COL3};
 	int count;											// counter variable used for loops
-	int count_queue;									// Keep track of how many characters are
+	volatile int count_queue;							// Keep track of how many characters are
 														// in the queue
 	int code_is_correct;								 
 	int lock_state = 2;									// initialized lock variable to intermediate status		
@@ -74,14 +84,14 @@ int main(void) {
 	sei();												// global interrupt enable
 	
 	// Initializing arrays 
-	int enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
-	int incorrect_code[16] = {'I','N','C','O','R','R','E','C','T',' ','C','O','D','E',' ',' '};
-	int unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
-	int unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
-	int new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
-	int cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
-	int current_code[9];
-	int current_user_input[9];
+	char enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
+	char incorrect_code[16] = {'I','N','C','O','R','R','E','C','T',' ','C','O','D','E',' ',' '};
+	char unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
+	char unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
+	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
+	char cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
+	char current_code[9];
+	char current_user_input[9];
 	
 	initRows(rows);										// set keypad rows as inputs
 	initColumns(cols);									// set keypad columns as outputs
@@ -89,12 +99,28 @@ int main(void) {
 	clearKeyQueue();
 	count_queue = 0;
 
+	testfun(0);
 
+	
 	// Ensure we're locked to start with.
 	while (lock_state != 1) {
 			lock_state = testLock(2);
 	}
-
+	
+	/*
+	key_queue[0] = '*';
+	key_queue[1] = '0';
+	key_queue[2] = '0';
+	key_queue[3] = '0';
+	key_queue[4] = '0';
+	key_queue[5] = '0';
+	key_queue[6] = '0';
+	key_queue[7] = '0';
+	key_queue[8] = '0';
+	key_queue[9] = '\0';
+	count_queue = 8;
+	*/
+	
 	// wait loop
 	while(1) {
 		
@@ -107,53 +133,55 @@ int main(void) {
 		// While box is in locked state
 		while (lock_state == 1) {
 				
-				
 					
 				// Wait for a key press
-				while(key_queue[count_queue] == '\0');
+			while(key_queue[count_queue] == '\0');
+			
+			testfun(1);
+			// Now that we have a key press we need to look at what was pressed.
+			// Is the first key in the queue a '#'...
+			if(key_queue[0] == '#'){
+				clearLCD();
+				writeLCDline(enter_code,1);
+				cursorPosition(2);
+				clearKeyQueue();
+				count_queue = 0;
+				//testfun(1);
 				
-				// Now that we have a key press we need to look at what was pressed.
-				// Is the first key in the queue a '#'...
-				if(key_queue[0] == '#'){
+			// ...or is the first key in the queue a digit?...
+			} else if(key_queue[0] >= '0' && key_queue[0] <= '9'){
+				writeLCDcharacter(key_queue[0]);
+				count_queue++;
+				testfun(1);
+				
+			// ...or if first key in the queue isn't a digit or '#' then
+			// it must be the '*'
+			} else if(key_queue[0] == '*') {
+				count = 0;
+				code_is_correct = 1;
+				getCurrentUserInput(count_queue,current_user_input);
+					
+				// Checks the current queue code with the correct code
+				while(current_user_input[count] != '\0'){
+					if(current_user_input[count] != current_code[count])
+						code_is_correct = 0;
+					count++;				
+				}
+				if(!code_is_correct){
+					clearLCD();
+					writeLCDline(incorrect_code,1);
+					_delay_ms(5000);
+					clearKeyQueue();
+					count_queue = 0;
 					clearLCD();
 					writeLCDline(enter_code,1);
 					cursorPosition(2);
-					clearKeyQueue();
-					count_queue = 0;
-				
-				// ...or is the first key in the queue a digit?...
-				} else if(key_queue[0] >= '0' && key_queue[0] <= '9'){
-					writeLCDcharacter(key_queue[0]);
-					++count_queue;
-				
-				// ...or if first key in the queue isn't a digit or '#' then
-				// it must be the '*'
-				} else {
-					count = 0;
-					code_is_correct = 1;
-					getCurrentUserInput(count_queue,current_user_input);
-					
-					// Checks the current queue code with the correct code
-					while(current_user_input[count] != '\0'){
-						if(current_user_input[count] != current_code[count])
-							code_is_correct = 0;
-						count++;				
-					}
-					if(!code_is_correct){
-						clearLCD();
-						writeLCDline(incorrect_code,1);
-						_delay_ms(5000);
-						clearKeyQueue();
-						count_queue = 0;
-						clearLCD();
-						writeLCDline(enter_code,1);
-						cursorPosition(2);
-					}else{
+				}else if(code_is_correct){
 
-						// Unlock the box
-						lock_state = testUnlock(lock_state);
-					}
-				}		
+					// Unlock the box
+					lock_state = testUnlock(lock_state);
+				}
+				}					
 			} // End while (lock_state == 1)
 
 		// While box is in unlocked state
@@ -181,7 +209,7 @@ int main(void) {
 
 				// ...or is the first key in the queue a '*'?
 				} else if(key_queue[0] == '*'){
-
+					
 					clearLCD();
 					clearKeyQueue();
 					count_queue = 0;
@@ -195,7 +223,7 @@ int main(void) {
 						clearKeyQueue();
 
 						// Wait for key press
-						while(key_queue[count_queue] == '\0');
+						//while(key_queue[count_queue] == '\0');
 
 						// Was the latest key pressed between 0 and 9, AND has the user
 						// entered less than the max number (8) of digits allowed for the
@@ -214,7 +242,7 @@ int main(void) {
 
 						// Otherwise the only key left is '#', so that's what must've been
 						// pressed. :)
-						} else {
+						} else if(key_queue[0] == '#') {
 							clearLCD();
 							writeLCDline(cancel_code_change,1);
 							_delay_ms(5000);

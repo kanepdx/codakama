@@ -11,6 +11,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "testing with lcd", "testing
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Lock_Box", "..\..\..\Coda Kama\Lock_Box\Lock_Box\Lock_Box.cproj", "{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LCD_Test", "..\..\matt\LCD_Test\LCD_Test\LCD_Test\LCD_Test.cproj", "{D75F2731-EF0B-42B2-9AB4-F36A7B4DDA0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -37,6 +39,10 @@ Global
 		{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}.Debug|AVR.Build.0 = Debug|AVR
 		{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}.Release|AVR.ActiveCfg = Release|AVR
 		{AD57D435-B2F8-4A2C-8AF0-44694C68AB1E}.Release|AVR.Build.0 = Release|AVR
+		{D75F2731-EF0B-42B2-9AB4-F36A7B4DDA0E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{D75F2731-EF0B-42B2-9AB4-F36A7B4DDA0E}.Debug|AVR.Build.0 = Debug|AVR
+		{D75F2731-EF0B-42B2-9AB4-F36A7B4DDA0E}.Release|AVR.ActiveCfg = Release|AVR
+		{D75F2731-EF0B-42B2-9AB4-F36A7B4DDA0E}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
