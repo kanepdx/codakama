@@ -12,7 +12,7 @@
 #define EEPROM_NEWCODE_ADDRESS 0x0		// Address to hold new code flag
 #define EEPROM_DATA_ADDRESS 0x01		// Starting address of saved data
 
-int short default_code[9] = {'0','0','0','0','0','0','0','0','\0'};		// Factory default code 
+int short default_code[9] = {'0','0','0','0','\0','\0','\0','\0','\0'};		// Factory default code 
 
 
 // Writes an 9 element array pass code to EEPROM

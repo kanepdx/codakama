@@ -1,73 +1,64 @@
  /*
  * Lock_Box.c
  *
- * 
+ *
  *  Author: Coda Kama
- */ 
+ */
 
-#define F_CPU 1000000			// 8Mhz/8 = 1Mhz = System clock
+ #define F_CPU 1000000			// 8Mhz/8 = 1Mhz = System clock
 
-#include <avr/io.h>				// AVR I/O library
-#include <util/delay.h>			// Delay library
-#include <avr/interrupt.h>		// Interrupt library
-#include <avr/eeprom.h>			// EEPROM library
+ #include <avr/io.h>				// AVR I/O library
+ #include <util/delay.h>			// Delay library
+ #include <avr/interrupt.h>		// Interrupt library
+ #include <avr/eeprom.h>			// EEPROM library
 
-#include "LCD.h"				// LCD.h function library - Prototypes only
-#include "LCD.c"				// LCD.c function library - Functions only
-#include "EEPROM_RW.h"			// EEPROM_RW.h - EEPROM read/write function prototypes
-#include "EEPROM_RW.c"			// EEPROM_RW.c - EEPROM read/write functions
-#include "keypad.h"				// keypad.h function library - Function prototypes
-#include "keypad.c"				// keypad.c function library - Functions only
-#include "lockCode.h"			// lockCode.h function library - Function prototypes
-#include "lockCode.c"			// lockcCocde.h function library - Functions only
+ #include "LCD.h"				// LCD.h function library - Prototypes only
+ #include "LCD.c"				// LCD.c function library - Functions only
+ #include "EEPROM_RW.h"			// EEPROM_RW.h - EEPROM read/write function prototypes
+ #include "EEPROM_RW.c"			// EEPROM_RW.c - EEPROM read/write functions
+ #include "keypad.h"				// keypad.h function library - Function prototypes
+ #include "keypad.c"				// keypad.c function library - Functions only
+ #include "lockCode.h"			// lockCode.h function library - Function prototypes
+ #include "lockCode.c"			// lockcCocde.h function library - Functions only
 
-// Puts the users inputs in an array after the '*' is pressed
-void getCurrentUserInput(int count_queue, int *current_user_input[9]){
-	int i;
-	for(int i = count_queue; i>=0; i--){
-		current_user_input[count_queue - i] = key_queue[i];
-	}		
-	for(int i = count_queue+1; i < 9; i++){
-		current_user_input[i] = '\0';	
-	}
-}
 
-int testLock(int status){
-	int lock_state = 1;
-	DDRD |= (1 << PD6);
-	PORTD |= (1 << PD6);
-	return lock_state;
-}
+ int testLock(int status){
+	 int lock_state = 1;
+	 DDRD |= (1 << PD6);
+	 PORTD |= (1 << PD6);
+	 return lock_state;
+ }
 
-int testUnlock(int status){
-	int lock_state = 0;
-	DDRD |= (1 << PD6);
-	PORTD &= ~(1 << PD6);
-	return lock_state;
-}
+ int testUnlock(int status){
+	 int lock_state = 0;
+	 DDRD |= (1 << PD6);
+	 PORTD &= ~(1 << PD6);
+	 return lock_state;
+ }
 
-void testfun(int on_off){
-	DDRD |= (1 << PD7);
-	if (on_off == 1)		
-		PORTD |= (1 << PD7);
-	else
-		PORTD &= ~(1 << PD7);
-}
+ void testfun(int on_off){
+	 DDRD |= (1 << PD7);
+	 if (on_off == 1)
+	 PORTD |= (1 << PD7);
+	 else
+	 PORTD &= ~(1 << PD7);
+ }
 
-ISR(PCINT0_vect){
-	_delay_ms(5);
-	if(getButtonState()){
-		getKeyPress();
-		_delay_ms(75);
-		
-	}
-	else if(!getButtonState()){
-		pushKey(current_key);
-	}		
-}
+ ISR(PCINT0_vect){
+	 _delay_ms(5);
+	 if(getButtonState()){
+		 getKeyPress();
+		 _delay_ms(75);
+		 
+	 }
+	 else if(!getButtonState()){
+		 pushKey(current_key);
+	 }
+ }
 
-int main(void) {
-	// initialize
+ int main(void) {
+	 // initialize
+	int testcode[9] = {'3','2','1','\0','\0','\0','\0','\0','\0'};
 	int rows[] = {ROW1, ROW2, ROW3, ROW4};
 	int cols[] = {COL1, COL2, COL3};
 	int count;											// counter variable used for loops
@@ -91,7 +82,6 @@ int main(void) {
 	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
 	char cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
 	char current_code[9];
-	char current_user_input[9];
 	
 	initRows(rows);										// set keypad rows as inputs
 	initColumns(cols);									// set keypad columns as outputs
@@ -107,19 +97,6 @@ int main(void) {
 			lock_state = testLock(2);
 	}
 	
-	/*
-	key_queue[0] = '*';
-	key_queue[1] = '0';
-	key_queue[2] = '0';
-	key_queue[3] = '0';
-	key_queue[4] = '0';
-	key_queue[5] = '0';
-	key_queue[6] = '0';
-	key_queue[7] = '0';
-	key_queue[8] = '0';
-	key_queue[9] = '\0';
-	count_queue = 8;
-	*/
 	
 	// wait loop
 	while(1) {
@@ -128,16 +105,16 @@ int main(void) {
 		clearLCD();
 		writeLCDline(enter_code,1);
 		cursorPosition(2);
+		writeTOeeprom(testcode);
 		readFROMeeprom(current_code);
 
 		// While box is in locked state
 		while (lock_state == 1) {
 				
 					
-				// Wait for a key press
+			// Wait for a key press
 			while(key_queue[count_queue] == '\0');
 			
-			testfun(1);
 			// Now that we have a key press we need to look at what was pressed.
 			// Is the first key in the queue a '#'...
 			if(key_queue[0] == '#'){
@@ -152,22 +129,29 @@ int main(void) {
 			} else if(key_queue[0] >= '0' && key_queue[0] <= '9'){
 				writeLCDcharacter(key_queue[0]);
 				count_queue++;
-				testfun(1);
 				
 			// ...or if first key in the queue isn't a digit or '#' then
 			// it must be the '*'
 			} else if(key_queue[0] == '*') {
 				count = 0;
 				code_is_correct = 1;
-				getCurrentUserInput(count_queue,current_user_input);
+				popKey();
+				
+				clearLCD();
+				cursorPosition(1);
+				for(int i = 0; i < 10; i++){
+					writeLCDcharacter(key_queue[i]);
+				}
+				_delay_ms(1000);
+									
 					
 				// Checks the current queue code with the correct code
-				while(current_user_input[count] != '\0'){
-					if(current_user_input[count] != current_code[count])
+				while(key_queue[count] != '\0'){
+					if(key_queue[count] != current_code[count])
 						code_is_correct = 0;
-					count++;				
+					++count;				
 				}
-				if(!code_is_correct){
+				if(!code_is_correct && count > 0){
 					clearLCD();
 					writeLCDline(incorrect_code,1);
 					_delay_ms(5000);
@@ -176,13 +160,13 @@ int main(void) {
 					clearLCD();
 					writeLCDline(enter_code,1);
 					cursorPosition(2);
-				}else if(code_is_correct){
+				}else if(code_is_correct && count > 0){
 
 					// Unlock the box
 					lock_state = testUnlock(lock_state);
 				}
-				}					
-			} // End while (lock_state == 1)
+			}					
+		} // End while (lock_state == 1)
 
 		// While box is in unlocked state
 			while (lock_state == 0 ) {
@@ -220,10 +204,8 @@ int main(void) {
 					// done entering the code.
 					while(key_queue[0] != '*') {
 						
-						clearKeyQueue();
-
 						// Wait for key press
-						//while(key_queue[count_queue] == '\0');
+						while(key_queue[count_queue] == '\0');
 
 						// Was the latest key pressed between 0 and 9, AND has the user
 						// entered less than the max number (8) of digits allowed for the
@@ -236,9 +218,9 @@ int main(void) {
 						// If the latest key pressed is '*' then lets write the new
 						// code to eeprom
 						} else if (key_queue[0] == '*') {
-							getCurrentUserInput(count_queue, current_user_input);
-							writeTOeeprom(current_user_input);
-
+							popKey();
+							writeTOeeprom(key_queue);
+							break;
 
 						// Otherwise the only key left is '#', so that's what must've been
 						// pressed. :)
@@ -249,6 +231,7 @@ int main(void) {
 							clearKeyQueue();
 							count_queue = 0;
 							clearLCD();
+							break;
 						}
 				
 					}
