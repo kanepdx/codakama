@@ -16,6 +16,9 @@
 #define FDBKLOCKPIN PB6			// PD2 limits the opening motion
 #define FDBKOPENPIN PD2
 
+#define PULLIN 0b00010000		// FIN on PD4, |= with this to open
+#define PUSHOUT 0b00001000		// RIN on PD3, |= with this to close
+
 
 int unlock(int status)
 {
