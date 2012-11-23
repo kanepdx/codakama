@@ -44,7 +44,20 @@
 	 PORTD &= ~(1 << PD7);
  }
 
-
+// Initializing some globals
+	char enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
+	char incorrect_code[16] = {'I','N','C','O','R','R','E','C','T',' ','C','O','D','E',' ',' '};
+	char unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
+	char unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
+	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
+	char cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
+	int current_code[9];
+	
+	int lock_state = 2;									// initialized lock variable to intermediate status
+	int count_queue = 0;
+	
+	#include "timeout.c"
+	#include "timeout.h"
 
  int main(void) {
 	 // initialize
@@ -55,25 +68,15 @@
 	volatile int count_queue;							// Keep track of how many characters are
 														// in the queue
 	int code_is_correct;								 
-	int lock_state = 2;									// initialized lock variable to intermediate status		
+			
 	
 	initializeKeypadInterrupts(rows);	
 	sei();												// global interrupt enable
-	
-	// Initializing arrays 
-	char enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
-	char incorrect_code[16] = {'I','N','C','O','R','R','E','C','T',' ','C','O','D','E',' ',' '};
-	char unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
-	char unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
-	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
-	char cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
-	int current_code[9];
 	
 	initRows(rows);										// set keypad rows as inputs
 	initColumns(cols);									// set keypad columns as outputs
 	initializeLCD();									// set up LCD and initialize in 4 bit mode
 	clearKeyQueue();
-	count_queue = 0;
 
 	testfun(0);
 
@@ -82,6 +85,7 @@
 	while (lock_state != 1) {
 			lock_state = testLock(2);
 	}
+	initializeTimeout();
 	
 	
 	// wait loop
@@ -231,4 +235,3 @@
 
 	} // End while(1);
 } // End main();
-

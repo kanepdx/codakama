@@ -150,6 +150,7 @@ void initColumns(int c[]){								// sets keypad columns as outputs
 	 }
 	 else if(!getButtonState()){
 		 pushKey(current_key);
+		 resetTimer();
 	 }
 	 _delay_ms(5);
  }
