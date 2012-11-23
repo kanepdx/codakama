@@ -64,7 +64,7 @@ int getCol(int r) {										// strobe outputs to determine column
 	int c;
 		
 	PORTB |= (1 << COL1);								// set first column high
-	_delay_us(30);										// wait for debouncing filter
+	_delay_us(100);										// wait for debouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 1;											// then the key press was in the first column
 	}
@@ -72,7 +72,7 @@ int getCol(int r) {										// strobe outputs to determine column
 	
 	
 	PORTB |= (1 << COL2);								// set second column high
-	_delay_us(30);										// wait for denouncing filter
+	_delay_us(100);										// wait for denouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 2;											// then the key press was in the second column
 	}
@@ -80,7 +80,7 @@ int getCol(int r) {										// strobe outputs to determine column
 
 	
 	PORTB |= (1 << COL3);								// set third column high
-	_delay_us(30);										// wait for denouncing filter
+	_delay_us(100);										// wait for denouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 3;											// then the key press was in the third column
 	}

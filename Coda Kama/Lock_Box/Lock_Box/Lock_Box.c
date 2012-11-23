@@ -48,8 +48,7 @@
 	 _delay_ms(5);
 	 if(getButtonState()){
 		 getKeyPress();
-		 _delay_ms(75);
-		 
+		 _delay_ms(50);		 
 	 }
 	 else if(!getButtonState()){
 		 pushKey(current_key);
