@@ -19,7 +19,8 @@ Lock_Box.d Lock_Box.o: .././Lock_Box.c \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/eeprom.h \
  c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/include/stddef.h \
  .././LCD.h .././LCD.c .././EEPROM_RW.h .././EEPROM_RW.c .././keypad.h \
- .././keypad.c .././lockCode.h .././lockCode.c
+ .././keypad.c .././lockCode.h .././lockCode.c .././timeout.c \
+ .././timeout.h
 
 c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.0.65\avrtoolchain\bin\../lib/gcc/avr/4.6.2/../../../../avr/include/avr/io.h:
 
@@ -74,3 +75,7 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.0.
 .././lockCode.h:
 
 .././lockCode.c:
+
+.././timeout.c:
+
+.././timeout.h:
