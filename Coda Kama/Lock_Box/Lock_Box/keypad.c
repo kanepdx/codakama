@@ -1,15 +1,4 @@
-/*
-	this shit is working, kinda (best so far)
-*/
 #include "keypad.h"
-
-// includes to be removed later
-/*
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include <util/delay.h>
-#define F_CPU 8000000UL
-*/
 
 // definitions to be moved later
 #define NUM_COLS 3										// number of columns on the keypad
@@ -29,6 +18,14 @@
 volatile int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
 int current_key;
 
+// initialize pin-change interrupts for keypad
+void initializeKeypadInterrupts(int rows[]){
+	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
+	for(int i = 0; i < NUM_ROWS; i++){
+		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
+	}
+}
+
 // adds the most recent key press to the key_queue
 void getKeyPress(void){		
 	int row;
@@ -42,7 +39,7 @@ void getKeyPress(void){
 }
 
 int getButtonState(){									// check rows, if any are low then a key is being pressed
-	_delay_us(100);
+	_delay_us(500);
 	int s = 0;
 	if(!(PINB &(1 << ROW1))) s = 1;
 	else if(!(PINB &(1 << ROW2))) s = 1;				
@@ -64,7 +61,7 @@ int getCol(int r) {										// strobe outputs to determine column
 	int c;
 		
 	PORTB |= (1 << COL1);								// set first column high
-	_delay_us(100);										// wait for debouncing filter
+	_delay_us(500);										// wait for debouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 1;											// then the key press was in the first column
 	}
@@ -72,7 +69,7 @@ int getCol(int r) {										// strobe outputs to determine column
 	
 	
 	PORTB |= (1 << COL2);								// set second column high
-	_delay_us(100);										// wait for denouncing filter
+	_delay_us(500);										// wait for denouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 2;											// then the key press was in the second column
 	}
@@ -80,7 +77,7 @@ int getCol(int r) {										// strobe outputs to determine column
 
 	
 	PORTB |= (1 << COL3);								// set third column high
-	_delay_us(100);										// wait for denouncing filter
+	_delay_us(500);										// wait for denouncing filter
 	if((PINB & (1 << r))) {								// if the row went high
 		c = 3;											// then the key press was in the third column
 	}
@@ -143,3 +140,16 @@ void initColumns(int c[]){								// sets keypad columns as outputs
 		DDRB |= (1 << c[i]);							// set columns as outputs
 	}
 }
+
+// interrupt service routine for a key press/release
+ ISR(PCINT0_vect){
+	 _delay_ms(1);
+	 if(getButtonState()){
+		 getKeyPress();
+		 _delay_ms(50);
+	 }
+	 else if(!getButtonState()){
+		 pushKey(current_key);
+	 }
+	 _delay_ms(5);
+ }

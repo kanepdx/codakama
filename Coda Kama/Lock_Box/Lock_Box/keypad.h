@@ -1,4 +1,4 @@
-
+void initializeKeypadInterrupts(int rows[]);
 void getKeyPress(void);
 int getRow(void);
 int getCol(int r);

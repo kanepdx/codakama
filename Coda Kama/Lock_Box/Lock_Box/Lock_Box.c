@@ -7,17 +7,17 @@
 
  #define F_CPU 1000000			// 8Mhz/8 = 1Mhz = System clock
 
- #include <avr/io.h>				// AVR I/O library
- #include <util/delay.h>			// Delay library
+ #include <avr/io.h>			// AVR I/O library
+ #include <util/delay.h>		// Delay library
  #include <avr/interrupt.h>		// Interrupt library
- #include <avr/eeprom.h>			// EEPROM library
+ #include <avr/eeprom.h>		// EEPROM library
 
  #include "LCD.h"				// LCD.h function library - Prototypes only
  #include "LCD.c"				// LCD.c function library - Functions only
  #include "EEPROM_RW.h"			// EEPROM_RW.h - EEPROM read/write function prototypes
  #include "EEPROM_RW.c"			// EEPROM_RW.c - EEPROM read/write functions
- #include "keypad.h"				// keypad.h function library - Function prototypes
- #include "keypad.c"				// keypad.c function library - Functions only
+ #include "keypad.h"			// keypad.h function library - Function prototypes
+ #include "keypad.c"			// keypad.c function library - Functions only
  #include "lockCode.h"			// lockCode.h function library - Function prototypes
  #include "lockCode.c"			// lockcCocde.h function library - Functions only
 
@@ -44,16 +44,7 @@
 	 PORTD &= ~(1 << PD7);
  }
 
- ISR(PCINT0_vect){
-	 _delay_ms(5);
-	 if(getButtonState()){
-		 getKeyPress();
-		 _delay_ms(50);		 
-	 }
-	 else if(!getButtonState()){
-		 pushKey(current_key);
-	 }
- }
+
 
  int main(void) {
 	 // initialize
@@ -66,11 +57,7 @@
 	int code_is_correct;								 
 	int lock_state = 2;									// initialized lock variable to intermediate status		
 	
-	// initialize interrupts
-	PCICR |= (1 << PCIE0);								// set bit 0 of PCICR
-	for(int i = 0; i < NUM_ROWS; i++){
-		PCMSK0 |= (1 << rows[i]);						// allow row pins to trigger interrupts
-	}
+	initializeKeypadInterrupts(rows);	
 	sei();												// global interrupt enable
 	
 	// Initializing arrays 
