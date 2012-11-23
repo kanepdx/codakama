@@ -15,6 +15,13 @@
 void initRows(int r[]);
 void initColumns(int c[]);
 
+int enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
+int incorrect_code[16] = {'I','N','C','O','R','R','E','C','T',' ','C','O','D','E',' ',' '};
+int unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
+int unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
+int new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
+int cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
+
 ISR(PCINT0_vect){
 	_delay_ms(5);
 	if(getButtonState()){		
@@ -41,6 +48,8 @@ int main(void)
 	initializeLCD();									// set up LCD and initialize in 4 bit mode
 	clearKeyQueue();
 	clearLCD();
+	writeLCDline(enter_code,1);
+	cursorPosition(2);
 	writeLCDcharacter('#');
 	
 	// initialize interrupts
