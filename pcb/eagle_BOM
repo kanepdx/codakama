@@ -1,0 +1,88 @@
+Value                 Package	Part     
+.1u                   C0805	C1       
+.1u                   C0805	C2       
+.1u                   C0805	C3       
+10n                   C0805	C4       
+.1u                   C0805	C5       
+10n                   C0805	C6       
+10n                   C0805	C7       
+10n                   C0805	C8       
+.1u                   C0805	C10      
+.1u                   C0805	C11      
+10u                   E5-6	C12      
+.1u                   C0805	C14      
+10u                   E5-6	C15      
+.1u                   C0805	C16      
+10u                   E5-6	C17      
+100u                  E5-6	C18      
+DSUB-09F              DSUB09M-SOLDER-EDGE	CON1     
+5P-SCREWTERM-282834-5 5P-TERMINALBLOCK-282834-5	CON2     
+2P-SCREWTERM-282836-2 2P-TERMINALBLOCK-282836-2	CON3     
+ATMEL_JTAG            3X2-100MIL	CON4     
+2P-SCREWTERM-282836-2 2P-TERMINALBLOCK-282836-2	CON5     
+G17S1510110EU         DSUB15F-SOLDER-EDGE	CON6     
+RED                   CHIP-LED0805	LED1     
+RED                   CHIP-LED0805	LED2     
+RED                   CHIP-LED0805	LED3     
+RED                   CHIP-LED0805	LED4     
+DNS                   CHIP-LED0805	LED5     
+RED                   CHIP-LED0805	LED6     
+10K                   R0805	R1       
+DNS                   R0805	R2       
+120                   R0805	R3       
+2.2K                  R0805	R4       
+330                   R0805	R5       
+220                   R0805	R6       
+0                     R0805                           rcl	R7       
+0                     R0805                           rcl	R8       
+0                     R0805                           rcl	R9       
+0                     R0805                           rcl	R10      
+0                     R0805                           rcl	R11      
+0                     R0805                           rcl	R12      
+0                     R0805                           rcl	R13      
+0                     R0805                           rcl	R14      
+0                     R0805                           rcl	R15      
+0                     R0805                           rcl	R16      
+3.3k                  R0805	R17      
+3.3k                  R0805	R18      
+3.3k                  R0805	R19      
+3.3k                  R0805	R20      
+0                     R0805                           rcl	R21      
+0                     R0805                           rcl	R22      
+0                     R0805                           rcl	R23      
+0                     R0805                           rcl	R24      
+0                     R0805                           rcl	R25      
+0                     R0805                           rcl	R26      
+0                     R0805                           rcl	R27      
+0                     R0805                           rcl	R28      
+0                     R0805                           rcl	R29      
+0                     R0805                           rcl	R30      
+0                     R0805                           rcl	R31      
+0                     R0805                           rcl	R32      
+DNS                   R0805	R33      
+DNS                   R0805	R34      
+10K                   R0805	R35      
+10K                   R0805	R36      
+10K                   R0805	R37      
+10K                   R0805	R38      
+DNS                   R0805	R39      
+0                     R0805                           rcl	R40      
+0                     R0805                           rcl	R41      
+0                     R0805                           rcl	R42      
+360                   R0805	R43      
+120                   R0805	R44      
+360                   R0805	R45      
+0                     0207/10                         rcl	R46      
+0                     0207/10                         rcl	R47      
+330                   R0805	R48      
+330                   R0805	R49      
+330                   R0805	R50      
+DNS                   R0805	R51      
+330                   R0805	R52      
+0                     R0805                           rcl	R53      
+KEYSTONE-TP-TH-BLACK  KEYSTONE-TESTPOINT-MULTIPURPOSE	TP1      
+KEYSTONE-TP-TH-BLACK  KEYSTONE-TESTPOINT-MULTIPURPOSE	TP2      
+ATMEGA48A             TQFP-32	U1       
+LM1085IS-ADJ          TO-263	U2       
+LM317MDCYR            DCY	U3       
+BD6212                HRP7	U8       
