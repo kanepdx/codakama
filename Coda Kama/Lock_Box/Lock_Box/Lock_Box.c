@@ -78,6 +78,7 @@
 	initRows(rows);										// set keypad rows as inputs
 	initColumns(cols);									// set keypad columns as outputs
 	initializeLCD();									// set up LCD and initialize in 4 bit mode
+	BacklightLCD(1);
 	clearKeyQueue();
 
 	testfun(0);
@@ -126,19 +127,7 @@
 			} 
 			else if((key_queue[0] >= '0') && (key_queue[0] <= '9') && (count_queue < 8)){
 				writeLCDcharacter(key_queue[0]);
-				count_queue++;
-				testfun(1);
-				_delay_ms(15);
-				testfun(0);
-				_delay_ms(15);
-				testfun(1);
-				_delay_ms(15);
-				testfun(0);
-				_delay_ms(15);
-				testfun(1);
-				_delay_ms(15);
-				testfun(0);
-	
+				count_queue++;	
 				
 			// ...or if first key in the queue isn't a digit or '#' then
 			// it must be the '*'

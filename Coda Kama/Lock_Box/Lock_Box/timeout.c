@@ -9,7 +9,9 @@ ISR(TIMER1_COMPA_vect){
 		_delay_ms(1);
 	}
 	else if((lock_state == 1)&&(key_queue[0])){
+		BacklightLCD(0);
 		pushKey('#');
+
 	}
 }
 
