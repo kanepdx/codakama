@@ -22,6 +22,7 @@
  #include "lockCode.c"			// lockcCocde.h function library - Functions only
 
 
+
  int testLock(int status){
 	 int lock_state = 1;
 	 DDRD |= (1 << PD6);
@@ -55,16 +56,17 @@
 	
 	int lock_state = 2;									// initialized lock variable to intermediate status
 	int count_queue = 0;
+	int count = 0;											// counter variable used for loops
 	
-	#include "timeout.c"
-	#include "timeout.h"
+	 #include "timeout.c"
+	 #include "timeout.h"
 
  int main(void) {
 	 // initialize
 	// short int testcode[9] = {'3','2','1','\0','\0','\0','\0','\0','\0'};
 	int rows[] = {ROW1, ROW2, ROW3, ROW4};
 	int cols[] = {COL1, COL2, COL3};
-	int count;											// counter variable used for loops
+	
 	volatile int count_queue;							// Keep track of how many characters are
 														// in the queue
 	int code_is_correct;								 

@@ -4,10 +4,11 @@
 ISR(TIMER1_COMPA_vect){
 	if((lock_state == 1)&&(key_queue[0])){
 		clearLCD();
-		writeLCDline(enter_code, 1);
+		writeLCDline(enter_code,1);
 		cursorPosition(2);
-		count_queue = 0;
 		clearKeyQueue();
+		count_queue = 0;
+		count = 0;
 		resetTimer();
 	}
 	else {
@@ -23,5 +24,5 @@ void initializeTimeout(void){
 }
 
 void resetTimer(void){
-	TCNT1 = 0x0000;							// reset 16-bit counter to 0
+	TCNT1 = 0x0001;							// reset 16-bit counter to 0
 }
