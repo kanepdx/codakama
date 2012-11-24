@@ -93,15 +93,21 @@
 	// wait loop
 	while(1) {
 		
+		
+		
 		// Print greeting
 		clearLCD();
 		writeLCDline(enter_code,1);
 		cursorPosition(2);
 		readFROMeeprom(current_code);
-
+		
+		
+		
 		// While box is in locked state
 		while (lock_state == 1) {
-				
+			
+			
+
 					
 			// Wait for a key press
 			while(key_queue[count_queue] == '\0');
@@ -117,13 +123,27 @@
 				//testfun(1);
 				
 			// ...or is the first key in the queue a digit?...
-			} else if(key_queue[0] >= '0' && key_queue[0] <= '9' && count_queue < 8){
+			} 
+			else if((key_queue[0] >= '0') && (key_queue[0] <= '9') && (count_queue < 8)){
 				writeLCDcharacter(key_queue[0]);
 				count_queue++;
+				testfun(1);
+				_delay_ms(15);
+				testfun(0);
+				_delay_ms(15);
+				testfun(1);
+				_delay_ms(15);
+				testfun(0);
+				_delay_ms(15);
+				testfun(1);
+				_delay_ms(15);
+				testfun(0);
+	
 				
 			// ...or if first key in the queue isn't a digit or '#' then
 			// it must be the '*'
-			} else if(key_queue[0] == '*') {
+			} 
+			else if(key_queue[0] == '*') {
 				count = 0;
 				code_is_correct = 1;
 				popKey();
