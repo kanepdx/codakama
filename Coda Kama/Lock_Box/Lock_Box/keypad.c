@@ -6,10 +6,10 @@
 #define COL2 PINB4 										// column 2 of keypad mapped to pin
 #define COL3 PINB5 										// column 3 of keypad mapped to pin
 #define NUM_ROWS 4										// number of rows on the keypad
-#define ROW1 PINB0										// row 1 of keypad mapped to pin
-#define ROW2 PINB1										// row 2 of keypad mapped to pin
-#define ROW3 PINB2										// row 3 of keypad mapped to pin
-#define ROW4 PINB7										// row 4 of keypad mapped to pin
+#define ROW1 PINB7										// row 1 of keypad mapped to pin
+#define ROW2 PINB0										// row 2 of keypad mapped to pin
+#define ROW3 PINB1										// row 3 of keypad mapped to pin
+#define ROW4 PINB2										// row 4 of keypad mapped to pin
 #define STAR 10 										// '*'' key mapped to a decimal value
 #define POUND 12										// '#' key mapped to a decimal value
 #define KEY_QUEUE_SIZE 10								// size of key queue
