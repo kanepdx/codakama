@@ -20,7 +20,7 @@ void writeTOeeprom(int short code_to_save[]){
 	int ele_count = 0;													// variable declaration to loop and fill temp_code with desired saved code
 	int add_count = 0;													// variable declaration to loop through eeprom addresses
 	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
-	int temp_code[9] = {'/0','/0','/0','/0','/0','/0','/0','/0','/0'};	// temp array initialized with null characters to hold the desired saved code
+	int temp_code[9] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0'};	// temp array initialized with null characters to hold the desired saved code
 	while(code_to_save != '\0'){										// This loop fills temp_code array with saved code and fills the rest wih NULL
 		temp_code[ele_count] = code_to_save[ele_count];	
 		ele_count++;													// incrementing array counter		
