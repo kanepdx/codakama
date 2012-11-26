@@ -71,7 +71,7 @@
 														// in the queue
 	int code_is_correct;								 
 			
-	
+	initializeMotorPins();
 	initializeKeypadInterrupts(rows);	
 	sei();												// global interrupt enable
 	
@@ -81,12 +81,12 @@
 	BacklightLCD(1);
 	clearKeyQueue();
 
-	testfun(0);
+	//writeLCDcharacter('x');
 
 	
 	// Ensure we're locked to start with.
 	while (lock_state != 1) {
-			lock_state = testLock(2);
+			lock_state = lock(2);
 	}
 	initializeTimeout();
 	
@@ -102,7 +102,16 @@
 		cursorPosition(2);
 		readFROMeeprom(current_code);
 		
-		
+		/*
+		// TESTING MOTOR
+		while(1){
+			lock(1);
+			_delay_ms(100);
+			unlock(1);
+			_delay_ms(100);	
+		}		
+		// END TESTING MOTOR
+		*/
 		
 		// While box is in locked state
 		while (lock_state == 1) {
@@ -167,7 +176,7 @@
 				}else if(code_is_correct && count > 0){
 
 					// Unlock the box
-					lock_state = testUnlock(lock_state);
+					lock_state = unlock(lock_state);
 				}
 			}					
 		} // End while (lock_state == 1)
@@ -189,7 +198,7 @@
 				// Now that we have a key press we need to look at what was pressed.
 				// Is the first key in the queue a '#'...
 				if(key_queue[0] == '#'){
-					lock_state = testLock(lock_state);
+					lock_state = lock(lock_state);
 					clearKeyQueue();
 					count_queue = 0;
 					writeLCDline(enter_code,1);
