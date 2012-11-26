@@ -12,3 +12,5 @@
 int unlock(int status);
 
 int lock(int status);
+
+void initializeMotorPins(void);
