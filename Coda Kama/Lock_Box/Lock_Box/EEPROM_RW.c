@@ -21,11 +21,13 @@ void writeTOeeprom(int short code_to_save[]){
 	int add_count = 0;													// variable declaration to loop through eeprom addresses
 	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
 	int temp_code[9] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0'};	// temp array initialized with null characters to hold the desired saved code
-	while(code_to_save != '\0'){										// This loop fills temp_code array with saved code and fills the rest wih NULL
-		temp_code[ele_count] = code_to_save[ele_count];	
+	while(code_to_save[ele_count] != '\0'){										// This loop fills temp_code array with saved code and fills the rest wih NULL
+		if(code_to_save[ele_count] >= '0' && code_to_save[ele_count] <= '9'){	// Makes sure the number being stored is a number and not '#' or '*'
+			temp_code[ele_count] = code_to_save[ele_count];		
+		}		
 		ele_count++;													// incrementing array counter		
 	}
-	while(temp_code[add_count] != '\0'){								// looping through code to save array
+	for(int add_count = 0; add_count < 9; add_count++){					// looping through code to save array
 		eeprom_write_byte(temp_ee_address, temp_code[add_count]);		// writing byte to specified address
 		temp_ee_address++;												// incrementing address counter
 		add_count++;													// incrementing array counter
