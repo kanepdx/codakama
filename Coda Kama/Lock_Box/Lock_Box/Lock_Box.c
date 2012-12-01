@@ -46,11 +46,11 @@
  }
 
 // Initializing some globals
-	char enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',' ',' ',' ',' ',' ',' '};
+	char enter_code[16] = {'E','N','T','E','R',' ','C','O','D','E',',',' ','*',' ',' ',' '};
 	char incorrect_code[16] = {'I','N','C','O','R','R','E','C','T',' ','C','O','D','E',' ',' '};
 	char unlocked_menu_1[16] = {'#',' ','-',' ','T','O',' ','L','O','C','K',' ',' ',' ',' ',' ',};
 	char unlocked_menu_2[16] = {'*',' ','-',' ','S','E','T',' ','N','E','W',' ','C','O','D','E',};
-	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',' ',' ',' ',' ',};
+	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',',',' ','*',' ',};
 	char cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
 	int current_code[9];
 	
@@ -101,17 +101,8 @@
 		writeLCDline(enter_code,1);
 		cursorPosition(2);
 		readFROMeeprom(current_code);
-		
-		/*
-		// TESTING MOTOR
-		while(1){
-			lock(1);
-			_delay_ms(100);
-			unlock(1);
-			_delay_ms(100);	
-		}		
-		// END TESTING MOTOR
-		*/
+	
+	
 		
 		// While box is in locked state
 		while (lock_state == 1) {
@@ -146,6 +137,8 @@
 				code_is_correct = 1;
 				popKey();
 				
+				/*
+				// draw the contents of the key queue and eeprom
 				clearLCD();
 				cursorPosition(1);
 				for(int i = 0; i < 10; i++){
@@ -156,7 +149,7 @@
 					writeLCDcharacter(current_code[i]);
 				}
 				_delay_ms(1000);
-									
+				*/					
 					
 				// Checks the current queue code with the correct code
 				while(key_queue[count] != '\0'){
@@ -240,7 +233,7 @@
 						} else if(key_queue[0] == '#') {
 							clearLCD();
 							writeLCDline(cancel_code_change,1);
-							_delay_ms(5000);
+							_delay_ms(1000);
 							clearKeyQueue();
 							count_queue = 0;
 							clearLCD();

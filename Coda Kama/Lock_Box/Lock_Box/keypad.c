@@ -143,7 +143,7 @@ void initColumns(int c[]){								// sets keypad columns as outputs
 
 // interrupt service routine for a key press/release
  ISR(PCINT0_vect){
-	 _delay_ms(1);
+	 _delay_ms(2);
 	 if(getButtonState()){
 		 getKeyPress();
 		 _delay_ms(50);
@@ -153,5 +153,5 @@ void initColumns(int c[]){								// sets keypad columns as outputs
 		 BacklightLCD(1);
 		 resetTimer();
 	 }
-	 _delay_ms(5);
+	 _delay_ms(20);
  }
