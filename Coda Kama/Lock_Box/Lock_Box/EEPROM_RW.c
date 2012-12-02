@@ -17,24 +17,22 @@ int short default_code[9] = {'0','0','0','0','\0','\0','\0','\0','\0'};		// Fact
 
 // Writes an 9 element array pass code to EEPROM
 void writeTOeeprom(int short code_to_save[]){
-	int ele_count = 0;													// variable declaration to loop and fill temp_code with desired saved code
-	int ele_count_temp = 0;												// variable used to loop through temp array so extra nulls can be placed in the array
 	int add_count = 0;													// variable declaration to loop through eeprom addresses
 	uint8_t temp_ee_address = EEPROM_DATA_ADDRESS;						// temp address variable to go through eeprom
-	int temp_code[9] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0'};	// temp array initialized with null characters to hold the desired saved code
-	while(code_to_save[ele_count] != '\0'){										// This loop fills temp_code array with saved code and fills the rest with NULL
-		if(code_to_save[ele_count] >= '0' && code_to_save[ele_count] <= '9'){	// Makes sure the number being stored is a number and not '#' or '*'
-			temp_code[ele_count_temp] = code_to_save[ele_count];				// filling temp code array with desired saved code
-			ele_count_temp++;													// incrementing the counter for the temp array
-			ele_count++;														// incrementing saved code counter
-		}
-		else		
-			ele_count++;														// incrementing array counter		
+	for(int i = 0; i < 9; i++){										// filling eeprom wit all NULLS
+		eeprom_write_byte(temp_ee_address, '\0');
+		temp_ee_address++;
 	}
-	for(int add_count = 0; add_count < 9; add_count++){					// looping through code to save array
-		eeprom_write_byte(temp_ee_address, temp_code[add_count]);		// writing byte to specified address
-		temp_ee_address++;												// incrementing address counter
-		add_count++;													// incrementing array counter
+	temp_ee_address = EEPROM_DATA_ADDRESS;
+	while(code_to_save[add_count] != '\0'){								// This loop fills temp_code array with saved code and fills the rest with NULL
+			if(code_to_save[add_count] == '*'){							// Fixes * bunce
+				add_count++;
+			}
+			else{
+				eeprom_write_byte(temp_ee_address, code_to_save[add_count]);		// writing byte to specified address
+				add_count++;
+				temp_ee_address++;
+			}				
 	}
 	eeprom_write_byte(temp_ee_address, code_to_save[add_count]);		// writing the NULL character to the end of the pass code
 	eeprom_write_byte(EEPROM_NEWCODE_ADDRESS,0x0);						// Setting new code flag

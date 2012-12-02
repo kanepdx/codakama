@@ -17,6 +17,7 @@
 // globals to be moved later							
 volatile int key_queue[KEY_QUEUE_SIZE];							// holds user inputs
 int current_key;
+int last_button_state = 0;
 
 // initialize pin-change interrupts for keypad
 void initializeKeypadInterrupts(int rows[]){
@@ -143,15 +144,20 @@ void initColumns(int c[]){								// sets keypad columns as outputs
 
 // interrupt service routine for a key press/release
  ISR(PCINT0_vect){
-	 _delay_ms(2);
-	 if(getButtonState()){
+	 _delay_ms(1);
+	 if(getButtonState() && last_button_state == 0){
 		 getKeyPress();
-		 _delay_ms(50);
+		 _delay_ms(1);
+		 last_button_state = 1;
 	 }
-	 else if(!getButtonState()){
+	 else if(!getButtonState() && last_button_state == 1){
 		 pushKey(current_key);
-		 BacklightLCD(1);
+		 //BacklightLCD(1);
 		 resetTimer();
+		 last_button_state = 0;
 	 }
-	 _delay_ms(20);
+	 else{
+		 _delay_ms(1);
+	 }
+	 _delay_ms(1);
  }

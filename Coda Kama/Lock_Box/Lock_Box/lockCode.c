@@ -36,9 +36,9 @@ int unlock(int status)
 	cli();							// disable interrupt
 	MOTORPORT |= PULLIN;
 	while(FDBKPORT & (1 <<FDBKPIN)){
-		_delay_ms(50);
+		_delay_ms(1);
 		if(!(FDBKPORT & (1 <<FDBKPIN))){
-			_delay_ms(50);
+			_delay_ms(1);
 		}
 	}
 	
@@ -70,9 +70,9 @@ int lock(int status)
 	MOTORPORT |= PUSHOUT;
 	
 	while(FDBK2PORT & (1 <<FDBK2PIN)){
-		_delay_ms(50);
+		_delay_ms(1);
 		if(!(FDBK2PORT & (1 <<FDBK2PIN))){
-			_delay_ms(50);
+			_delay_ms(1);
 		}
 	}
 	

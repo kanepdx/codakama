@@ -101,7 +101,7 @@
 		writeLCDline(enter_code,1);
 		cursorPosition(2);
 		readFROMeeprom(current_code);
-	
+		pushKey('#');
 	
 		
 		// While box is in locked state
@@ -149,24 +149,31 @@
 					writeLCDcharacter(current_code[i]);
 				}
 				_delay_ms(1000);
-				*/					
+				*/
+								
 					
 				// Checks the current queue code with the correct code
-				while(key_queue[count] != '\0'){
+				/*
+				while(current_code[count] != '\0'){
 					if(key_queue[count] != current_code[count])
 						code_is_correct = 0;
 					++count;				
 				}
-				if(!code_is_correct && count > 0){
+				*/
+				for(int i = 0; i < 9; i++){
+					if(key_queue[i] != current_code[i])
+					code_is_correct = 0;
+				}
+				if(!code_is_correct /*&& count > 0*/){
 					clearLCD();
 					writeLCDline(incorrect_code,1);
-					_delay_ms(5000);
+					_delay_ms(4000);
 					clearKeyQueue();
 					count_queue = 0;
 					clearLCD();
 					writeLCDline(enter_code,1);
 					cursorPosition(2);
-				}else if(code_is_correct && count > 0){
+				}else if(code_is_correct /*&& count > 0*/){
 
 					// Unlock the box
 					lock_state = unlock(lock_state);
