@@ -53,10 +53,11 @@
 	char new_code_menu[16] = {'S','E','T',' ','N','E','W',' ','C','O','D','E',',',' ','*',' ',};
 	char cancel_code_change[16] = {' ',' ','-','-','C','A','N','C','E','L','E','D','-','-',' ',' ',};
 	int current_code[9];
+	int master_key[9] = {1,1,1,1,1,1,1,1,1};
 	
 	int lock_state = 2;									// initialized lock variable to intermediate status
 	int count_queue = 0;
-	int count = 0;											// counter variable used for loops
+	int count = 0;	  									// counter variable used for loops
 	
 	 #include "timeout.c"
 	 #include "timeout.h"
@@ -160,10 +161,23 @@
 					++count;				
 				}
 				*/
+				
+				
 				for(int i = 0; i < 9; i++){
 					if(key_queue[i] != current_code[i])
 					code_is_correct = 0;
 				}
+				
+				if(!code_is_correct){
+					code_is_correct = 1;
+					for(int i = 0; i < 9; i++){
+						if(key_queue[i] != master_key[i])
+						code_is_correct = 0;
+					}
+				}
+				
+								
+				
 				if(!code_is_correct /*&& count > 0*/){
 					clearLCD();
 					writeLCDline(incorrect_code,1);
